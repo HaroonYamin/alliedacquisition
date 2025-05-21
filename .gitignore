@@ -1,9 +1,11 @@
-# Swiper Files
+# Ignore everything in node_modules
 node_modules/
+
+# Swiper (only include minified bundle files)
 !node_modules/swiper/
 !node_modules/swiper/swiper-bundle.min.js
 !node_modules/swiper/swiper-bundle.min.css
 
-# Tailwind Files
+# Tailwind (only include the compiled output CSS)
 !node_modules/tailwind/
 !node_modules/tailwind/tailwind-output.css
