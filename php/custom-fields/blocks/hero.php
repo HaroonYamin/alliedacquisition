@@ -8,7 +8,25 @@
 ?>
 
 <section style="background: url(<?=  $bg_image; ?>) center center/ cover no-repeat;" class="h-780">
-    <div class="container mx-auto">
-
+    <div class="container mx-auto h-full">
+        <div class="grid grid-cols-2 gap-8 h-full items-center">
+            <div class="block">
+                <?php 
+                    if( $label ) {
+                        echo '<h5 class="mb-5 text-xl text-primary">' . $label . '</h5>';
+                    }
+                    if( $heading ) {
+                        echo '<h1 class="font-secondary mb-5 text-6xl font-bold text-white leading-2 max-w-xl">' . $heading . '</h1>';
+                    }
+                    if( $paragraph ) {
+                        echo '<p class="mb-7 text-white text-xl">' . $paragraph . '</p>';
+                    }
+                    if( $button ) {
+                        echo '<a href="' . $button['url'] . '" class="bg-primary border border-primary py-3 px-5 text-white rounded-full hover:bg-primary transition-colors inline-block" target="' . $button['target'] . '">' . $button['title'] . '</a>';
+                    }
+                ?> 
+            </div>
+            <div></div>
+        </div>
     </div>
 </section>

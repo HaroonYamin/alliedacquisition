@@ -18,6 +18,14 @@ if (!defined('ABSPATH')) {
  */
 define('THEME_ASSETS', [
     'css' => [
+        'avenir' => [
+            'path' => '/assets/fonts/avenir/stylesheet.css',
+            'deps' => []
+        ],
+        'inter' => [
+            'path' => '/assets/fonts/inter/stylesheet.css',
+            'deps' => []
+        ],
         'tailwind' => [
             'path' => '/assets/css/tailwind-output.css',
             'deps' => []
@@ -26,13 +34,13 @@ define('THEME_ASSETS', [
             'path' => '/node_modules/swiper/swiper-bundle.min.css',
             'deps' => []
         ],
-        'main' => [
+        'custom' => [
             'path' => '/assets/css/custom.css',
             'deps' => []
         ]
     ],
     'js' => [
-        'main' => [
+        'custom' => [
             'path' => '/assets/js/custom.js',
             'deps' => ['jquery']
         ],

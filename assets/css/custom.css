@@ -1,0 +1,25 @@
+body {
+    font-family: var(--font-primary);
+}
+
+.custom-logo {
+    height: 49px;
+    width: auto;
+}
+#header .menu {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+#header .menu a {
+    color: #fff;
+    font-size: 1.125rem;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+#header .menu a:hover,
+#header .menu a:active {
+    background-color: rgba(0, 0, 0, 0.3);
+}
