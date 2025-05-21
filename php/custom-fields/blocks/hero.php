@@ -7,8 +7,8 @@
     $shortcode = get_field('more')['shortcode'];
 ?>
 
-<section style="background: url(<?=  $bg_image; ?>) center center/ cover no-repeat;">
-    <div class="container" style="height: 600px">
+<section style="background: url(<?=  $bg_image; ?>) center center/ cover no-repeat;" class="h-780">
+    <div class="container mx-auto">
 
     </div>
 </section>

@@ -30,6 +30,11 @@ require_once THEME_DIR . '/php/theme-settings/security.php';
 require_once THEME_DIR . '/php/theme-settings/support.php';
 
 /*
+ * WordPress Theme Customization
+ */
+require_once THEME_DIR . '/php/theme-settings/customization.php';
+
+/*
  * WordPress Theme Enqueue
  */
 require_once THEME_DIR . '/php/theme-settings/enqueue.php';

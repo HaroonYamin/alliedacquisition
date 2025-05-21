@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
 define('THEME_ASSETS', [
     'css' => [
         'tailwind' => [
-            'path' => '/node_modules/tailwind/tailwind-output.css',
+            'path' => '/assets/css/tailwind-output.css',
             'deps' => []
         ],
         'swiper' => [
