@@ -22,11 +22,15 @@
                         echo '<p class="mb-7 text-white text-xl">' . $paragraph . '</p>';
                     }
                     if( $button ) {
-                        echo '<a href="' . $button['url'] . '" class="bg-primary border border-primary py-3 px-5 text-white rounded-full hover:bg-primary transition-colors inline-block" target="' . $button['target'] . '">' . $button['title'] . '</a>';
+                        echo '<a href="' . $button['url'] . '" class="bg-primary border border-primary py-3 px-5 text-white rounded-full hover:bg-lime-500 hover:border-lime-500 transition-colors inline-block" target="' . $button['target'] . '">' . $button['title'] . '</a>';
                     }
                 ?> 
             </div>
-            <div></div>
+            <?php if(  $shortcode ) : ?>
+                <div>
+                    <?= do_shortcode( $shortcode ); ?>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
 </section>
