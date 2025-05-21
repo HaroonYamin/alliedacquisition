@@ -12,7 +12,6 @@
                         <?php echo esc_html( get_theme_mod( 'header_button_text', 'Contact Us' ) ); ?>
                     </a>
                 <?php endif; ?>
-
             </div>
         </div>
     </div>
