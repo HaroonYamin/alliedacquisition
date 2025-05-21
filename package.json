@@ -1,5 +1,33 @@
 {
   "dependencies": {
-    "swiper": "^11.2.6"
-  }
+    "@tailwindcss/cli": "^4.1.7",
+    "swiper": "^11.2.7",
+    "tailwindcss": "^4.1.7"
+  },
+  "name": "alliedacquisition",
+  "description": "<<<<<<< HEAD\r # alliedacquisition\r This is the site for land developers in USA.\r =======\r # WordPress Custom Theme Template",
+  "version": "1.0.0",
+  "main": "assets/js/custom.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HaroonYamin/alliedacquisition.git"
+  },
+  "keywords": [
+    "Allied",
+    "Acquisition",
+    "Web",
+    "Development",
+    "Haroon",
+    "Yamin",
+    "Diginest"
+  ],
+  "author": "Haroon Yamin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HaroonYamin/alliedacquisition/issues"
+  },
+  "homepage": "https://github.com/HaroonYamin/alliedacquisition#readme"
 }

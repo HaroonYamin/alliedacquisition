@@ -18,6 +18,10 @@ if (!defined('ABSPATH')) {
  */
 define('THEME_ASSETS', [
     'css' => [
+        'tailwind' => [
+            'path' => '/node_modules/tailwind/tailwind-output.css',
+            'deps' => []
+        ],
         'swiper' => [
             'path' => '/node_modules/swiper/swiper-bundle.min.css',
             'deps' => []

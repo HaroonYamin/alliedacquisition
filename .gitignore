@@ -3,3 +3,7 @@ node_modules/
 !node_modules/swiper/
 !node_modules/swiper/swiper-bundle.min.js
 !node_modules/swiper/swiper-bundle.min.css
+
+# Tailwind Files
+!node_modules/tailwind/
+!node_modules/tailwind/tailwind-output.css
