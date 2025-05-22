@@ -19,5 +19,12 @@
         "description": "This is the cards section of a webpage.",
         "template": "cards",
         "keywords": "cards, section, webpage"
+    },
+    {
+        "name": "two-columns",
+        "title": "Two Columns Section",
+        "description": "This is the two columns section of a webpage.",
+        "template": "two-columns",
+        "keywords": "two-columns, section, webpage"
     }
 ]
