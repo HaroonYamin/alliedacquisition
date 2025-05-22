@@ -1,5 +1,5 @@
 <header class="fixed top-7 w-full" id="header">
-    <div class="container mx-auto">
+    <div class="container mx-auto px-5">
         <div class="flex flex-row items-center justify-between">
             <div>
                 <?= the_custom_logo(); ?>

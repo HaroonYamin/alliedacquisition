@@ -12,5 +12,12 @@
         "description": "This is the bar section of a webpage.",
         "template": "bar",
         "keywords": "bar, section, webpage"
+    },
+    {
+        "name": "cards",
+        "title": "Cards Section",
+        "description": "This is the cards section of a webpage.",
+        "template": "cards",
+        "keywords": "cards, section, webpage"
     }
 ]

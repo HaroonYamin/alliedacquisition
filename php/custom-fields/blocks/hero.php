@@ -8,7 +8,7 @@
 ?>
 
 <section style="background: url(<?=  $bg_image; ?>) center center/ cover no-repeat;" class="h-780">
-    <div class="container mx-auto h-full">
+    <div class="container mx-auto h-full px-5">
         <div class="grid grid-cols-2 gap-8 h-full items-center">
             <div class="block">
                 <?php 
