@@ -1,12 +1,15 @@
 <?php
     $heading = get_field('heading');
+    $card_shadow = get_field('card_shadow');
     $cards = get_field('cards');
     $buttons = get_field('buttons');
     $link = $buttons['link'];
     $link_2 = $buttons['link_2'];
+
+    $shadow = $card_shadow ? 'shadow-card border-gray-400' : 'border-gray-200 ';
 ?>
 
-<section class="my-section">
+<section class="mt-section mb-section-md">
     <div class="container mx-auto px-5">
         <?php heading_2( $heading, 'text-center mx-auto' ); ?>
 
@@ -14,7 +17,7 @@
             <div class="grid grid-cols-3 gap-5">
                 <?php foreach( $cards as $card ) :
                     if( $card ) : ?>
-                        <div class="border border-gray-200 py-4 px-6 rounded-xl">
+                        <div class="border py-4 px-6 rounded-xl <?= $shadow; ?>">
                             <?= get_image( $card['icon'], 'medium', 'h-12 w-12 mb-4' ); ?>
 
                             <?php heading_4( $card['title'] ); ?>

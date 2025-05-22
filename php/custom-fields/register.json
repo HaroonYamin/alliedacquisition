@@ -26,5 +26,12 @@
         "description": "This is the two columns section of a webpage.",
         "template": "two-columns",
         "keywords": "two-columns, section, webpage"
+    },
+    {
+        "name": "testimonials",
+        "title": "Testimonials Section",
+        "description": "This is the testimonials section of a webpage.",
+        "template": "testimonials",
+        "keywords": "testimonials, section, webpage"
     }
 ]

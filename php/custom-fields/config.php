@@ -36,3 +36,15 @@ function blocks_from_json() {
     }
 }
 add_action('acf/init', 'blocks_from_json');
+
+if( function_exists('acf_add_options_page') ) {
+    acf_add_options_page([
+        'page_title'    => 'Testimonials',
+        'menu_title'    => 'Testimonials',
+        'menu_slug'     => 'testimonials-options',
+        'capability'    => 'manage_options',
+        'position'      => 20,
+        'icon_url'      => 'dashicons-testimonial',
+        'redirect'      => false,
+    ]);
+}
