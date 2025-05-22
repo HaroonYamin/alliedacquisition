@@ -16,7 +16,7 @@
                         echo '<h5 class="mb-5 text-xl text-light-green">' . $label . '</h5>';
                     }
                     if( $heading ) {
-                        echo '<h1 class="font-secondary mb-5 text-6xl font-bold text-white leading-2 max-w-xl">' . $heading . '</h1>';
+                        echo '<h1 class="font-avenir mb-5 text-6xl font-bold text-white leading-2 max-w-xl">' . $heading . '</h1>';
                     }
                     if( $paragraph ) {
                         echo '<p class="text-white text-xl max-w-sm">' . $paragraph . '</p>';
