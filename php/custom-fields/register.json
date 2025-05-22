@@ -7,10 +7,10 @@
         "keywords": "hero, section, webpage, homepage"
     },
     {
-        "name": "banner",
-        "title": "Banner Section",
-        "description": "This is the banner section of a webpage.",
-        "template": "banner",
-        "keywords": "banner, section, webpage"
+        "name": "bar",
+        "title": "Bar Section",
+        "description": "This is the bar section of a webpage.",
+        "template": "bar",
+        "keywords": "bar, section, webpage"
     }
 ]

@@ -8,15 +8,11 @@
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
     --color-lime-500: oklch(76.8% 0.233 130.85);
-    --color-black: #000;
     --color-white: #fff;
     --spacing: 0.25rem;
     --container-sm: 24rem;
     --container-md: 28rem;
     --container-xl: 36rem;
-    --container-2xl: 42rem;
-    --text-lg: 1.125rem;
-    --text-lg--line-height: calc(1.75 / 1.125);
     --text-xl: 1.25rem;
     --text-xl--line-height: calc(1.75 / 1.25);
     --text-6xl: 3.125rem;
@@ -29,7 +25,7 @@
     --height-780: 780px;
     --font-primary: "Inter";
     --font-secondary: "Avenir LT Std";
-    --color-primary: #afd645;
+    --color-light-green: #afd645;
     --leading-2: 1.2em;
   }
 }
@@ -212,11 +208,11 @@
   .mt-4 {
     margin-top: calc(var(--spacing) * 4);
   }
-  .mt-6 {
-    margin-top: calc(var(--spacing) * 6);
-  }
   .mt-7 {
     margin-top: calc(var(--spacing) * 7);
+  }
+  .mt-8 {
+    margin-top: calc(var(--spacing) * 8);
   }
   .mb-2 {
     margin-bottom: calc(var(--spacing) * 2);
@@ -226,9 +222,6 @@
   }
   .mb-5 {
     margin-bottom: calc(var(--spacing) * 5);
-  }
-  .mb-6 {
-    margin-bottom: calc(var(--spacing) * 6);
   }
   .mb-7 {
     margin-bottom: calc(var(--spacing) * 7);
@@ -258,14 +251,8 @@
   .h-full {
     height: 100%;
   }
-  .w-auto {
-    width: auto;
-  }
   .w-full {
     width: 100%;
-  }
-  .max-w-2xl {
-    max-width: var(--container-2xl);
   }
   .max-w-md {
     max-width: var(--container-md);
@@ -310,14 +297,17 @@
     border-style: var(--tw-border-style);
     border-width: 1px;
   }
-  .border-primary {
-    border-color: var(--color-primary);
+  .border-light-green {
+    border-color: var(--color-light-green);
   }
-  .bg-primary {
-    background-color: var(--color-primary);
+  .bg-light-green {
+    background-color: var(--color-light-green);
   }
   .px-5 {
     padding-inline: calc(var(--spacing) * 5);
+  }
+  .px-8 {
+    padding-inline: calc(var(--spacing) * 8);
   }
   .py-3 {
     padding-block: calc(var(--spacing) * 3);
@@ -332,10 +322,6 @@
     font-size: var(--text-6xl);
     line-height: var(--tw-leading, var(--text-6xl--line-height));
   }
-  .text-lg {
-    font-size: var(--text-lg);
-    line-height: var(--tw-leading, var(--text-lg--line-height));
-  }
   .text-xl {
     font-size: var(--text-xl);
     line-height: var(--tw-leading, var(--text-xl--line-height));
@@ -348,8 +334,8 @@
     --tw-font-weight: var(--font-weight-bold);
     font-weight: var(--font-weight-bold);
   }
-  .text-primary {
-    color: var(--color-primary);
+  .text-light-green {
+    color: var(--color-light-green);
   }
   .text-white {
     color: var(--color-white);
@@ -378,10 +364,10 @@
       }
     }
   }
-  .hover\:bg-black {
+  .hover\:bg-light-green {
     &:hover {
       @media (hover: hover) {
-        background-color: var(--color-black);
+        background-color: var(--color-light-green);
       }
     }
   }
@@ -389,13 +375,6 @@
     &:hover {
       @media (hover: hover) {
         background-color: var(--color-lime-500);
-      }
-    }
-  }
-  .hover\:bg-primary {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-primary);
       }
     }
   }

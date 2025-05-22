@@ -13,16 +13,16 @@
             <div class="block">
                 <?php 
                     if( $label ) {
-                        echo '<h5 class="mb-5 text-xl text-primary">' . $label . '</h5>';
+                        echo '<h5 class="mb-5 text-xl text-light-green">' . $label . '</h5>';
                     }
                     if( $heading ) {
                         echo '<h1 class="font-secondary mb-5 text-6xl font-bold text-white leading-2 max-w-xl">' . $heading . '</h1>';
                     }
                     if( $paragraph ) {
-                        echo '<p class="mb-7 text-white text-xl">' . $paragraph . '</p>';
+                        echo '<p class="text-white text-xl max-w-sm">' . $paragraph . '</p>';
                     }
                     if( $button ) {
-                        echo '<a href="' . $button['url'] . '" class="bg-primary border border-primary py-3 px-5 text-white rounded-full hover:bg-lime-500 hover:border-lime-500 transition-colors inline-block" target="' . $button['target'] . '">' . $button['title'] . '</a>';
+                        echo '<a href="' . $button['url'] . '" class="mt-7 bg-light-green border border-light-green py-3 px-8 text-white rounded-full hover:bg-lime-500 hover:border-lime-500 transition-colors inline-block" target="' . $button['target'] . '">' . $button['title'] . '</a>';
                     }
                 ?> 
             </div>
