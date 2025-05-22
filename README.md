@@ -1,7 +1,9 @@
 <<<<<<< HEAD
+
 # alliedacquisition
-This is the site for land developers in USA.
-=======
+
+# This is the site for land developers in USA.
+
 # WordPress Custom Theme Template
 
 A modern, flexible, and performance-optimized WordPress theme template designed for scalable web development.
@@ -19,8 +21,8 @@ theme/
 │   ├── fonts/
 │   ├── images/
 │   └── js/
-├── lib/
-│   └── bootstrap/
+├── node_modules/
+│   └── swiper/
 ├── php/
 │   ├── custom-fields/
 │   ├── custom-post-type/
@@ -32,6 +34,10 @@ theme/
 └── templates/
     └── block.php
 ```
+
+## Tailwind
+
+    npx @tailwindcss/cli -i ./assets/css/tailwind-input.css -o ./assets/css/tailwind-output.css --watch
 
 ## Features
 
@@ -104,4 +110,5 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ---
 
 © 2024 Haroon Yamin. All rights reserved.
->>>>>>> ad84c0f (Initial Template)
+
+> > > > > > > ad84c0f (Initial Template)
