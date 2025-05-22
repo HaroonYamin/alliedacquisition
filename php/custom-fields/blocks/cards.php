@@ -34,7 +34,7 @@
                     }
 
                     if( $link_2 ) {
-                        echo '<a href="' . esc_url($link_2['url']) . '" target="' . esc_attr($link_2['target']) . '" class="color-light-green border border-light-green py-3 px-5 text-green rounded-full hover:bg-light-green hover:text-white transition-colors inline-block">' . esc_html($link_2['title']) . '</a>';
+                        echo '<a href="' . esc_url($link_2['url']) . '" target="' . esc_attr($link_2['target']) . '" class="color-light-green border border-light-green py-3 px-8 text-green rounded-full hover:bg-light-green hover:text-white transition-colors inline-block">' . esc_html($link_2['title']) . '</a>';
                     }
                 ?>
             </div>
