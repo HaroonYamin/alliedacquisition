@@ -3,7 +3,11 @@
 function heading_2($title, $class = '') {
     echo '<h2 class="font-avenir text-green text-5xl font-medium mb-9 max-w-xl leading-2 capitalize ' . $class . '">' . $title . '</h2>';
 }
-add_shortcode('heading_2', 'heading_2');
+
+// Get Heading h4
+function heading_4($title, $class = '') {
+    echo '<h2 class="font-inter text-green text-xl font-medium mb-4 ' . $class . '">' . $title . '</h2>';
+}
 
 // Get SVG Icon
 function get_svg($icon_name, $class = '') {
@@ -26,45 +30,44 @@ function get_svg($icon_name, $class = '') {
 }
 
 // Get Image
-function get_image($image, $size = 'medium', $args = []) {
-    $args = wp_parse_args($args, [
-        'alt' => '',
-        'class' => 'w-full h-full object-cover transition-opacity duration-300 opacity-0',
-        'wrapper' => 'relative overflow-hidden',
-        'skeleton' => 'absolute inset-0 bg-gray-200 animate-pulse'
-    ]);
-    
+function get_image($image, $size = 'medium', $wrap = '') {
+    // Default classes
+    $wrapper_class = 'relative overflow-hidden ' . $wrap;
+    $skeleton_class = 'absolute inset-0 bg-gray-200 animate-pulse';
+    $img_class = 'w-full h-full object-cover transition-opacity duration-300 opacity-0';
+
     // Get image data
     if (is_numeric($image)) {
         $src = wp_get_attachment_image_src($image, $size);
         $url = $src[0] ?? '';
-        $alt = $args['alt'] ?: get_post_meta($image, '_wp_attachment_image_alt', true);
+        $alt = get_post_meta($image, '_wp_attachment_image_alt', true);
         $srcset = wp_get_attachment_image_srcset($image, $size);
     } else {
         $url = $image;
-        $alt = $args['alt'];
+        $alt = '';
         $srcset = '';
     }
-    
+
     if (!$url) return '';
-    
+
     $id = 'img-' . uniqid();
-    
+
     return sprintf(
         '<div class="%s" id="wrap-%s">
             <div class="%s" id="skel-%s"></div>
             <img id="%s" src="%s" %s alt="%s" class="%s" loading="lazy" decoding="async" 
                  onload="this.classList.add(\'opacity-100\');document.getElementById(\'skel-%s\').remove()">
         </div>',
-        esc_attr($args['wrapper']),
+        esc_attr($wrapper_class),
         $id,
-        esc_attr($args['skeleton']),
+        esc_attr($skeleton_class),
         $id,
         $id,
         esc_url($url),
         $srcset ? 'srcset="' . esc_attr($srcset) . '"' : '',
         esc_attr($alt),
-        esc_attr($args['class']),
+        esc_attr($img_class),
         $id
     );
 }
+
