@@ -40,12 +40,12 @@ define('THEME_ASSETS', [
         ]
     ],
     'js' => [
-        'custom' => [
-            'path' => '/assets/js/custom.js',
-            'deps' => ['jquery']
-        ],
         'swiper' => [
             'path' => '/node_modules/swiper/swiper-bundle.min.js',
+            'deps' => ['jquery']
+        ],
+        'custom' => [
+            'path' => '/assets/js/custom.js',
             'deps' => ['jquery']
         ]
     ]
