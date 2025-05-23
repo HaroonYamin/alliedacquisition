@@ -5,6 +5,3 @@ node_modules/
 !node_modules/swiper/
 !node_modules/swiper/swiper-bundle.min.js
 !node_modules/swiper/swiper-bundle.min.css
-
-# Exclude tailwind input
-assets/css/tailwind-input.css

@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+    --height-780: 780px;
+
+    --font-inter: "inter";
+    --font-avenir: "Avenir LT Std";
+
+    --color-light-green: #afd645;
+    --color-green: #0b473d;
+    --color-cream: #f3f5ee;
+
+    --margin-section: 6rem;
+    --margin-section-md: 9.5rem;
+    --margin-section-lg: 12rem;
+    --padding-section: 6rem;
+    --padding-section-md: 9.5rem;
+
+    --shadow-card: 0px 10px 32px 0px #00000017;
+
+    --text-6xl: 3.125rem;
+    --leading-2: 1.2em;
+}
