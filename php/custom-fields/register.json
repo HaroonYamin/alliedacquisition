@@ -33,5 +33,12 @@
         "description": "This is the testimonials section of a webpage.",
         "template": "testimonials",
         "keywords": "testimonials, section, webpage"
+    },
+    {
+        "name": "blogs",
+        "title": "Blogs Section",
+        "description": "This is the blogs section of a webpage.",
+        "template": "blogs",
+        "keywords": "blogs, section, webpage"
     }
 ]

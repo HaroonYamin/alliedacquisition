@@ -5,6 +5,10 @@ const swiper = new Swiper(".testimonial-swiper", {
     spaceBetween: 24,
     loop: true,
     slidesPerView: 1,
+    navigation: {
+        nextEl: ".testimonials-right",
+        prevEl: ".testimonials-left",
+    },
     breakpoints: {
         768: {
             slidesPerView: 2,

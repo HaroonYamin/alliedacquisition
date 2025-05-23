@@ -23,3 +23,7 @@ body {
 #header .menu a:active {
     background-color: rgba(0, 0, 0, 0.3);
 }
+
+.testimonial-swiper .swiper-slide {
+    height: auto !important;
+}
