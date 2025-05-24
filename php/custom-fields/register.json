@@ -47,5 +47,12 @@
         "description": "This is the faq section of a webpage.",
         "template": "faq",
         "keywords": "faq, section, webpage"
+    },
+    {
+        "name": "form",
+        "title": "Form Section",
+        "description": "This is the form section of a webpage.",
+        "template": "form",
+        "keywords": "form, section, webpage"
     }
 ]

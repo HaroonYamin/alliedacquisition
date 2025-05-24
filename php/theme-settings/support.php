@@ -5,7 +5,7 @@
  * Enables the following WordPress features
  * with proper configuration
  *
- * @package TheTriibe
+ * @package Allied Acquisition
  * @version 1.0.0
  */
 
@@ -22,6 +22,7 @@ function wordpress_active() {
 		array(
 			'main-menu' => esc_html__( 'Main Menu', 'main' ),
 			'footer-menu' => esc_html__( 'Footer Menu', 'footer' ),
+			'footer-menu-2' => esc_html__( 'Footer Menu 2', 'footer' ),
         )
 	);
 	add_theme_support(

@@ -1,5 +1,5 @@
 <?php
-function mytheme_customize_register( $wp_customize ) {
+function header_customization( $wp_customize ) {
 
     $wp_customize->add_section( 'header_button_section', array(
         'title'    => __( 'Header Button', 'yourtheme' ),
@@ -42,4 +42,76 @@ function mytheme_customize_register( $wp_customize ) {
         'type'     => 'checkbox',
     ) );
 }
-add_action( 'customize_register', 'mytheme_customize_register' );
+add_action( 'customize_register', 'header_customization' );
+
+function footer_customization( $wp_customize ) {
+    // Add Footer Section
+    $wp_customize->add_section( 'footer_options', array(
+        'title' => 'Footer Options',
+        'priority' => 120,
+    ) );
+
+    // Footer Image
+    $wp_customize->add_setting( 'footer_image' );
+    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'footer_image', array(
+        'label' => 'Footer Image',
+        'section' => 'footer_options',
+    ) ) );
+
+    // Menu Heading 1
+    $wp_customize->add_setting( 'menu_heading_1' );
+    $wp_customize->add_control( 'menu_heading_1', array(
+        'label' => 'Menu Heading 1',
+        'section' => 'footer_options',
+        'type' => 'text',
+    ) );
+
+    // Menu Heading 2
+    $wp_customize->add_setting( 'menu_heading_2' );
+    $wp_customize->add_control( 'menu_heading_2', array(
+        'label' => 'Menu Heading 2',
+        'section' => 'footer_options',
+        'type' => 'text',
+    ) );
+
+    // Facebook URL
+    $wp_customize->add_setting( 'facebook_url' );
+    $wp_customize->add_control( 'facebook_url', array(
+        'label' => 'Facebook URL',
+        'section' => 'footer_options',
+        'type' => 'url',
+    ) );
+
+    // Instagram URL
+    $wp_customize->add_setting( 'instagram_url' );
+    $wp_customize->add_control( 'instagram_url', array(
+        'label' => 'Instagram URL',
+        'section' => 'footer_options',
+        'type' => 'url',
+    ) );
+
+    // YouTube URL
+    $wp_customize->add_setting( 'youtube_url' );
+    $wp_customize->add_control( 'youtube_url', array(
+        'label' => 'YouTube URL',
+        'section' => 'footer_options',
+        'type' => 'url',
+    ) );
+
+    // TikTok URL
+    $wp_customize->add_setting( 'tiktok_url' );
+    $wp_customize->add_control( 'tiktok_url', array(
+        'label' => 'TikTok URL',
+        'section' => 'footer_options',
+        'type' => 'url',
+    ) );
+
+    // Copyright Text
+    $wp_customize->add_setting( 'copyright_text' );
+    $wp_customize->add_control( 'copyright_text', array(
+        'label' => 'Copyright Text',
+        'section' => 'footer_options',
+        'type' => 'textarea',
+    ) );
+}
+add_action( 'customize_register', 'footer_customization' );
