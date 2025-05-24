@@ -2,6 +2,7 @@
 
 @theme {
     --height-780: 780px;
+    --height-cross: 2px;
 
     --font-inter: "inter";
     --font-avenir: "Avenir LT Std";

@@ -40,5 +40,12 @@
         "description": "This is the blogs section of a webpage.",
         "template": "blogs",
         "keywords": "blogs, section, webpage"
+    },
+    {
+        "name": "faq",
+        "title": "FAQ Section",
+        "description": "This is the faq section of a webpage.",
+        "template": "faq",
+        "keywords": "faq, section, webpage"
     }
 ]

@@ -27,3 +27,19 @@ body {
 .testimonial-swiper .swiper-slide {
     height: auto !important;
 }
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+.accordion-content.active {
+    max-height: 500px;
+    transition: max-height 0.3s ease-in;
+}
+.accordion-icon {
+    transition: transform 0.3s ease;
+}
+.accordion-icon.rotated {
+    transform: rotate(45deg);
+}

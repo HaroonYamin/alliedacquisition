@@ -47,4 +47,14 @@ if( function_exists('acf_add_options_page') ) {
         'icon_url'      => 'dashicons-testimonial',
         'redirect'      => false,
     ]);
+
+    acf_add_options_page([
+        'page_title'    => 'Frequently Asked Questions',
+        'menu_title'    => 'Frequently Asked Questions',
+        'menu_slug'     => 'faq-options',
+        'capability'    => 'manage_options',
+        'position'      => 20,
+        'icon_url'      => 'dashicons-lightbulb',
+        'redirect'      => false,
+    ]);
 }
