@@ -14,7 +14,8 @@
     --color-gray-400: oklch(70.7% 0.022 261.325);
     --color-gray-600: oklch(44.6% 0.03 256.802);
     --color-gray-800: oklch(27.8% 0.033 256.848);
-    --color-gray-900: oklch(21% 0.034 264.665);
+    --color-neutral-700: oklch(37.1% 0 0);
+    --color-black: #000;
     --color-white: #fff;
     --spacing: 0.25rem;
     --container-sm: 24rem;
@@ -28,6 +29,8 @@
     --text-xl--line-height: calc(1.75 / 1.25);
     --text-2xl: 1.5rem;
     --text-2xl--line-height: calc(2 / 1.5);
+    --text-4xl: 2.25rem;
+    --text-4xl--line-height: calc(2.5 / 2.25);
     --text-5xl: 3rem;
     --text-5xl--line-height: 1;
     --text-6xl: 3.125rem;
@@ -55,6 +58,7 @@
     --margin-section-lg: 12rem;
     --padding-section: 6rem;
     --padding-section-md: 9.5rem;
+    --margin-banner: 73px;
     --leading-2: 1.2em;
   }
 }
@@ -219,6 +223,9 @@
   .top-7 {
     top: calc(var(--spacing) * 7);
   }
+  .z-1 {
+    z-index: 1;
+  }
   .col-12 {
     grid-column: 12;
   }
@@ -273,9 +280,6 @@
   .my-section-lg {
     margin-block: var(--margin-section-lg);
   }
-  .my-section-md {
-    margin-block: var(--margin-section-md);
-  }
   .mt-1 {
     margin-top: calc(var(--spacing) * 1);
   }
@@ -300,6 +304,15 @@
   .mt-section {
     margin-top: var(--margin-section);
   }
+  .mt-section-md {
+    margin-top: var(--margin-section-md);
+  }
+  .-mb-20 {
+    margin-bottom: calc(var(--spacing) * -20);
+  }
+  .-mb-banner {
+    margin-bottom: calc(var(--margin-banner) * -1);
+  }
   .mb-2 {
     margin-bottom: calc(var(--spacing) * 2);
   }
@@ -311,9 +324,6 @@
   }
   .mb-6 {
     margin-bottom: calc(var(--spacing) * 6);
-  }
-  .mb-7 {
-    margin-bottom: calc(var(--spacing) * 7);
   }
   .mb-9 {
     margin-bottom: calc(var(--spacing) * 9);
@@ -343,14 +353,6 @@
     width: calc(var(--spacing) * 14);
     height: calc(var(--spacing) * 14);
   }
-  .size-16 {
-    width: calc(var(--spacing) * 16);
-    height: calc(var(--spacing) * 16);
-  }
-  .size-auto {
-    width: auto;
-    height: auto;
-  }
   .size-fit {
     width: fit-content;
     height: fit-content;
@@ -363,9 +365,6 @@
   }
   .h-12 {
     height: calc(var(--spacing) * 12);
-  }
-  .h-16 {
-    height: calc(var(--spacing) * 16);
   }
   .h-22 {
     height: calc(var(--spacing) * 22);
@@ -391,6 +390,12 @@
   .w-4 {
     width: calc(var(--spacing) * 4);
   }
+  .w-5 {
+    width: calc(var(--spacing) * 5);
+  }
+  .w-5\/6 {
+    width: calc(5/6 * 100%);
+  }
   .w-8 {
     width: calc(var(--spacing) * 8);
   }
@@ -399,12 +404,6 @@
   }
   .w-24 {
     width: calc(var(--spacing) * 24);
-  }
-  .w-48 {
-    width: calc(var(--spacing) * 48);
-  }
-  .w-auto {
-    width: auto;
   }
   .w-full {
     width: 100%;
@@ -439,12 +438,6 @@
   .translate-y-2 {
     --tw-translate-y: calc(var(--spacing) * 2);
     translate: var(--tw-translate-x) var(--tw-translate-y);
-  }
-  .-rotate-45 {
-    rotate: calc(45deg * -1);
-  }
-  .rotate-45 {
-    rotate: 45deg;
   }
   .rotate-90 {
     rotate: 90deg;
@@ -553,17 +546,20 @@
   .bg-gray-200 {
     background-color: var(--color-gray-200);
   }
-  .bg-gray-900 {
-    background-color: var(--color-gray-900);
-  }
   .bg-light-green {
     background-color: var(--color-light-green);
+  }
+  .bg-neutral-700 {
+    background-color: var(--color-neutral-700);
   }
   .bg-white {
     background-color: var(--color-white);
   }
   .object-cover {
     object-fit: cover;
+  }
+  .p-12 {
+    padding: calc(var(--spacing) * 12);
   }
   .px-4 {
     padding-inline: calc(var(--spacing) * 4);
@@ -595,11 +591,11 @@
   .py-section {
     padding-block: var(--padding-section);
   }
+  .pt-44 {
+    padding-top: calc(var(--spacing) * 44);
+  }
   .pt-section-md {
     padding-top: var(--padding-section-md);
-  }
-  .pb-4 {
-    padding-bottom: calc(var(--spacing) * 4);
   }
   .pb-16 {
     padding-bottom: calc(var(--spacing) * 16);
@@ -619,6 +615,10 @@
   .text-2xl {
     font-size: var(--text-2xl);
     line-height: var(--tw-leading, var(--text-2xl--line-height));
+  }
+  .text-4xl {
+    font-size: var(--text-4xl);
+    line-height: var(--tw-leading, var(--text-4xl--line-height));
   }
   .text-5xl {
     font-size: var(--text-5xl);
@@ -651,6 +651,9 @@
   .font-semibold {
     --tw-font-weight: var(--font-weight-semibold);
     font-weight: var(--font-weight-semibold);
+  }
+  .text-black {
+    color: var(--color-black);
   }
   .text-gray-600 {
     color: var(--color-gray-600);

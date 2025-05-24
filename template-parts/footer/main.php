@@ -9,7 +9,7 @@
     $copyright = get_theme_mod( 'copyright_text' );
 ?>
 
-<footer id="footer" class="bg-gray-100 pt-section-md pb-16">
+<footer id="footer" class="bg-gray-100 pt-44 pb-16">
     <div class="container mx-auto px-5">
         <div class="grid grid-cols-12 gap-x-24">
             <div class="col-span-4">
@@ -34,7 +34,25 @@
                 ?>
             </div>
             <div class="col-span-3">
+                <div class="flex flex-row gap-8">
+                    <?php
+                        if( $facebook ) {
+                            echo '<a href="' . esc_url( $facebook ) . '" class="grid">' . get_svg( 'facebook', 'custom-fill-green' ) . '</a>';
+                        }
 
+                        if( $instagram ) {
+                            echo '<a href="' . esc_url( $instagram ) . '" class="grid">' . get_svg( 'instagram', 'custom-fill-green' ) . '</a>';
+                        }
+
+                        if( $youtube ) {
+                            echo '<a href="' . esc_url( $youtube ) . '" class="grid">' . get_svg( 'youtube', 'custom-fill-green' ) . '</a>';
+                        }
+
+                        if( $tiktok ) {
+                            echo '<a href="' . esc_url( $tiktok ) . '" class="grid">' . get_svg( 'tiktok', 'custom-fill-green' ) . '</a>';
+                        }
+                    ?>
+                </div>
             </div>
         </div>
     </div>

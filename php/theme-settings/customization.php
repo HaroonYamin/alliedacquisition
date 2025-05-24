@@ -2,7 +2,7 @@
 function header_customization( $wp_customize ) {
 
     $wp_customize->add_section( 'header_button_section', array(
-        'title'    => __( 'Header Button', 'yourtheme' ),
+        'title'    => __( 'Header Button', 'zbcouture' ),
         'priority' => 30,
     ) );
 
@@ -13,7 +13,7 @@ function header_customization( $wp_customize ) {
     ) );
 
     $wp_customize->add_control( 'header_button_text', array(
-        'label'    => __( 'Button Text', 'yourtheme' ),
+        'label'    => __( 'Button Text', 'zbcouture' ),
         'section'  => 'header_button_section',
         'type'     => 'text',
     ) );
@@ -25,7 +25,7 @@ function header_customization( $wp_customize ) {
     ) );
 
     $wp_customize->add_control( 'header_button_url', array(
-        'label'    => __( 'Button URL', 'yourtheme' ),
+        'label'    => __( 'Button URL', 'zbcouture' ),
         'section'  => 'header_button_section',
         'type'     => 'url',
     ) );
@@ -37,7 +37,7 @@ function header_customization( $wp_customize ) {
     ) );
 
     $wp_customize->add_control( 'header_button_visibility', array(
-        'label'    => __( 'Show Header Button', 'yourtheme' ),
+        'label'    => __( 'Show Header Button', 'zbcouture' ),
         'section'  => 'header_button_section',
         'type'     => 'checkbox',
     ) );
@@ -112,6 +112,30 @@ function footer_customization( $wp_customize ) {
         'label' => 'Copyright Text',
         'section' => 'footer_options',
         'type' => 'textarea',
+    ) );
+
+    // Footer Banner
+    $wp_customize->add_setting( 'footer_banner_content' );
+    $wp_customize->add_control( 'footer_banner_content', array(
+        'label' => 'Footer Banner Content',
+        'section' => 'footer_options',
+        'type' => 'text',
+    ) );
+
+    // Button Text
+    $wp_customize->add_setting( 'footer_banner_text');
+    $wp_customize->add_control( 'footer_banner_text', array(
+        'label'    => __( 'Button Text', 'zbcouture' ),
+        'section'  => 'footer_options',
+        'type'     => 'text',
+    ) );
+
+    // Button URL
+    $wp_customize->add_setting( 'Footer_banner_url' );
+    $wp_customize->add_control( 'Footer_banner_url', array(
+        'label'    => __( 'Button URL', 'zbcouture' ),
+        'section'  => 'footer_options',
+        'type'     => 'url',
     ) );
 }
 add_action( 'customize_register', 'footer_customization' );

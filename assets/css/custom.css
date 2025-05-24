@@ -41,6 +41,14 @@ body {
     color: var(--color-light-green);
 }
 
+.custom-fill-green path {
+    transition: all 0.2s ease;
+}
+.custom-fill-green:hover path,
+.custom-fill-green:active path {
+    fill: var(--color-green);
+}
+
 .testimonial-swiper .swiper-slide {
     height: auto !important;
 }
