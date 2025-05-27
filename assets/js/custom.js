@@ -10,7 +10,7 @@ const swiper = new Swiper(".testimonial-swiper", {
         prevEl: ".testimonials-left",
     },
     breakpoints: {
-        768: {
+        1280: {
             slidesPerView: 2,
         },
     },
