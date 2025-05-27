@@ -4,7 +4,7 @@
     $testimonials = get_field( 'testimonials', 'option' );
 ?>
 
-<section class="py-section bg-gray-50 overflow-hidden">
+<section class="md:py-section py-12 bg-gray-50 overflow-hidden">
     <div class="container mx-auto px-5">
         <div class="grid items-center grid-cols-12 gap-x-4">
             <div class="lg:col-span-4 md:col-span-5 col-span-12">
