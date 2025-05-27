@@ -1,5 +1,11 @@
 "use strict";
 
+jQuery(document).ready(function ($) {
+    $("#menu").click(function () {
+        $(this).toggleClass("mobile-open");
+    });
+});
+
 const swiper = new Swiper(".testimonial-swiper", {
     speed: 400,
     spaceBetween: 24,

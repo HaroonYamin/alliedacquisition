@@ -43,6 +43,7 @@
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
     --radius-sm: 0.25rem;
+    --radius-lg: 0.5rem;
     --radius-xl: 0.75rem;
     --radius-3xl: 1.5rem;
     --animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
@@ -61,7 +62,6 @@
     --margin-section-md: 9.5rem;
     --margin-section-lg: 12rem;
     --padding-section: 6rem;
-    --padding-section-md: 9.5rem;
     --margin-banner: 73px;
     --leading-2: 1.2em;
   }
@@ -239,32 +239,8 @@
   .col-12 {
     grid-column: 12;
   }
-  .col-span-1 {
-    grid-column: span 1 / span 1;
-  }
-  .col-span-2 {
-    grid-column: span 2 / span 2;
-  }
-  .col-span-3 {
-    grid-column: span 3 / span 3;
-  }
-  .col-span-4 {
-    grid-column: span 4 / span 4;
-  }
-  .col-span-5 {
-    grid-column: span 5 / span 5;
-  }
-  .col-span-6 {
-    grid-column: span 6 / span 6;
-  }
-  .col-span-7 {
-    grid-column: span 7 / span 7;
-  }
   .col-span-12 {
     grid-column: span 12 / span 12;
-  }
-  .float-right {
-    float: right;
   }
   .container {
     width: 100%;
@@ -296,12 +272,6 @@
   .my-12 {
     margin-block: calc(var(--spacing) * 12);
   }
-  .my-section {
-    margin-block: var(--margin-section);
-  }
-  .my-section-lg {
-    margin-block: var(--margin-section-lg);
-  }
   .mt-1 {
     margin-top: calc(var(--spacing) * 1);
   }
@@ -323,12 +293,6 @@
   .mt-13 {
     margin-top: calc(var(--spacing) * 13);
   }
-  .mt-section {
-    margin-top: var(--margin-section);
-  }
-  .mt-section-md {
-    margin-top: var(--margin-section-md);
-  }
   .-mb-banner {
     margin-bottom: calc(var(--margin-banner) * -1);
   }
@@ -346,12 +310,6 @@
   }
   .mb-9 {
     margin-bottom: calc(var(--spacing) * 9);
-  }
-  .mb-section-md {
-    margin-bottom: var(--margin-section-md);
-  }
-  .ml-15 {
-    margin-left: calc(var(--spacing) * 15);
   }
   .block {
     display: block;
@@ -378,6 +336,9 @@
   .size-fit {
     width: fit-content;
     height: fit-content;
+  }
+  .h-1 {
+    height: calc(var(--spacing) * 1);
   }
   .h-3 {
     height: calc(var(--spacing) * 3);
@@ -412,11 +373,11 @@
   .w-4 {
     width: calc(var(--spacing) * 4);
   }
-  .w-5 {
-    width: calc(var(--spacing) * 5);
+  .w-6 {
+    width: calc(var(--spacing) * 6);
   }
-  .w-5\/6 {
-    width: calc(5/6 * 100%);
+  .w-7 {
+    width: calc(var(--spacing) * 7);
   }
   .w-8 {
     width: calc(var(--spacing) * 8);
@@ -482,15 +443,6 @@
   .grid-cols-1 {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
-  .grid-cols-2 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  .grid-cols-3 {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-  .grid-cols-4 {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
   .grid-cols-12 {
     grid-template-columns: repeat(12, minmax(0, 1fr));
   }
@@ -536,20 +488,8 @@
   .gap-x-8 {
     column-gap: calc(var(--spacing) * 8);
   }
-  .gap-x-20 {
-    column-gap: calc(var(--spacing) * 20);
-  }
-  .gap-x-24 {
-    column-gap: calc(var(--spacing) * 24);
-  }
-  .gap-y-5 {
-    row-gap: calc(var(--spacing) * 5);
-  }
   .gap-y-8 {
     row-gap: calc(var(--spacing) * 8);
-  }
-  .gap-y-9 {
-    row-gap: calc(var(--spacing) * 9);
   }
   .gap-y-10 {
     row-gap: calc(var(--spacing) * 10);
@@ -565,6 +505,9 @@
   }
   .rounded-full {
     border-radius: calc(infinity * 1px);
+  }
+  .rounded-lg {
+    border-radius: var(--radius-lg);
   }
   .rounded-sm {
     border-radius: var(--radius-sm);
@@ -613,11 +556,14 @@
   .object-cover {
     object-fit: cover;
   }
+  .p-2 {
+    padding: calc(var(--spacing) * 2);
+  }
+  .p-2\.5 {
+    padding: calc(var(--spacing) * 2.5);
+  }
   .p-12 {
     padding: calc(var(--spacing) * 12);
-  }
-  .px-4 {
-    padding-inline: calc(var(--spacing) * 4);
   }
   .px-5 {
     padding-inline: calc(var(--spacing) * 5);
@@ -645,9 +591,6 @@
   }
   .py-12 {
     padding-block: calc(var(--spacing) * 12);
-  }
-  .py-section {
-    padding-block: var(--padding-section);
   }
   .pt-44 {
     padding-top: calc(var(--spacing) * 44);
@@ -678,14 +621,6 @@
   .text-4xl {
     font-size: var(--text-4xl);
     line-height: var(--tw-leading, var(--text-4xl--line-height));
-  }
-  .text-5xl {
-    font-size: var(--text-5xl);
-    line-height: var(--tw-leading, var(--text-5xl--line-height));
-  }
-  .text-6xl {
-    font-size: var(--text-6xl);
-    line-height: var(--tw-leading, var(--text-6xl--line-height));
   }
   .text-lg {
     font-size: var(--text-lg);
@@ -818,11 +753,6 @@
       }
     }
   }
-  .sm\:col-span-4 {
-    @media (width >= 40rem) {
-      grid-column: span 4 / span 4;
-    }
-  }
   .sm\:col-span-6 {
     @media (width >= 40rem) {
       grid-column: span 6 / span 6;
@@ -851,16 +781,6 @@
   .sm\:px-4 {
     @media (width >= 40rem) {
       padding-inline: calc(var(--spacing) * 4);
-    }
-  }
-  .md\:col-span-3 {
-    @media (width >= 48rem) {
-      grid-column: span 3 / span 3;
-    }
-  }
-  .md\:col-span-4 {
-    @media (width >= 48rem) {
-      grid-column: span 4 / span 4;
     }
   }
   .md\:col-span-5 {
@@ -903,11 +823,6 @@
       margin-left: calc(var(--spacing) * 15);
     }
   }
-  .md\:block {
-    @media (width >= 48rem) {
-      display: block;
-    }
-  }
   .md\:flex {
     @media (width >= 48rem) {
       display: flex;
@@ -933,30 +848,14 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
-  .md\:grid-cols-12 {
-    @media (width >= 48rem) {
-      grid-template-columns: repeat(12, minmax(0, 1fr));
-    }
-  }
   .md\:justify-between {
     @media (width >= 48rem) {
       justify-content: space-between;
     }
   }
-  .md\:py-0 {
-    @media (width >= 48rem) {
-      padding-block: calc(var(--spacing) * 0);
-    }
-  }
   .md\:py-section {
     @media (width >= 48rem) {
       padding-block: var(--padding-section);
-    }
-  }
-  .md\:text-4xl {
-    @media (width >= 48rem) {
-      font-size: var(--text-4xl);
-      line-height: var(--tw-leading, var(--text-4xl--line-height));
     }
   }
   .md\:text-5xl {
@@ -992,16 +891,6 @@
       grid-column: span 1 / span 1;
     }
   }
-  .lg\:col-span-2 {
-    @media (width >= 64rem) {
-      grid-column: span 2 / span 2;
-    }
-  }
-  .lg\:col-span-3 {
-    @media (width >= 64rem) {
-      grid-column: span 3 / span 3;
-    }
-  }
   .lg\:col-span-4 {
     @media (width >= 64rem) {
       grid-column: span 4 / span 4;
@@ -1010,11 +899,6 @@
   .lg\:float-right {
     @media (width >= 64rem) {
       float: right;
-    }
-  }
-  .lg\:my-section-lg {
-    @media (width >= 64rem) {
-      margin-block: var(--margin-section-lg);
     }
   }
   .lg\:block {

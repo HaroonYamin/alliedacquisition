@@ -68,3 +68,25 @@ body {
 .accordion-icon.rotated {
     transform: rotate(45deg);
 }
+
+/* Header Menu */
+.menu.first {
+    transform: translateY(-5px);
+    transition: all 0.2s;
+}
+.menu.middle {
+    transition: all 0.2s;
+}
+.menu.last {
+    transform: translateY(5px);
+    transition: all 0.2s;
+}
+.mobile-open .menu.first {
+    transform: translateY(4px) rotate(45deg);
+}
+.mobile-open .menu.middle {
+    opacity: 0;
+}
+.mobile-open .menu.last {
+    transform: translateY(-4px) rotate(-45deg);
+}
