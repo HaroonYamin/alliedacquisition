@@ -4,10 +4,10 @@
     $testimonials = get_field( 'testimonials', 'option' );
 ?>
 
-<section class="py-section bg-gray-50">
+<section class="py-section bg-gray-50 overflow-hidden">
     <div class="container mx-auto px-5">
-        <div class="grid items-center grid-cols-12 gap-4">
-            <div class="col-span-4">
+        <div class="grid items-center grid-cols-12 gap-x-4">
+            <div class="lg:col-span-4 md:col-span-5 col-span-12">
                 <?php
                     if( $heading ) {
                         echo '<div class="max-w-sm">';
@@ -15,14 +15,14 @@
                         echo '</div>';
                     }
                 ?>
-                <div class="flex flex-row gap-5">
+                <div class="hidden md:flex flex-row gap-5">
                     <button class="testimonials-left size-14 rounded-full bg-white flex items-center justify-center cursor-pointer hover:bg-light-green transition-colors"><?= get_svg( 'icon-left' ); ?></button>
                     <button class="testimonials-right size-14 rounded-full bg-white flex items-center justify-center cursor-pointer hover:bg-light-green transition-colors"><?= get_svg( 'icon-right' ); ?></button>
                 </div>
             </div>
-            <div class="col-span-1"></div>
-            <div class="col-span-7">
-                <div class="ml-15 px-4 overflow-hidden">
+            <div class="lg:col-span-1 hidden lg-block"></div>
+            <div class="md:col-span-7 col-span-12">
+                <div class="md:ml-15 sm:px-4 sm:overflow-hidden">
                     <div class="swiper testimonial-swiper" style="overflow: visible !important;">
                         <div class="swiper-wrapper">
                             
@@ -54,6 +54,11 @@
                     
                         </div>
                     </div>
+                </div>
+
+                <div class="md:hidden flex flex-row justify-center gap-5 mt-7">
+                    <button class="testimonials-left size-14 rounded-full bg-white flex items-center justify-center cursor-pointer hover:bg-light-green transition-colors"><?= get_svg( 'icon-left' ); ?></button>
+                    <button class="testimonials-right size-14 rounded-full bg-white flex items-center justify-center cursor-pointer hover:bg-light-green transition-colors"><?= get_svg( 'icon-right' ); ?></button>
                 </div>
             </div>
         </div>
