@@ -18,6 +18,9 @@
                     <?php endif; ?>
                 </div>
             </div>
+            <div class="lg:hidden block">
+                <?php get_template_part( 'template-parts/header/mobile' ); ?>
+            </div>
         </div>
     </div>
 </header>
