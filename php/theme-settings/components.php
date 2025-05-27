@@ -1,13 +1,42 @@
 <?php
 // Get Heading h2
 function heading_2($title, $class = '') {
-    echo '<h2 class="font-avenir text-green text-5xl font-medium mb-9 max-w-xl leading-2 capitalize ' . $class . '">' . $title . '</h2>';
+    echo '<h2 class="font-avenir text-green md:text-5xl text-3xl font-medium mb-9 md:max-w-xl max-w-sm leading-2 capitalize ' . $class . '">' . $title . '</h2>';
 }
 
 // Get Heading h4
 function heading_4($title, $class = '') {
     echo '<h2 class="font-inter text-green text-xl font-medium mb-4 ' . $class . '">' . $title . '</h2>';
 }
+
+// Get Button
+function button_1($url, $target = '_self', $title = '', $class = '') {
+    if (empty($url) || empty($title)) {
+        return ''; // Don't render an invalid button
+    }
+
+    $rel = $target === '_blank' ? ' rel="noopener noreferrer"' : '';
+
+    return '<a href="' . esc_url($url) . '" target="' . esc_attr($target) . '"' . $rel .
+        ' class="bg-light-green border border-light-green py-3 px-8 text-white rounded-full hover:bg-lime-500 hover:border-lime-500 transition-colors sm:inline-block block text-center w-full sm:w-fit ' . esc_attr($class) . '">' .
+        esc_html($title) .
+    '</a>';
+}
+
+// Get Button 2
+function button_2($url, $target = '_self', $title = '', $class = '') {
+    if (empty($url) || empty($title)) {
+        return ''; // Skip rendering if essential values are missing
+    }
+
+    $rel = $target === '_blank' ? ' rel="noopener noreferrer"' : '';
+
+    return '<a href="' . esc_url($url) . '" target="' . esc_attr($target) . '"' . $rel .
+        ' class="color-light-green border border-light-green py-3 px-8 text-green rounded-full hover:bg-light-green hover:text-white transition-colors sm:inline-block block text-center w-full sm:w-fit ' . esc_attr($class) . '">' .
+        esc_html($title) .
+    '</a>';
+}
+
 
 // Get SVG Icon
 function get_svg($icon_name, $class = '') {

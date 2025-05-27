@@ -9,12 +9,12 @@
     $shadow = $card_shadow ? 'shadow-card border-gray-400' : 'border-gray-200 ';
 ?>
 
-<section class="mt-section mb-section-md">
+<section class="md:mt-section md:mb-section-md my-12">
     <div class="container mx-auto px-5">
         <?php heading_2( $heading, 'text-center mx-auto' ); ?>
 
         <?php if( $cards ) : ?>
-            <div class="grid grid-cols-3 gap-5">
+            <div class="grid lg:grid-cols-3 grid-cols-1 gap-5">
                 <?php foreach( $cards as $card ) :
                     if( $card ) : ?>
                         <div class="border py-4 px-6 rounded-xl <?= $shadow; ?>">
@@ -30,14 +30,14 @@
         <?php endif; ?>
 
         <?php if( $link || $link_2 ) : ?>
-            <div class="flex flex-row justify-center gap-3 mt-10">
+            <div class="flex flex-row flex-wrap justify-center gap-3 mt-10">
                 <?php
                     if( $link ) {
-                        echo '<a href="' . esc_url($link['url']) . '" target="' . esc_attr($link['target']) . '" class="bg-light-green border border-light-green py-3 px-8 text-white rounded-full hover:bg-lime-500 hover:border-lime-500 transition-colors inline-block">' . esc_html($link['title']) . '</a>';
+                        echo button_1($link['url'], $link['target'], $link['title']);
                     }
 
                     if( $link_2 ) {
-                        echo '<a href="' . esc_url($link_2['url']) . '" target="' . esc_attr($link_2['target']) . '" class="color-light-green border border-light-green py-3 px-8 text-green rounded-full hover:bg-light-green hover:text-white transition-colors inline-block">' . esc_html($link_2['title']) . '</a>';
+                        echo button_2($link_2['url'], $link_2['target'], $link_2['title']);
                     }
                 ?>
             </div>

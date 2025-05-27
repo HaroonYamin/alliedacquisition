@@ -22,7 +22,8 @@
                         echo '<p class="text-white md:text-xl text-lg max-w-sm">' . $paragraph . '</p>';
                     }
                     if( $button ) {
-                        echo '<a href="' . $button['url'] . '" class="mt-7 bg-light-green border border-light-green py-3 px-8 text-white rounded-full hover:bg-lime-500 hover:border-lime-500 transition-colors inline-block" target="' . $button['target'] . '">' . $button['title'] . '</a>';
+                        echo button_1($button['url'], $button['target'], $button['title'], 'mt-7');
+
                     }
                 ?> 
             </div>

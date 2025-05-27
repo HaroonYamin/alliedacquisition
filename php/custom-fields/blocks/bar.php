@@ -3,7 +3,7 @@ if(  $bullets ): ?>
 
     <section class="bg-cream py-8">
         <div class="container mx-auto px-5">
-            <div class="flex flex-row justify-center">
+            <div class="flex flex-row flex-wrap justify-center gap-y-8">
                 <?php
                     foreach( $bullets as $bullet ) :
                         if( $bullet ):
