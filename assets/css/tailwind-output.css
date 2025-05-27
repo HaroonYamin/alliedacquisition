@@ -451,6 +451,9 @@
   .min-w-3 {
     min-width: calc(var(--spacing) * 3);
   }
+  .min-w-8 {
+    min-width: calc(var(--spacing) * 8);
+  }
   .flex-grow {
     flex-grow: 1;
   }
@@ -970,6 +973,11 @@
   .lg\:float-right {
     @media (width >= 64rem) {
       float: right;
+    }
+  }
+  .lg\:my-section-lg {
+    @media (width >= 64rem) {
+      margin-block: var(--margin-section-lg);
     }
   }
   .lg\:block {
