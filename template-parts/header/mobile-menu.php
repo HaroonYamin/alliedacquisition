@@ -4,7 +4,7 @@
     <span class="block rounded-lg bg-white w-7 h-1 menu last"></span>
 </button>
 
-<section class="fixed top-0 left-0 z-50" id="toggle-menu">
+<section class="fixed top-0 left-0" id="toggle-menu">
     <div class="bg-green w-screen h-screen">
         <div class="container mx-auto px-4">
             <div class="relative top-7 w-full">
