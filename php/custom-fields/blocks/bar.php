@@ -7,7 +7,7 @@ if(  $bullets ): ?>
                 <?php
                     foreach( $bullets as $bullet ) :
                         if( $bullet ):
-                            echo '<p class="font-avenir text-green text-xl font-bold mx-8">' . $bullet['point'] . '</p>';
+                            echo '<p class="font-avenir text-green text-xl font-bold mx-8 text-center">' . $bullet['point'] . '</p>';
                         endif;
                     endforeach;
                 ?>
