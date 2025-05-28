@@ -1,8 +1,9 @@
 "use strict";
 
 jQuery(document).ready(function ($) {
-    $("#menu").click(function () {
-        $(this).toggleClass("mobile-open");
+    $(".mobile-menu").click(function () {
+        $(".mobile-menu").toggleClass("mobile-open");
+        $("#toggle-menu").toggleClass("active");
     });
 });
 

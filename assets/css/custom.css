@@ -41,6 +41,26 @@ body {
     color: var(--color-light-green);
 }
 
+#mobile .menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+#mobile .menu a {
+    font-size: 1.5rem;
+    display: block;
+    color: #fff;
+    padding: 4px 0;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+#mobile .menu a:hover,
+#mobile .menu a:active {
+    color: var(--color-light-green);
+}
+
 .custom-fill-green path {
     transition: all 0.2s ease;
 }
@@ -89,4 +109,13 @@ body {
 }
 .mobile-open .menu.last {
     transform: translateY(-4px) rotate(-45deg);
+}
+#toggle-menu {
+    appearance: hidden;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+#toggle-menu.active {
+    appearance: visible;
+    opacity: 1;
 }

@@ -1,4 +1,4 @@
-<header class="absolute top-7 w-full" id="header">
+<header class="absolute top-7 w-full">
     <div class="container mx-auto px-5">
         <div class="flex flex-row items-center justify-between">
             <div>
@@ -6,7 +6,7 @@
             </div>
 
             <div class="lg:block hidden">
-                <div class="flex flex-row items-center justify-between gap-4">
+                <div class="flex flex-row items-center justify-between gap-4" id="header">
                     <?php wp_nav_menu( ['theme_location' => 'main-menu'] ); ?>
     
                     <?php if ( get_theme_mod( 'header_button_visibility', true ) ) : ?>
