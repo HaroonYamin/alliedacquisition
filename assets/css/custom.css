@@ -121,3 +121,11 @@ body {
     appearance: visible;
     opacity: 1;
 }
+
+/* FORM CLASSES */
+.hy-form-step {
+    background-color: #e3e3e3;
+}
+.hy-form-step.done {
+    background-color: var(--color-light-green);
+}
