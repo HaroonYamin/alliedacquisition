@@ -27,11 +27,13 @@
                     }
                 ?> 
             </div>
-            <?php if(  $shortcode ) : ?>
-                <div>
-                    <?= do_shortcode( $shortcode ); ?>
-                </div>
-            <?php endif; ?>
+            <div>
+                <?php if(  $shortcode ) : ?>
+                    <div>
+                        <?= do_shortcode( $shortcode ); ?>
+                    </div>
+                <?php endif; ?>
+            </div>
         </div>
     </div>
 </section>
