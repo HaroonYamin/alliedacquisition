@@ -26,23 +26,7 @@
                     }
                 ?> 
             </div>
-            <div class="bg-white rounded-3xl py-8 px-7">
-                
-                <h3 class="text-black text-2xl font-semibold mb-4">Get Cash Offer</h3>
-
-                <div class="flex gap-1 mb-7">
-                    <div class="h-1.5 w-1/5 hy-form-step done"></div>
-                    <div class="h-1.5 w-1/5 hy-form-step"></div>
-                    <div class="h-1.5 w-1/5 hy-form-step"></div>
-                    <div class="h-1.5 w-1/5 hy-form-step"></div>
-                    <div class="h-1.5 w-1/5 hy-form-step"></div>
-                </div>
-
-                <div class="flex justify-between items-center mb-7">
-                    <h5 class="hy-form-title text-lg font-semibold">What’s your property address</h5>
-                    <p class="text-gray-400 font-medium">Step <span class="hy-current-step">1</span> of 5</p>
-                </div>
-
+            <div>
                 <?php if(  $shortcode ) : ?>
                     <div>
                         <?= do_shortcode( $shortcode ); ?>
