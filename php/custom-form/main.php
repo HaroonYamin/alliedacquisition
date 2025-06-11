@@ -68,7 +68,7 @@ function hy_multi_form() {
                             <div class="text-gray-600">Loading map...</div>
                         </div>
                     </div>
-                    <div id="hy-map-error" class="absolute inset-0 flex items-center justify-center bg-red-50 z-10 hidden">
+                    <div id="hy-map-error" class="absolute inset-0  items-center justify-center bg-red-50 z-10 hidden">
                         <div class="text-center text-red-600">
                             <div class="text-4xl mb-2">📍</div>
                             <div class="text-sm">Unable to load map</div>
