@@ -1,11 +1,20 @@
 <?php
-function hy_multi_form() { 
+function hy_multi_form($atts) { 
+    // Extract shortcode attributes
+    $atts = shortcode_atts(array(
+        'id' => 'default'
+    ), $atts);
+    
+    // Generate unique form ID
+    $form_id = 'hy_form_' . sanitize_key($atts['id']);
+    
+    ob_start();
 ?>
 
-<div class="bg-white rounded-3xl py-8 px-7 max-w-md mx-auto shadow-lg relative">
+<div class="bg-white rounded-3xl py-8 px-7 max-w-md mx-auto shadow-lg relative" id="<?php echo $form_id; ?>_container">
     <div class="flex justify-between items-center mb-4">
         <h3 class="text-black text-2xl font-semibold">Get Cash Offer</h3>
-        <button type="button" class="text-gray-400 hover:text-gray-600" onclick="closeForm()">
+        <button type="button" class="text-gray-400 hover:text-gray-600" onclick="closeForm('<?php echo $form_id; ?>')">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
             </svg>
@@ -14,16 +23,15 @@ function hy_multi_form() {
 
     <!-- Progress Bar -->
     <div class="flex gap-1 mb-7">
-        <div class="h-1.5 w-1/4 hy-form-step done bg-green-500 rounded-full transition-all duration-300"></div>
-        <div class="h-1.5 w-1/4 hy-form-step bg-gray-200 rounded-full transition-all duration-300"></div>
-        <div class="h-1.5 w-1/4 hy-form-step bg-gray-200 rounded-full transition-all duration-300"></div>
-        <div class="h-1.5 w-1/4 hy-form-step bg-gray-200 rounded-full transition-all duration-300"></div>
+        <div class="h-1.5 w-1/4 hy-form-step done rounded-full transition-all duration-300" data-form="<?php echo $form_id; ?>"></div>
+        <div class="h-1.5 w-1/4 hy-form-step bg-gray-200 rounded-full transition-all duration-300" data-form="<?php echo $form_id; ?>"></div>
+        <div class="h-1.5 w-1/4 hy-form-step bg-gray-200 rounded-full transition-all duration-300" data-form="<?php echo $form_id; ?>"></div>
+        <div class="h-1.5 w-1/4 hy-form-step bg-gray-200 rounded-full transition-all duration-300" data-form="<?php echo $form_id; ?>"></div>
     </div>
 
     <style>
     .hy-form-step.done {
         opacity: 0.8;
-        transform: scale(1.05);
     }
     .hy-form-step {
         transition: all 0.3s ease;
@@ -32,18 +40,18 @@ function hy_multi_form() {
 
     <!-- Step Header -->
     <div class="flex justify-between items-center mb-7">
-        <h5 class="hy-form-title text-lg font-semibold text-gray-900">What's your property address</h5>
-        <p class="text-gray-400 font-medium">Step <span class="hy-current-step">1</span> of 4</p>
+        <h5 class="hy-form-title text-lg font-semibold text-gray-900" data-form="<?php echo $form_id; ?>">What's your property address</h5>
+        <p class="text-gray-400 font-medium">Step <span class="hy-current-step" data-form="<?php echo $form_id; ?>">1</span> of 4</p>
     </div>
 
-    <form id="hy-multi-step-form" class="hy-form-container">
+    <form id="<?php echo $form_id; ?>" class="hy-form-container" data-form-id="<?php echo $atts['id']; ?>">
         
         <!-- Step 1: Property Address -->
-        <div class="hy-form-step-content active" data-step="1">
+        <div class="hy-form-step-content active" data-step="1" data-form="<?php echo $form_id; ?>">
             <div class="mb-6">
                 <input 
                     type="text" 
-                    id="property_address" 
+                    id="<?php echo $form_id; ?>_property_address" 
                     name="property_address" 
                     placeholder="Enter Your Complete Address" 
                     class="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:outline-none transition-colors text-gray-900 placeholder-gray-400"
@@ -52,23 +60,24 @@ function hy_multi_form() {
             </div>
             <button 
                 type="button" 
-                class="hy-next-btn w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-105"
+                class="hy-next-btn w-full bg-light-green hover:bg-lime-500 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 transform cursor-pointer"
+                data-form="<?php echo $form_id; ?>"
             >
                 Next
             </button>
         </div>
 
         <!-- Step 2: Property Confirmation -->
-        <div class="hy-form-step-content hidden" data-step="2">
+        <div class="hy-form-step-content hidden" data-step="2" data-form="<?php echo $form_id; ?>">
             <div class="mb-6">
-                <div id="hy-google-map" class="bg-gray-100 rounded-xl mb-4 h-48 overflow-hidden relative">
-                    <div id="hy-map-loading" class="absolute inset-0 flex items-center justify-center bg-gray-100 z-10">
+                <div id="<?php echo $form_id; ?>_google_map" class="bg-gray-100 rounded-xl mb-4 h-48 overflow-hidden relative">
+                    <div id="<?php echo $form_id; ?>_map_loading" class="absolute inset-0 flex items-center justify-center bg-gray-100 z-10">
                         <div class="text-center">
                             <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-green-500 mx-auto mb-2"></div>
                             <div class="text-gray-600">Loading map...</div>
                         </div>
                     </div>
-                    <div id="hy-map-error" class="absolute inset-0  items-center justify-center bg-red-50 z-10 hidden">
+                    <div id="<?php echo $form_id; ?>_map_error" class="absolute inset-0 items-center justify-center bg-red-50 z-10 hidden">
                         <div class="text-center text-red-600">
                             <div class="text-4xl mb-2">📍</div>
                             <div class="text-sm">Unable to load map</div>
@@ -76,19 +85,21 @@ function hy_multi_form() {
                     </div>
                 </div>
                 <div class="bg-gray-50 rounded-xl p-4 text-center">
-                    <span class="hy-display-address text-gray-800 font-medium"></span>
+                    <span class="hy-display-address text-gray-800 font-medium" data-form="<?php echo $form_id; ?>"></span>
                 </div>
             </div>
             <div class="flex gap-4">
                 <button 
                     type="button" 
-                    class="hy-prev-btn flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-4 px-6 rounded-xl transition-all duration-300"
+                    class="hy-prev-btn flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-4 px-6 rounded-xl transition-all duration-300 cursor-pointer"
+                    data-form="<?php echo $form_id; ?>"
                 >
                     No
                 </button>
                 <button 
                     type="button" 
-                    class="hy-next-btn flex-1 bg-green-500 hover:bg-green-600 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300"
+                    class="hy-next-btn flex-1 bg-light-green hover:bg-lime-500 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 cursor-pointer"
+                    data-form="<?php echo $form_id; ?>"
                 >
                     Next
                 </button>
@@ -96,7 +107,7 @@ function hy_multi_form() {
         </div>
 
         <!-- Step 3: Owner Information -->
-        <div class="hy-form-step-content hidden" data-step="3">
+        <div class="hy-form-step-content hidden" data-step="3" data-form="<?php echo $form_id; ?>">
             <div class="space-y-4 mb-6">
                 <div class="grid grid-cols-2 gap-4">
                     <input 
@@ -132,13 +143,15 @@ function hy_multi_form() {
             <div class="flex gap-4">
                 <button 
                     type="button" 
-                    class="hy-prev-btn flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-4 px-6 rounded-xl transition-all duration-300"
+                    class="hy-prev-btn flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-4 px-6 rounded-xl transition-all duration-300 cursor-pointer"
+                    data-form="<?php echo $form_id; ?>"
                 >
                     Previous
                 </button>
                 <button 
                     type="button" 
-                    class="hy-next-btn flex-1 bg-green-500 hover:bg-green-600 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300"
+                    class="hy-next-btn flex-1 bg-light-green hover:bg-lime-500 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 cursor-pointer"
+                    data-form="<?php echo $form_id; ?>"
                 >
                     Next
                 </button>
@@ -146,11 +159,11 @@ function hy_multi_form() {
         </div>
 
         <!-- Step 4: Property Information -->
-        <div class="hy-form-step-content hidden" data-step="4">
+        <div class="hy-form-step-content hidden" data-step="4" data-form="<?php echo $form_id; ?>">
             <div class="space-y-3 mb-6">
                 
                 <!-- Question 1: How fast do you want to sell? -->
-                <div class="hy-question-card border border-gray-200 rounded-lg cursor-pointer hover:border-green-500 hover:bg-gray-50 transition-colors" data-question="sell_speed">
+                <div class="hy-question-card border border-gray-200 rounded-lg cursor-pointer hover:border-green-500 hover:bg-gray-50 transition-colors" data-question="sell_speed" data-form="<?php echo $form_id; ?>">
                     <div class="p-4">
                         <div class="flex justify-between items-center mb-2">
                             <span class="text-gray-700 font-medium">How fast do you want to sell?</span>
@@ -163,7 +176,7 @@ function hy_multi_form() {
                 </div>
 
                 <!-- Question 2: How long have you owned it? -->
-                <div class="hy-question-card border border-gray-200 rounded-lg cursor-pointer hover:border-green-500 hover:bg-gray-50 transition-colors" data-question="ownership_duration">
+                <div class="hy-question-card border border-gray-200 rounded-lg cursor-pointer hover:border-green-500 hover:bg-gray-50 transition-colors" data-question="ownership_duration" data-form="<?php echo $form_id; ?>">
                     <div class="p-4">
                         <div class="flex justify-between items-center mb-2">
                             <span class="text-gray-700 font-medium">How long have you owned it?</span>
@@ -176,7 +189,7 @@ function hy_multi_form() {
                 </div>
 
                 <!-- Question 3: What kind of Repairs/Maintenance does the property need? -->
-                <div class="hy-question-card border border-gray-200 rounded-lg cursor-pointer hover:border-green-500 hover:bg-gray-50 transition-colors" data-question="repairs_needed">
+                <div class="hy-question-card border border-gray-200 rounded-lg cursor-pointer hover:border-green-500 hover:bg-gray-50 transition-colors" data-question="repairs_needed" data-form="<?php echo $form_id; ?>">
                     <div class="p-4">
                         <div class="flex justify-between items-center mb-2">
                             <span class="text-gray-700 font-medium">What kind of Repairs/Maintenance does the property need?</span>
@@ -189,7 +202,7 @@ function hy_multi_form() {
                 </div>
 
                 <!-- Question 4: Additional Notes -->
-                <div class="hy-question-card border border-gray-200 rounded-lg cursor-pointer hover:border-green-500 hover:bg-gray-50 transition-colors" data-question="additional_notes">
+                <div class="hy-question-card border border-gray-200 rounded-lg cursor-pointer hover:border-green-500 hover:bg-gray-50 transition-colors" data-question="additional_notes" data-form="<?php echo $form_id; ?>">
                     <div class="p-4">
                         <div class="flex justify-between items-center mb-2">
                             <span class="text-gray-700 font-medium">Additional Notes</span>
@@ -206,14 +219,15 @@ function hy_multi_form() {
             <div class="flex gap-4">
                 <button 
                     type="button" 
-                    class="hy-prev-btn flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-4 px-6 rounded-xl transition-all duration-300"
+                    class="hy-prev-btn flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-4 px-6 rounded-xl transition-all duration-300 cursor-pointer"
+                    data-form="<?php echo $form_id; ?>"
                 >
                     Previous
                 </button>
                 <button 
                     type="submit" 
-                    id="hy-submit-btn"
-                    class="flex-1 bg-green-500 hover:bg-green-600 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-105"
+                    id="<?php echo $form_id; ?>_submit_btn"
+                    class="flex-1 bg-light-green hover:bg-lime-500 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 transform cursor-pointer"
                 >
                     Submit
                 </button>
@@ -221,14 +235,14 @@ function hy_multi_form() {
         </div>
 
         <!-- Off-canvas Panel for Question Options -->
-        <div id="hy-off-canvas" class="absolute inset-0 z-50 hidden rounded-3xl overflow-hidden">
+        <div id="<?php echo $form_id; ?>_off_canvas" class="absolute inset-0 z-50 hidden rounded-3xl overflow-hidden">
             <!-- Panel -->
             <div class="hy-off-canvas-panel absolute right-0 top-0 h-full w-full bg-white shadow-xl transform translate-x-full transition-transform duration-300 ease-in-out rounded-3xl">
                 <div class="flex flex-col h-full">
                     <!-- Header -->
                     <div class="flex justify-between items-center p-6 border-b border-gray-200">
                         <h3 class="hy-off-canvas-title text-lg font-semibold text-gray-900"></h3>
-                        <button type="button" onclick="closeOffCanvas()" class="text-gray-400 hover:text-gray-600">
+                        <button type="button" onclick="closeOffCanvas('<?php echo $form_id; ?>')" class="text-gray-400 hover:text-gray-600">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                             </svg>
@@ -237,7 +251,7 @@ function hy_multi_form() {
                     
                     <!-- Content -->
                     <div class="flex-1 overflow-y-auto p-6">
-                        <div id="hy-off-canvas-content">
+                        <div id="<?php echo $form_id; ?>_off_canvas_content">
                             <!-- Dynamic content will be inserted here -->
                         </div>
                     </div>
@@ -246,8 +260,8 @@ function hy_multi_form() {
                     <div class="p-6 border-t border-gray-200">
                         <button 
                             type="button" 
-                            onclick="closeOffCanvas()"
-                            class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300"
+                            onclick="closeOffCanvas('<?php echo $form_id; ?>')"
+                            class="w-full bg-light-green hover:bg-lime-500 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 cursor-pointer"
                         >
                             Save
                         </button>
@@ -257,14 +271,14 @@ function hy_multi_form() {
         </div>
 
         <!-- Hidden form inputs for storing values -->
-        <input type="hidden" name="sell_speed" id="sell_speed_input" required>
-        <input type="hidden" name="ownership_duration" id="ownership_duration_input" required>
-        <input type="hidden" name="repairs_needed" id="repairs_needed_input" required>
-        <input type="hidden" name="selling_reason" id="selling_reason_input" required>
-        <textarea name="additional_notes" id="additional_notes_input" class="hidden"></textarea>
+        <input type="hidden" name="sell_speed" id="<?php echo $form_id; ?>_sell_speed_input" required>
+        <input type="hidden" name="ownership_duration" id="<?php echo $form_id; ?>_ownership_duration_input" required>
+        <input type="hidden" name="repairs_needed" id="<?php echo $form_id; ?>_repairs_needed_input" required>
+        <input type="hidden" name="selling_reason" id="<?php echo $form_id; ?>_selling_reason_input" required>
+        <textarea name="additional_notes" id="<?php echo $form_id; ?>_additional_notes_input" class="hidden"></textarea>
 
         <!-- Success Message -->
-        <div class="hy-form-step-content hidden" id="hy-success-message">
+        <div class="hy-form-step-content hidden" id="<?php echo $form_id; ?>_success_message" data-form="<?php echo $form_id; ?>">
             <div class="text-center py-8">
                 <div class="w-16 h-16 mx-auto bg-green-100 rounded-full flex items-center justify-center mb-6">
                     <svg class="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -276,7 +290,7 @@ function hy_multi_form() {
                 <div class="text-center">
                     <p class="text-gray-500 text-sm mb-2">Form will reset in:</p>
                     <div class="inline-flex items-center justify-center w-12 h-12 bg-gray-100 rounded-full">
-                        <span id="hy-countdown-timer" class="text-lg font-bold text-gray-700">5</span>
+                        <span id="<?php echo $form_id; ?>_countdown_timer" class="text-lg font-bold text-gray-700">5</span>
                     </div>
                 </div>
             </div>
@@ -286,199 +300,239 @@ function hy_multi_form() {
 </div>
 
 <script>
-// Google Maps variables
-let map;
-let geocoder;
-let marker;
-
-// Load Google Maps API
-function loadGoogleMapsAPI() {
-    if (!hy_ajax_object.google_api_key || hy_ajax_object.google_api_key === 'YOUR_GOOGLE_MAPS_API_KEY') {
-        console.warn('Google Maps API key not configured. Please add your API key in WordPress Admin > Settings > Cash Offer Form');
-        document.getElementById('hy-map-loading').innerHTML = '<div class="text-center text-yellow-600"><div class="text-4xl mb-2">⚠️</div><div class="text-sm">API key not configured</div></div>';
-        return;
+// Create form instance class
+class HyMultiForm {
+    constructor(formId, shortcodeId) {
+        this.formId = formId;
+        this.shortcodeId = shortcodeId;
+        this.currentStep = 1;
+        this.totalSteps = 4;
+        this.map = null;
+        this.geocoder = null;
+        this.marker = null;
+        this.countdownInterval = null;
+        
+        this.stepTitles = [
+            "What's your property address",
+            "Did we find your property?", 
+            "Owner Info",
+            "Property Info"
+        ];
+        
+        this.init();
     }
     
-    const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${hy_ajax_object.google_api_key}&libraries=places&callback=initGoogleMaps`;
-    script.async = true;
-    script.defer = true;
-    document.head.appendChild(script);
-}
-
-// Initialize Google Maps
-function initGoogleMaps() {
-    geocoder = new google.maps.Geocoder();
-    console.log('Google Maps API loaded successfully');
-}
-
-// Make function globally available for callback
-window.initGoogleMaps = initGoogleMaps;
-
-function closeForm() {
-    // Add your close form logic here
-    console.log('Form closed');
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    let currentStep = 1;
-    const totalSteps = 4; // Changed to 4 (property address, map confirmation, owner info, property info)
-    
-    const stepTitles = [
-        "What's your property address",
-        "Did we find your property?", 
-        "Owner Info",
-        "Property Info"
-    ];
-
-    // Load Google Maps API
-    loadGoogleMapsAPI();
-
-    // Initialize form
-    updateStepDisplay();
-
-    // Handle next buttons
-    document.addEventListener('click', function(e) {
-        if (e.target.classList.contains('hy-next-btn')) {
-            e.preventDefault();
-            if (validateCurrentStep()) {
-                if (currentStep < totalSteps) {
-                    nextStep();
-                }
-            }
-        }
-    });
-
-    // Handle previous buttons  
-    document.addEventListener('click', function(e) {
-        if (e.target.classList.contains('hy-prev-btn')) {
-            e.preventDefault();
-            if (currentStep > 1) {
-                prevStep();
-            }
-        }
-    });
-
-    // Handle expandable question clicks
-    document.addEventListener('click', function(e) {
-        const questionCard = e.target.closest('.hy-question-card');
-        if (questionCard) {
-            const questionType = questionCard.getAttribute('data-question');
-            openOffCanvas(questionType);
-        }
-    });
-
-    // Handle radio option selection
-    document.addEventListener('click', function(e) {
-        const radioOption = e.target.closest('.hy-off-canvas-radio-option');
-        if (radioOption) {
-            const radio = radioOption.querySelector('input[type="radio"]');
-            const container = radioOption.querySelector('div');
-            const questionType = radio.name.replace('_temp', '');
-            
-            // Clear previous selections in this group
-            const groupName = radio.name;
-            document.querySelectorAll(`input[name="${groupName}"]`).forEach(input => {
-                const parentDiv = input.closest('.hy-off-canvas-radio-option').querySelector('div');
-                parentDiv.classList.remove('border-green-500', 'bg-green-50');
-                parentDiv.classList.add('border-gray-200');
-                input.closest('.hy-off-canvas-radio-option').querySelector('span').classList.remove('text-green-600', 'font-semibold');
-                input.closest('.hy-off-canvas-radio-option').querySelector('span').classList.add('text-gray-700');
-            });
-            
-            // Select current option
-            radio.checked = true;
-            container.classList.remove('border-gray-200');
-            container.classList.add('border-green-500', 'bg-green-50');
-            radioOption.querySelector('span').classList.remove('text-gray-700');
-            radioOption.querySelector('span').classList.add('text-green-600', 'font-semibold');
-        }
-    });
-
-    // Handle save notes button
-    document.addEventListener('click', function(e) {
-        if (e.target.classList.contains('hy-save-notes')) {
-            e.preventDefault();
-            const textarea = e.target.previousElementSibling;
-            if (textarea.value.trim()) {
-                e.target.textContent = 'Saved!';
-                e.target.classList.remove('bg-green-500', 'hover:bg-green-600');
-                e.target.classList.add('bg-green-600');
-                setTimeout(() => {
-                    e.target.textContent = 'Save';
-                    e.target.classList.remove('bg-green-600');
-                    e.target.classList.add('bg-green-500', 'hover:bg-green-600');
-                }, 1500);
-            }
-        }
-    });
-
-    // Handle form submission
-    document.getElementById('hy-multi-step-form').addEventListener('submit', function(e) {
-        e.preventDefault();
+    init() {
+        console.log('Initializing form:', this.formId);
         
-        if (!validateCurrentStep()) {
+        // Check if form element exists
+        const formElement = document.getElementById(this.formId);
+        if (!formElement) {
+            console.error('Form element not found:', this.formId);
+            // Retry after a short delay
+            setTimeout(() => this.init(), 100);
+            return;
+        }
+        
+        console.log('Form element found, proceeding with initialization:', this.formId);
+        this.loadGoogleMapsAPI();
+        this.updateStepDisplay();
+        this.attachEventListeners();
+        
+        console.log('Form initialization complete:', this.formId);
+    }
+    
+    loadGoogleMapsAPI() {
+        console.log('Loading Google Maps API for form:', this.formId);
+        
+        if (!hy_ajax_object.google_api_key || hy_ajax_object.google_api_key === 'YOUR_GOOGLE_MAPS_API_KEY') {
+            console.warn('Google Maps API key not configured for form: ' + this.formId);
+            const loadingDiv = document.getElementById(this.formId + '_map_loading');
+            if (loadingDiv) {
+                loadingDiv.innerHTML = '<div class="text-center text-yellow-600"><div class="text-4xl mb-2">⚠️</div><div class="text-sm">API key not configured</div></div>';
+            }
+            return;
+        }
+        
+        // Check if Google Maps is already loaded
+        if (typeof google !== 'undefined' && google.maps && google.maps.Geocoder) {
+            console.log('Google Maps already loaded, initializing for form:', this.formId);
+            this.initGoogleMaps();
+            return;
+        }
+        
+        // Load Google Maps API if not already loaded
+        if (!window.googleMapsLoading) {
+            console.log('Loading Google Maps API script...');
+            window.googleMapsLoading = true;
+            const script = document.createElement('script');
+            script.src = `https://maps.googleapis.com/maps/api/js?key=${hy_ajax_object.google_api_key}&libraries=places&callback=initAllGoogleMaps`;
+            script.async = true;
+            script.defer = true;
+            script.onerror = function() {
+                console.error('Failed to load Google Maps API');
+                window.googleMapsLoading = false;
+            };
+            document.head.appendChild(script);
+        }
+        
+        // Wait for Google Maps to load
+        const checkGoogleMaps = () => {
+            if (typeof google !== 'undefined' && google.maps && google.maps.Geocoder) {
+                console.log('Google Maps API loaded, initializing for form:', this.formId);
+                this.initGoogleMaps();
+            } else {
+                setTimeout(checkGoogleMaps, 200);
+            }
+        };
+        checkGoogleMaps();
+    }
+    
+    initGoogleMaps() {
+        try {
+            this.geocoder = new google.maps.Geocoder();
+            console.log('Google Maps Geocoder initialized for form: ' + this.formId);
+        } catch (error) {
+            console.error('Error initializing Google Maps for form:', this.formId, error);
+        }
+    }
+    
+    attachEventListeners() {
+        const form = document.getElementById(this.formId);
+        
+        if (!form) {
+            console.error('Form not found:', this.formId);
             return;
         }
 
-        // Show loading state
-        const submitBtn = e.target.querySelector('button[type="submit"]');
-        const originalText = submitBtn.textContent;
-        submitBtn.textContent = 'Submitting...';
-        submitBtn.disabled = true;
+        // Handle next buttons
+        form.addEventListener('click', (e) => {
+            if (e.target.classList.contains('hy-next-btn')) {
+                const targetForm = e.target.getAttribute('data-form');
+                if (targetForm === this.formId) {
+                    e.preventDefault();
+                    console.log('Next button clicked for form:', this.formId);
+                    if (this.validateCurrentStep()) {
+                        if (this.currentStep < this.totalSteps) {
+                            this.nextStep();
+                        }
+                    }
+                }
+            }
+        });
 
-        // Collect form data
-        const formData = new FormData();
-        formData.append('action', 'hy_submit_cash_offer');
-        formData.append('nonce', hy_ajax_object.nonce);
+        // Handle previous buttons  
+        form.addEventListener('click', (e) => {
+            if (e.target.classList.contains('hy-prev-btn')) {
+                const targetForm = e.target.getAttribute('data-form');
+                if (targetForm === this.formId) {
+                    e.preventDefault();
+                    console.log('Previous button clicked for form:', this.formId);
+                    if (this.currentStep > 1) {
+                        this.prevStep();
+                    }
+                }
+            }
+        });
+
+        // Handle expandable question clicks
+        form.addEventListener('click', (e) => {
+            const questionCard = e.target.closest('.hy-question-card');
+            if (questionCard) {
+                const targetForm = questionCard.getAttribute('data-form');
+                if (targetForm === this.formId) {
+                    const questionType = questionCard.getAttribute('data-question');
+                    console.log('Question card clicked for form:', this.formId, 'question:', questionType);
+                    this.openOffCanvas(questionType);
+                }
+            }
+        });
+
+        // Handle radio option selection
+        form.addEventListener('click', (e) => {
+            const radioOption = e.target.closest('.hy-off-canvas-radio-option');
+            if (radioOption && form.contains(radioOption)) {
+                const radio = radioOption.querySelector('input[type="radio"]');
+                if (radio) {
+                    const container = radioOption.querySelector('div');
+                    const questionType = radio.name.replace('_temp', '');
+                    
+                    console.log('Radio option selected for form:', this.formId);
+                    
+                    // Clear previous selections in this group
+                    const groupName = radio.name;
+                    form.querySelectorAll(`input[name="${groupName}"]`).forEach(input => {
+                        const parentDiv = input.closest('.hy-off-canvas-radio-option').querySelector('div');
+                        if (parentDiv) {
+                            parentDiv.classList.remove('border-green-500', 'bg-green-50');
+                            parentDiv.classList.add('border-gray-200');
+                        }
+                        const span = input.closest('.hy-off-canvas-radio-option').querySelector('span');
+                        if (span) {
+                            span.classList.remove('text-green-600', 'font-semibold');
+                            span.classList.add('text-gray-700');
+                        }
+                    });
+                    
+                    // Select current option
+                    radio.checked = true;
+                    if (container) {
+                        container.classList.remove('border-gray-200');
+                        container.classList.add('border-green-500', 'bg-green-50');
+                    }
+                    const span = radioOption.querySelector('span');
+                    if (span) {
+                        span.classList.remove('text-gray-700');
+                        span.classList.add('text-green-600', 'font-semibold');
+                    }
+                }
+            }
+        });
+
+        // Handle save notes button
+        form.addEventListener('click', (e) => {
+            if (e.target.classList.contains('hy-save-notes')) {
+                e.preventDefault();
+                const textarea = e.target.previousElementSibling;
+                if (textarea && textarea.value.trim()) {
+                    e.target.textContent = 'Saved!';
+                    e.target.classList.remove('bg-light-green', 'hover:bg-lime-500');
+                    e.target.classList.add('bg-green-600');
+                    setTimeout(() => {
+                        e.target.textContent = 'Save';
+                        e.target.classList.remove('bg-green-600');
+                        e.target.classList.add('bg-light-green', 'hover:bg-lime-500');
+                    }, 1500);
+                }
+            }
+        });
+
+        // Handle form submission
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            console.log('Form submitted:', this.formId);
+            this.handleSubmit(e);
+        });
         
-        // Get all form values
-        const inputs = document.querySelectorAll('#hy-multi-step-form input:not([name$="_temp"]), #hy-multi-step-form textarea');
-        inputs.forEach(input => {
-            if (input.type === 'radio' && input.checked) {
-                formData.append(input.name, input.value);
-            } else if (input.type === 'hidden' && input.value) {
-                formData.append(input.name.replace('_input', ''), input.value);
-            } else if (input.type !== 'radio' && input.type !== 'hidden' && input.value) {
-                formData.append(input.name, input.value);
-            }
-        });
-
-        // Submit via AJAX
-        fetch(hy_ajax_object.ajax_url, {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                showSuccess();
-            } else {
-                alert('There was an error submitting your form. Please try again.');
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }
-        })
-        .catch(error => {
-            alert('There was an error submitting your form. Please try again.');
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
-        });
-    });
-
-    function nextStep() {
-        currentStep++;
-        updateStepDisplay();
+        console.log('Event listeners attached for form:', this.formId);
+    }
+    
+    nextStep() {
+        this.currentStep++;
+        this.updateStepDisplay();
         
         // Special handling for step 2 (property confirmation with map)
-        if (currentStep === 2) {
-            const address = document.getElementById('property_address').value;
-            document.querySelector('.hy-display-address').textContent = address;
-            loadMapForAddress(address);
+        if (this.currentStep === 2) {
+            const address = document.getElementById(this.formId + '_property_address').value;
+            const displayAddress = document.querySelector(`[data-form="${this.formId}"].hy-display-address`);
+            if (displayAddress) {
+                displayAddress.textContent = address;
+            }
+            this.loadMapForAddress(address);
         }
         
         // Keep successful validation border colors when moving forward
-        const previousStepElement = document.querySelector(`[data-step="${currentStep - 1}"]`);
+        const previousStepElement = document.querySelector(`[data-step="${this.currentStep - 1}"][data-form="${this.formId}"]`);
         if (previousStepElement) {
             const validInputs = previousStepElement.querySelectorAll('input[required]:not(.border-red-500), textarea[required]:not(.border-red-500)');
             validInputs.forEach(input => {
@@ -490,115 +544,135 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function prevStep() {
-        currentStep--;
-        updateStepDisplay();
+    prevStep() {
+        this.currentStep--;
+        this.updateStepDisplay();
     }
 
-    function updateStepDisplay() {
+    updateStepDisplay() {
         // Update step content visibility
-        document.querySelectorAll('.hy-form-step-content').forEach(step => {
+        document.querySelectorAll(`[data-form="${this.formId}"].hy-form-step-content`).forEach(step => {
             step.classList.add('hidden');
             step.classList.remove('active');
         });
         
-        const currentStepElement = document.querySelector(`[data-step="${currentStep}"]`);
+        const currentStepElement = document.querySelector(`[data-step="${this.currentStep}"][data-form="${this.formId}"]`);
         if (currentStepElement) {
             currentStepElement.classList.remove('hidden');
             currentStepElement.classList.add('active');
         }
 
         // Update progress bar (4 visual steps)
-        document.querySelectorAll('.hy-form-step').forEach((step, index) => {
+        document.querySelectorAll(`[data-form="${this.formId}"].hy-form-step`).forEach((step, index) => {
             if (index === 0) {
                 // First step is always done and green
                 step.classList.remove('bg-gray-200');
-                step.classList.add('bg-green-500', 'done');
-            } else if (index < currentStep - 1) {
+                step.classList.add('bg-light-green', 'done');
+            } else if (index < this.currentStep - 1) {
                 // Completed steps (excluding first which is always done)
                 step.classList.remove('bg-gray-200');
-                step.classList.add('bg-green-500', 'done');
-            } else if (index === currentStep - 1) {
+                step.classList.add('bg-light-green', 'done');
+            } else if (index === this.currentStep - 1) {
                 // Current step
                 step.classList.remove('bg-gray-200', 'done');
-                step.classList.add('bg-green-500');
+                step.classList.add('bg-light-green');
             } else {
                 // Future steps
-                step.classList.remove('bg-green-500', 'done');
+                step.classList.remove('bg-light-green', 'done');
                 step.classList.add('bg-gray-200');
             }
         });
 
         // Update step counter and title
-        document.querySelector('.hy-current-step').textContent = currentStep;
-        document.querySelector('.hy-form-title').textContent = stepTitles[currentStep - 1];
+        const currentStepSpan = document.querySelector(`[data-form="${this.formId}"].hy-current-step`);
+        const titleElement = document.querySelector(`[data-form="${this.formId}"].hy-form-title`);
+        
+        if (currentStepSpan) currentStepSpan.textContent = this.currentStep;
+        if (titleElement) titleElement.textContent = this.stepTitles[this.currentStep - 1];
     }
 
-    function validateCurrentStep() {
-        const currentStepElement = document.querySelector(`[data-step="${currentStep}"]`);
+    validateCurrentStep() {
+        const currentStepElement = document.querySelector(`[data-step="${this.currentStep}"][data-form="${this.formId}"]`);
+        
+        if (!currentStepElement) {
+            console.error('Current step element not found for form:', this.formId, 'step:', this.currentStep);
+            return false;
+        }
+        
         let isValid = true;
+        console.log('Validating step', this.currentStep, 'for form:', this.formId);
 
         // Validate required inputs
         const requiredInputs = currentStepElement.querySelectorAll('input[required], textarea[required]');
+        console.log('Found required inputs:', requiredInputs.length);
+        
         requiredInputs.forEach(input => {
             if (!input.value.trim()) {
+                console.log('Empty required input found:', input.name);
                 input.classList.add('border-red-500');
                 input.classList.remove('border-gray-200', 'border-green-500');
                 isValid = false;
                 
-                // Reset red border after 1 second
+                // Reset red border after 2 seconds (increased time)
                 setTimeout(() => {
                     input.classList.remove('border-red-500');
                     input.classList.add('border-gray-200');
-                }, 1000);
+                }, 2000);
             } else {
+                console.log('Valid input:', input.name, '=', input.value);
                 input.classList.remove('border-red-500', 'border-gray-200');
                 input.classList.add('border-green-500');
             }
         });
 
         // Validate radio button groups in step 4
-        if (currentStep === 4) {
+        if (this.currentStep === 4) {
             const requiredQuestions = ['sell_speed', 'ownership_duration', 'repairs_needed'];
             requiredQuestions.forEach(questionType => {
-                const hiddenInput = document.getElementById(questionType + '_input');
-                if (!hiddenInput.value) {
+                const hiddenInput = document.getElementById(this.formId + '_' + questionType + '_input');
+                if (!hiddenInput || !hiddenInput.value) {
+                    console.log('Missing required question:', questionType);
                     isValid = false;
                     // Highlight the question that needs attention
-                    const questionCard = document.querySelector(`[data-question="${questionType}"]`);
+                    const questionCard = document.querySelector(`[data-question="${questionType}"][data-form="${this.formId}"]`);
                     if (questionCard) {
                         questionCard.classList.add('border-red-500');
                         questionCard.classList.remove('border-gray-200');
                         
-                        // Reset red border after 1 second
+                        // Reset red border after 2 seconds
                         setTimeout(() => {
                             questionCard.classList.remove('border-red-500');
                             questionCard.classList.add('border-gray-200');
-                        }, 1000);
+                        }, 2000);
                     }
+                } else {
+                    console.log('Valid question:', questionType, '=', hiddenInput.value);
                 }
             });
         }
 
         if (!isValid) {
+            console.log('Validation failed for form:', this.formId);
             // Add shake animation
             currentStepElement.classList.add('animate-pulse');
             setTimeout(() => {
                 currentStepElement.classList.remove('animate-pulse');
             }, 500);
+        } else {
+            console.log('Validation passed for form:', this.formId);
         }
 
         return isValid;
     }
 
-    function openOffCanvas(questionType) {
-        const offCanvas = document.getElementById('hy-off-canvas');
-        const panel = document.querySelector('.hy-off-canvas-panel');
-        const title = document.querySelector('.hy-off-canvas-title');
-        const content = document.getElementById('hy-off-canvas-content');
+    openOffCanvas(questionType) {
+        const offCanvas = document.getElementById(this.formId + '_off_canvas');
+        const panel = offCanvas.querySelector('.hy-off-canvas-panel');
+        const title = offCanvas.querySelector('.hy-off-canvas-title');
+        const content = document.getElementById(this.formId + '_off_canvas_content');
         
         // Set title and content based on question type
-        const questionData = getQuestionData(questionType);
+        const questionData = this.getQuestionData(questionType);
         title.textContent = questionData.title;
         content.innerHTML = questionData.content;
         
@@ -615,7 +689,7 @@ document.addEventListener('DOMContentLoaded', function() {
         offCanvas.setAttribute('data-current-question', questionType);
         
         // Pre-select current value if exists
-        const currentValue = document.getElementById(questionType + '_input').value;
+        const currentValue = document.getElementById(this.formId + '_' + questionType + '_input').value;
         if (currentValue) {
             const radio = content.querySelector(`input[value="${currentValue}"]`);
             if (radio) {
@@ -635,13 +709,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function closeOffCanvas() {
-        const offCanvas = document.getElementById('hy-off-canvas');
-        const panel = document.querySelector('.hy-off-canvas-panel');
+    closeOffCanvas() {
+        const offCanvas = document.getElementById(this.formId + '_off_canvas');
+        const panel = offCanvas.querySelector('.hy-off-canvas-panel');
         const questionType = offCanvas.getAttribute('data-current-question');
         
         // Save the selection before closing
-        saveOffCanvasSelection(questionType);
+        this.saveOffCanvasSelection(questionType);
         
         // Trigger slide-out animation
         panel.classList.remove('translate-x-0');
@@ -653,11 +727,27 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 300);
     }
 
-    function saveOffCanvasSelection(questionType) {
-        const content = document.getElementById('hy-off-canvas-content');
-        const hiddenInput = document.getElementById(questionType + '_input');
-        const questionCard = document.querySelector(`[data-question="${questionType}"]`);
+    saveOffCanvasSelection(questionType) {
+        const content = document.getElementById(this.formId + '_off_canvas_content');
+        const hiddenInput = document.getElementById(this.formId + '_' + questionType + '_input');
+        const questionCard = document.querySelector(`[data-question="${questionType}"][data-form="${this.formId}"]`);
+        
+        if (!content || !hiddenInput || !questionCard) {
+            console.error('Missing elements for saving off-canvas selection:', {
+                content: !!content,
+                hiddenInput: !!hiddenInput,
+                questionCard: !!questionCard
+            });
+            return;
+        }
+        
         const questionValue = questionCard.querySelector('.hy-question-value');
+        if (!questionValue) {
+            console.error('Question value element not found');
+            return;
+        }
+        
+        console.log('Saving off-canvas selection for:', questionType, 'form:', this.formId);
         
         if (questionType === 'additional_notes') {
             // Handle textarea
@@ -665,19 +755,22 @@ document.addEventListener('DOMContentLoaded', function() {
             if (textarea) {
                 hiddenInput.value = textarea.value;
                 questionValue.textContent = textarea.value ? 'Added' : '';
+                console.log('Saved additional notes:', textarea.value);
             }
         } else {
             // Handle radio buttons
             const selectedRadio = content.querySelector('input[type="radio"]:checked');
             if (selectedRadio) {
                 hiddenInput.value = selectedRadio.value;
-                const selectedText = selectedRadio.closest('.hy-off-canvas-radio-option').querySelector('span').textContent;
+                const selectedOption = selectedRadio.closest('.hy-off-canvas-radio-option');
+                const selectedText = selectedOption ? selectedOption.querySelector('span').textContent : selectedRadio.value;
                 questionValue.textContent = selectedText;
+                console.log('Saved radio selection:', selectedRadio.value, 'text:', selectedText);
             }
         }
     }
 
-    function getQuestionData(questionType) {
+    getQuestionData(questionType) {
         const questionData = {
             sell_speed: {
                 title: 'How fast do you want to sell?',
@@ -776,33 +869,29 @@ document.addEventListener('DOMContentLoaded', function() {
         return questionData[questionType] || { title: '', content: '' };
     }
 
-    // Make functions globally available
-    window.closeOffCanvas = closeOffCanvas;
-    window.resetFormToInitial = resetFormToInitial;
-
-    function loadMapForAddress(address) {
-        const mapContainer = document.getElementById('hy-google-map');
-        const loadingDiv = document.getElementById('hy-map-loading');
-        const errorDiv = document.getElementById('hy-map-error');
+    loadMapForAddress(address) {
+        const mapContainer = document.getElementById(this.formId + '_google_map');
+        const loadingDiv = document.getElementById(this.formId + '_map_loading');
+        const errorDiv = document.getElementById(this.formId + '_map_error');
         
         // Show loading state
         loadingDiv.classList.remove('hidden');
         errorDiv.classList.add('hidden');
 
         // Check if geocoder is available
-        if (!geocoder) {
-            setTimeout(() => loadMapForAddress(address), 500);
+        if (!this.geocoder) {
+            setTimeout(() => this.loadMapForAddress(address), 500);
             return;
         }
 
-        geocoder.geocode({ address: address }, function(results, status) {
+        this.geocoder.geocode({ address: address }, (results, status) => {
             if (status === 'OK') {
                 // Hide loading
                 loadingDiv.classList.add('hidden');
                 
                 // Initialize map
                 const location = results[0].geometry.location;
-                map = new google.maps.Map(mapContainer, {
+                this.map = new google.maps.Map(mapContainer, {
                     zoom: 16,
                     center: location,
                     mapTypeControl: false,
@@ -818,9 +907,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
 
                 // Add marker
-                marker = new google.maps.Marker({
+                this.marker = new google.maps.Marker({
                     position: location,
-                    map: map,
+                    map: this.map,
                     title: address,
                     icon: {
                         url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
@@ -839,8 +928,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     content: `<div style="padding: 8px; font-family: system-ui;"><strong>${address}</strong></div>`
                 });
 
-                marker.addListener('click', function() {
-                    infoWindow.open(map, marker);
+                this.marker.addListener('click', () => {
+                    infoWindow.open(this.map, this.marker);
                 });
             } else {
                 // Show error state
@@ -851,20 +940,74 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    function showSuccess() {
-        document.querySelectorAll('.hy-form-step-content').forEach(step => {
+    handleSubmit(e) {
+        if (!this.validateCurrentStep()) {
+            return;
+        }
+
+        // Show loading state
+        const submitBtn = e.target.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Submitting...';
+        submitBtn.disabled = true;
+
+        // Collect form data
+        const formData = new FormData();
+        formData.append('action', 'hy_submit_cash_offer');
+        formData.append('nonce', hy_ajax_object.nonce);
+        formData.append('form_id', this.shortcodeId);
+        
+        // Get all form values
+        const inputs = document.querySelectorAll(`#${this.formId} input:not([name$="_temp"]), #${this.formId} textarea`);
+        inputs.forEach(input => {
+            if (input.type === 'radio' && input.checked) {
+                formData.append(input.name, input.value);
+            } else if (input.type === 'hidden' && input.value) {
+                formData.append(input.name.replace('_input', ''), input.value);
+            } else if (input.type !== 'radio' && input.type !== 'hidden' && input.value) {
+                formData.append(input.name, input.value);
+            }
+        });
+
+        // Submit via AJAX
+        fetch(hy_ajax_object.ajax_url, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                this.showSuccess();
+            } else {
+                alert('There was an error submitting your form. Please try again.');
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
+        })
+        .catch(error => {
+            alert('There was an error submitting your form. Please try again.');
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+        });
+    }
+
+    showSuccess() {
+        document.querySelectorAll(`[data-form="${this.formId}"].hy-form-step-content`).forEach(step => {
             step.classList.add('hidden');
         });
-        document.getElementById('hy-success-message').classList.remove('hidden');
+        document.getElementById(this.formId + '_success_message').classList.remove('hidden');
         
         // Update header
-        document.querySelector('.hy-form-title').textContent = 'Form Submitted';
-        document.querySelector('.hy-current-step').textContent = '✓';
+        const titleElement = document.querySelector(`[data-form="${this.formId}"].hy-form-title`);
+        const currentStepSpan = document.querySelector(`[data-form="${this.formId}"].hy-current-step`);
+        
+        if (titleElement) titleElement.textContent = 'Form Submitted';
+        if (currentStepSpan) currentStepSpan.textContent = '✓';
         
         // Complete all progress steps
-        document.querySelectorAll('.hy-form-step').forEach((step, index) => {
+        document.querySelectorAll(`[data-form="${this.formId}"].hy-form-step`).forEach((step, index) => {
             step.classList.remove('bg-gray-200');
-            step.classList.add('bg-green-500');
+            step.classList.add('bg-light-green');
             if (index === 0) {
                 step.classList.add('done'); // First step always done
             } else {
@@ -873,95 +1016,149 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         // Start 5-second countdown timer
-        startCountdownTimer();
+        this.startCountdownTimer();
     }
 
-    let countdownInterval;
-
-    function startCountdownTimer() {
+    startCountdownTimer() {
         let countdown = 5;
-        const timerElement = document.getElementById('hy-countdown-timer');
+        const timerElement = document.getElementById(this.formId + '_countdown_timer');
         
         // Clear any existing timer
-        if (countdownInterval) {
-            clearInterval(countdownInterval);
+        if (this.countdownInterval) {
+            clearInterval(this.countdownInterval);
         }
         
-        countdownInterval = setInterval(() => {
+        this.countdownInterval = setInterval(() => {
             countdown--;
-            timerElement.textContent = countdown;
+            if (timerElement) timerElement.textContent = countdown;
             
             if (countdown <= 0) {
-                clearInterval(countdownInterval);
-                resetFormToInitial();
+                clearInterval(this.countdownInterval);
+                this.resetFormToInitial();
             }
         }, 1000);
     }
 
-    function resetFormToInitial() {
+    resetFormToInitial() {
         // Clear countdown timer if running
-        if (countdownInterval) {
-            clearInterval(countdownInterval);
+        if (this.countdownInterval) {
+            clearInterval(this.countdownInterval);
         }
         
         // Reset to step 1
-        currentStep = 1;
+        this.currentStep = 1;
         
         // Clear all form inputs
-        document.getElementById('hy-multi-step-form').reset();
+        document.getElementById(this.formId).reset();
         
         // Clear hidden inputs
-        document.querySelectorAll('input[id$="_input"]').forEach(input => {
+        document.querySelectorAll(`#${this.formId} input[id$="_input"]`).forEach(input => {
             input.value = '';
         });
         
         // Clear question values
-        document.querySelectorAll('.hy-question-value').forEach(el => {
+        document.querySelectorAll(`#${this.formId} .hy-question-value`).forEach(el => {
             el.textContent = '';
         });
         
         // Reset all input border colors to default
-        document.querySelectorAll('input, textarea').forEach(input => {
+        document.querySelectorAll(`#${this.formId} input, #${this.formId} textarea`).forEach(input => {
             input.classList.remove('border-red-500', 'border-green-500');
             input.classList.add('border-gray-200');
         });
         
         // Reset question card border colors
-        document.querySelectorAll('.hy-question-card').forEach(card => {
+        document.querySelectorAll(`#${this.formId} .hy-question-card`).forEach(card => {
             card.classList.remove('border-red-500', 'border-green-500');
             card.classList.add('border-gray-200');
         });
         
         // Reset progress bar - first step always done, others reset
-        document.querySelectorAll('.hy-form-step').forEach((step, index) => {
+        document.querySelectorAll(`[data-form="${this.formId}"].hy-form-step`).forEach((step, index) => {
             if (index === 0) {
                 // First step is always done and green
                 step.classList.remove('bg-gray-200');
-                step.classList.add('bg-green-500', 'done');
+                step.classList.add('bg-light-green', 'done');
             } else {
                 // Reset other steps
-                step.classList.remove('bg-green-500', 'done');
+                step.classList.remove('bg-light-green', 'done');
                 step.classList.add('bg-gray-200');
             }
         });
         
         // Reset submit button
-        const submitBtn = document.getElementById('hy-submit-btn');
+        const submitBtn = document.getElementById(this.formId + '_submit_btn');
         if (submitBtn) {
             submitBtn.textContent = 'Submit';
             submitBtn.disabled = false;
         }
         
         // Reset form display
-        updateStepDisplay();
+        this.updateStepDisplay();
         
         // Reset countdown timer display
-        document.getElementById('hy-countdown-timer').textContent = '5';
+        const timerElement = document.getElementById(this.formId + '_countdown_timer');
+        if (timerElement) timerElement.textContent = '5';
     }
-});
+}
+
+// Store form instances globally
+if (!window.hyFormInstances) {
+    window.hyFormInstances = {};
+}
+
+// Store form data for initialization
+if (!window.hyFormData) {
+    window.hyFormData = {};
+}
+
+// Store this form's data for later initialization
+window.hyFormData['<?php echo $form_id; ?>'] = {
+    formId: '<?php echo $form_id; ?>',
+    shortcodeId: '<?php echo $atts['id']; ?>'
+};
+
+// Initialize all forms when DOM is ready
+if (!window.hyFormsInitialized) {
+    window.hyFormsInitialized = false;
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        // Wait a bit to ensure all shortcodes are processed
+        setTimeout(function() {
+            Object.values(window.hyFormData).forEach(formData => {
+                if (!window.hyFormInstances[formData.formId]) {
+                    window.hyFormInstances[formData.formId] = new HyMultiForm(formData.formId, formData.shortcodeId);
+                    console.log('Initialized form:', formData.formId);
+                }
+            });
+            window.hyFormsInitialized = true;
+        }, 100);
+    });
+}
+
+// Global callback for Google Maps API
+window.initAllGoogleMaps = function() {
+    console.log('Initializing Google Maps for all forms');
+    Object.values(window.hyFormInstances).forEach(instance => {
+        instance.initGoogleMaps();
+    });
+};
+
+// Global functions for onclick handlers
+window.closeForm = function(formId) {
+    console.log('Form closed: ' + formId);
+    // Add your close form logic here
+};
+
+window.closeOffCanvas = function(formId) {
+    if (window.hyFormInstances[formId]) {
+        window.hyFormInstances[formId].closeOffCanvas();
+    }
+};
 </script>
 
 <?php
+    return ob_get_clean();
 }
 add_shortcode( 'hy_multi_form', 'hy_multi_form' );
 
@@ -971,7 +1168,7 @@ function hy_multi_form_scripts() {
     wp_localize_script('jquery', 'hy_ajax_object', array(
         'ajax_url' => admin_url('admin-ajax.php'),
         'nonce' => wp_create_nonce('hy_cash_offer_nonce'),
-        'google_api_key' => get_option('hy_google_maps_api_key', 'YOUR_GOOGLE_MAPS_API_KEY') // Add your API key in WordPress options or replace directly
+        'google_api_key' => get_option('hy_google_maps_api_key', 'YOUR_GOOGLE_MAPS_API_KEY')
     ));
 }
 add_action('wp_enqueue_scripts', 'hy_multi_form_scripts');
@@ -983,8 +1180,12 @@ function hy_handle_cash_offer_submission() {
         wp_send_json_error('Security check failed');
     }
     
+    // Get form ID for tracking multiple forms
+    $form_id = isset($_POST['form_id']) ? sanitize_text_field($_POST['form_id']) : 'unknown';
+    
     // Sanitize form data
     $data = array(
+        'form_id' => $form_id,
         'property_address' => sanitize_text_field($_POST['property_address']),
         'first_name' => sanitize_text_field($_POST['first_name']),
         'last_name' => sanitize_text_field($_POST['last_name']),
@@ -999,7 +1200,7 @@ function hy_handle_cash_offer_submission() {
     );
 
     // Send notification email (optional)
-    $subject = 'New Cash Offer Request from ' . $data['first_name'] . ' ' . $data['last_name'];
+    $subject = 'New Cash Offer Request from ' . $data['first_name'] . ' ' . $data['last_name'] . ' (Form: ' . $form_id . ')';
     $message = "New cash offer request received:\n\n";
     foreach ($data as $key => $value) {
         if ($key !== 'ip_address' && !empty($value)) {
@@ -1010,27 +1211,8 @@ function hy_handle_cash_offer_submission() {
     // Send email notification
     wp_mail(get_option('admin_email'), $subject, $message);
     
-    // Here you can add your CRM integration
-    // Example integrations:
-    
-    // 1. Send to webhook/API endpoint:
-    // $response = wp_remote_post('https://your-crm.com/api/leads', array(
-    //     'headers' => array('Content-Type' => 'application/json'),
-    //     'body' => json_encode($data)
-    // ));
-    
-    // 2. Send to Zapier webhook:
-    // wp_remote_post('https://hooks.zapier.com/hooks/catch/YOUR_WEBHOOK_ID/', array(
-    //     'body' => $data
-    // ));
-    
-    // 3. Integration with specific CRM (example for LeadConnector/GoHighLevel):
-    // hy_send_to_gohighlevel($data);
-    
-    // 4. Store in a different database or send via email to specific address
-    
     // Log the submission for debugging (optional)
-    error_log('Cash Offer Form Submission: ' . print_r($data, true));
+    error_log('Cash Offer Form Submission (' . $form_id . '): ' . print_r($data, true));
     
     wp_send_json_success('Form submitted successfully');
 }
@@ -1095,95 +1277,4 @@ function hy_cash_offer_settings_page() {
     </div>
     <?php
 }
-
-/*
-Installation Notes:
-
-1. Google Maps API Setup:
-   - Go to Google Cloud Console
-   - Enable Maps JavaScript API and Geocoding API
-   - Create an API key
-   - Add the API key in WordPress Admin > Settings > Cash Offer Form
-
-2. CRM Integration:
-   - Form data is collected and sanitized in the hy_handle_cash_offer_submission() function
-   - Add your CRM integration code in that function
-   - Data is available in the $data array with all form fields
-   - Example: send_to_crm($data); or make API calls to your CRM
-
-3. Form Data Structure:
-   $data array contains:
-   - property_address
-   - first_name, last_name
-   - phone_number, email_address
-   - sell_speed, ownership_duration
-   - repairs_needed
-   - additional_notes
-   - submission_date, ip_address
-
-4. Usage:
-   Add [hy_multi_form] shortcode to any page or post
-
-5. Email Notifications:
-   - Currently sends email to admin_email
-   - Modify the wp_mail() call to change recipient or format
-   - Remove if not needed
-
-6. Debugging:
-   - Form submissions are logged to error_log for debugging
-   - Check your WordPress error logs to see submitted data
-
-Example CRM Integration Functions:
-
-// Example function for webhook integration
-function hy_send_to_webhook($data) {
-    $webhook_url = 'https://your-crm.com/api/webhook';
-    
-    $response = wp_remote_post($webhook_url, array(
-        'headers' => array(
-            'Content-Type' => 'application/json',
-            'Authorization' => 'Bearer YOUR_API_KEY'
-        ),
-        'body' => json_encode($data),
-        'timeout' => 30
-    ));
-    
-    if (is_wp_error($response)) {
-        error_log('CRM Integration Error: ' . $response->get_error_message());
-        return false;
-    }
-    
-    return true;
-}
-
-// Example function for GoHighLevel integration
-function hy_send_to_gohighlevel($data) {
-    $api_url = 'https://rest.gohighlevel.com/v1/contacts/';
-    $api_key = 'YOUR_GHL_API_KEY';
-    
-    $contact_data = array(
-        'firstName' => $data['first_name'],
-        'lastName' => $data['last_name'], 
-        'email' => $data['email_address'],
-        'phone' => $data['phone_number'],
-        'address1' => $data['property_address'],
-        'customFields' => array(
-            array('key' => 'sell_speed', 'value' => $data['sell_speed']),
-            array('key' => 'ownership_duration', 'value' => $data['ownership_duration']),
-            array('key' => 'repairs_needed', 'value' => $data['repairs_needed']),
-            array('key' => 'additional_notes', 'value' => $data['additional_notes'])
-        )
-    );
-    
-    $response = wp_remote_post($api_url, array(
-        'headers' => array(
-            'Content-Type' => 'application/json',
-            'Authorization' => 'Bearer ' . $api_key
-        ),
-        'body' => json_encode($contact_data)
-    ));
-    
-    return $response;
-}
-*/
 ?>
