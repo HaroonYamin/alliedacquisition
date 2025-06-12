@@ -5,16 +5,18 @@ function hy_multi_form($atts) {
         'id' => 'default'
     ), $atts);
     
-    // Generate unique form ID
+    // Generate unique form ID and class prefix
     $form_id = 'hy_form_' . sanitize_key($atts['id']);
+    $form_num = rand(1000, 9999); // Add random number for extra uniqueness
+    $unique_id = $form_id . '_' . $form_num;
     
     ob_start();
 ?>
 
-<div class="bg-white rounded-3xl py-8 px-7 max-w-md mx-auto shadow-lg relative" id="<?php echo $form_id; ?>_container">
+<div class="bg-white rounded-3xl py-8 px-7 max-w-md mx-auto shadow-lg relative" id="<?php echo $unique_id; ?>_container">
     <div class="flex justify-between items-center mb-4">
         <h3 class="text-black text-2xl font-semibold">Get Cash Offer</h3>
-        <button type="button" class="text-gray-400 hover:text-gray-600" onclick="closeForm('<?php echo $form_id; ?>')">
+        <button type="button" class="text-gray-400 hover:text-gray-600" onclick="closeForm('<?php echo $unique_id; ?>')">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
             </svg>
@@ -23,35 +25,40 @@ function hy_multi_form($atts) {
 
     <!-- Progress Bar -->
     <div class="flex gap-1 mb-7">
-        <div class="h-1.5 w-1/4 hy-form-step done rounded-full transition-all duration-300" data-form="<?php echo $form_id; ?>"></div>
-        <div class="h-1.5 w-1/4 hy-form-step bg-gray-200 rounded-full transition-all duration-300" data-form="<?php echo $form_id; ?>"></div>
-        <div class="h-1.5 w-1/4 hy-form-step bg-gray-200 rounded-full transition-all duration-300" data-form="<?php echo $form_id; ?>"></div>
-        <div class="h-1.5 w-1/4 hy-form-step bg-gray-200 rounded-full transition-all duration-300" data-form="<?php echo $form_id; ?>"></div>
+        <div class="h-1.5 w-1/4 <?php echo $unique_id; ?>_form_step done bg-green-500 rounded-full transition-all duration-300"></div>
+        <div class="h-1.5 w-1/4 <?php echo $unique_id; ?>_form_step bg-gray-200 rounded-full transition-all duration-300"></div>
+        <div class="h-1.5 w-1/4 <?php echo $unique_id; ?>_form_step bg-gray-200 rounded-full transition-all duration-300"></div>
+        <div class="h-1.5 w-1/4 <?php echo $unique_id; ?>_form_step bg-gray-200 rounded-full transition-all duration-300"></div>
     </div>
 
     <style>
-    .hy-form-step.done {
+    .<?php echo $unique_id; ?>_form_step.done {
         opacity: 0.8;
+        transform: scale(1.05);
     }
-    .hy-form-step {
+    .<?php echo $unique_id; ?>_form_step {
         transition: all 0.3s ease;
+    }
+    .<?php echo $unique_id; ?>_question_card.completed {
+        border-color: #22c55e !important;
+        background-color: #f0fdf4 !important;
     }
     </style>
 
     <!-- Step Header -->
     <div class="flex justify-between items-center mb-7">
-        <h5 class="hy-form-title text-lg font-semibold text-gray-900" data-form="<?php echo $form_id; ?>">What's your property address</h5>
-        <p class="text-gray-400 font-medium">Step <span class="hy-current-step" data-form="<?php echo $form_id; ?>">1</span> of 4</p>
+        <h5 class="<?php echo $unique_id; ?>_form_title text-lg font-semibold text-gray-900">What's your property address</h5>
+        <p class="text-gray-400 font-medium">Step <span class="<?php echo $unique_id; ?>_current_step">1</span> of 4</p>
     </div>
 
-    <form id="<?php echo $form_id; ?>" class="hy-form-container" data-form-id="<?php echo $atts['id']; ?>">
+    <form id="<?php echo $unique_id; ?>" class="<?php echo $unique_id; ?>_form_container" data-form-id="<?php echo $atts['id']; ?>" data-unique-id="<?php echo $unique_id; ?>">
         
         <!-- Step 1: Property Address -->
-        <div class="hy-form-step-content active" data-step="1" data-form="<?php echo $form_id; ?>">
+        <div class="<?php echo $unique_id; ?>_form_step_content active" data-step="1">
             <div class="mb-6">
                 <input 
                     type="text" 
-                    id="<?php echo $form_id; ?>_property_address" 
+                    id="<?php echo $unique_id; ?>_property_address" 
                     name="property_address" 
                     placeholder="Enter Your Complete Address" 
                     class="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:outline-none transition-colors text-gray-900 placeholder-gray-400"
@@ -60,24 +67,23 @@ function hy_multi_form($atts) {
             </div>
             <button 
                 type="button" 
-                class="hy-next-btn w-full bg-light-green hover:bg-lime-500 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 transform cursor-pointer"
-                data-form="<?php echo $form_id; ?>"
+                class="<?php echo $unique_id; ?>_next_btn w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-105"
             >
                 Next
             </button>
         </div>
 
         <!-- Step 2: Property Confirmation -->
-        <div class="hy-form-step-content hidden" data-step="2" data-form="<?php echo $form_id; ?>">
+        <div class="<?php echo $unique_id; ?>_form_step_content hidden" data-step="2">
             <div class="mb-6">
-                <div id="<?php echo $form_id; ?>_google_map" class="bg-gray-100 rounded-xl mb-4 h-48 overflow-hidden relative">
-                    <div id="<?php echo $form_id; ?>_map_loading" class="absolute inset-0 flex items-center justify-center bg-gray-100 z-10">
+                <div id="<?php echo $unique_id; ?>_google_map" class="bg-gray-100 rounded-xl mb-4 h-48 overflow-hidden relative">
+                    <div id="<?php echo $unique_id; ?>_map_loading" class="absolute inset-0 flex items-center justify-center bg-gray-100 z-10">
                         <div class="text-center">
                             <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-green-500 mx-auto mb-2"></div>
                             <div class="text-gray-600">Loading map...</div>
                         </div>
                     </div>
-                    <div id="<?php echo $form_id; ?>_map_error" class="absolute inset-0 items-center justify-center bg-red-50 z-10 hidden">
+                    <div id="<?php echo $unique_id; ?>_map_error" class="absolute inset-0 items-center justify-center bg-red-50 z-10 hidden">
                         <div class="text-center text-red-600">
                             <div class="text-4xl mb-2">📍</div>
                             <div class="text-sm">Unable to load map</div>
@@ -85,21 +91,19 @@ function hy_multi_form($atts) {
                     </div>
                 </div>
                 <div class="bg-gray-50 rounded-xl p-4 text-center">
-                    <span class="hy-display-address text-gray-800 font-medium" data-form="<?php echo $form_id; ?>"></span>
+                    <span class="<?php echo $unique_id; ?>_display_address text-gray-800 font-medium"></span>
                 </div>
             </div>
             <div class="flex gap-4">
                 <button 
                     type="button" 
-                    class="hy-prev-btn flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-4 px-6 rounded-xl transition-all duration-300 cursor-pointer"
-                    data-form="<?php echo $form_id; ?>"
+                    class="<?php echo $unique_id; ?>_prev_btn flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-4 px-6 rounded-xl transition-all duration-300"
                 >
                     No
                 </button>
                 <button 
                     type="button" 
-                    class="hy-next-btn flex-1 bg-light-green hover:bg-lime-500 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 cursor-pointer"
-                    data-form="<?php echo $form_id; ?>"
+                    class="<?php echo $unique_id; ?>_next_btn flex-1 bg-green-500 hover:bg-green-600 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300"
                 >
                     Next
                 </button>
@@ -107,7 +111,7 @@ function hy_multi_form($atts) {
         </div>
 
         <!-- Step 3: Owner Information -->
-        <div class="hy-form-step-content hidden" data-step="3" data-form="<?php echo $form_id; ?>">
+        <div class="<?php echo $unique_id; ?>_form_step_content hidden" data-step="3">
             <div class="space-y-4 mb-6">
                 <div class="grid grid-cols-2 gap-4">
                     <input 
@@ -143,15 +147,13 @@ function hy_multi_form($atts) {
             <div class="flex gap-4">
                 <button 
                     type="button" 
-                    class="hy-prev-btn flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-4 px-6 rounded-xl transition-all duration-300 cursor-pointer"
-                    data-form="<?php echo $form_id; ?>"
+                    class="<?php echo $unique_id; ?>_prev_btn flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-4 px-6 rounded-xl transition-all duration-300"
                 >
                     Previous
                 </button>
                 <button 
                     type="button" 
-                    class="hy-next-btn flex-1 bg-light-green hover:bg-lime-500 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 cursor-pointer"
-                    data-form="<?php echo $form_id; ?>"
+                    class="<?php echo $unique_id; ?>_next_btn flex-1 bg-green-500 hover:bg-green-600 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300"
                 >
                     Next
                 </button>
@@ -159,11 +161,11 @@ function hy_multi_form($atts) {
         </div>
 
         <!-- Step 4: Property Information -->
-        <div class="hy-form-step-content hidden" data-step="4" data-form="<?php echo $form_id; ?>">
+        <div class="<?php echo $unique_id; ?>_form_step_content hidden" data-step="4">
             <div class="space-y-3 mb-6">
                 
                 <!-- Question 1: How fast do you want to sell? -->
-                <div class="hy-question-card border border-gray-200 rounded-lg cursor-pointer hover:border-green-500 hover:bg-gray-50 transition-colors" data-question="sell_speed" data-form="<?php echo $form_id; ?>">
+                <div class="<?php echo $unique_id; ?>_question_card border border-gray-200 rounded-lg cursor-pointer hover:border-green-500 hover:bg-gray-50 transition-colors" data-question="sell_speed">
                     <div class="p-4">
                         <div class="flex justify-between items-center mb-2">
                             <span class="text-gray-700 font-medium">How fast do you want to sell?</span>
@@ -171,12 +173,12 @@ function hy_multi_form($atts) {
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                             </svg>
                         </div>
-                        <div class="hy-question-value text-green-600 text-sm font-medium"></div>
+                        <div class="<?php echo $unique_id; ?>_question_value text-green-600 text-sm font-medium"></div>
                     </div>
                 </div>
 
                 <!-- Question 2: How long have you owned it? -->
-                <div class="hy-question-card border border-gray-200 rounded-lg cursor-pointer hover:border-green-500 hover:bg-gray-50 transition-colors" data-question="ownership_duration" data-form="<?php echo $form_id; ?>">
+                <div class="<?php echo $unique_id; ?>_question_card border border-gray-200 rounded-lg cursor-pointer hover:border-green-500 hover:bg-gray-50 transition-colors" data-question="ownership_duration">
                     <div class="p-4">
                         <div class="flex justify-between items-center mb-2">
                             <span class="text-gray-700 font-medium">How long have you owned it?</span>
@@ -184,12 +186,12 @@ function hy_multi_form($atts) {
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                             </svg>
                         </div>
-                        <div class="hy-question-value text-green-600 text-sm font-medium"></div>
+                        <div class="<?php echo $unique_id; ?>_question_value text-green-600 text-sm font-medium"></div>
                     </div>
                 </div>
 
                 <!-- Question 3: What kind of Repairs/Maintenance does the property need? -->
-                <div class="hy-question-card border border-gray-200 rounded-lg cursor-pointer hover:border-green-500 hover:bg-gray-50 transition-colors" data-question="repairs_needed" data-form="<?php echo $form_id; ?>">
+                <div class="<?php echo $unique_id; ?>_question_card border border-gray-200 rounded-lg cursor-pointer hover:border-green-500 hover:bg-gray-50 transition-colors" data-question="repairs_needed">
                     <div class="p-4">
                         <div class="flex justify-between items-center mb-2">
                             <span class="text-gray-700 font-medium">What kind of Repairs/Maintenance does the property need?</span>
@@ -197,12 +199,12 @@ function hy_multi_form($atts) {
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                             </svg>
                         </div>
-                        <div class="hy-question-value text-green-600 text-sm font-medium"></div>
+                        <div class="<?php echo $unique_id; ?>_question_value text-green-600 text-sm font-medium"></div>
                     </div>
                 </div>
 
                 <!-- Question 4: Additional Notes -->
-                <div class="hy-question-card border border-gray-200 rounded-lg cursor-pointer hover:border-green-500 hover:bg-gray-50 transition-colors" data-question="additional_notes" data-form="<?php echo $form_id; ?>">
+                <div class="<?php echo $unique_id; ?>_question_card border border-gray-200 rounded-lg cursor-pointer hover:border-green-500 hover:bg-gray-50 transition-colors" data-question="additional_notes">
                     <div class="p-4">
                         <div class="flex justify-between items-center mb-2">
                             <span class="text-gray-700 font-medium">Additional Notes</span>
@@ -210,7 +212,7 @@ function hy_multi_form($atts) {
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                             </svg>
                         </div>
-                        <div class="hy-question-value text-green-600 text-sm font-medium"></div>
+                        <div class="<?php echo $unique_id; ?>_question_value text-green-600 text-sm font-medium"></div>
                     </div>
                 </div>
 
@@ -219,15 +221,14 @@ function hy_multi_form($atts) {
             <div class="flex gap-4">
                 <button 
                     type="button" 
-                    class="hy-prev-btn flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-4 px-6 rounded-xl transition-all duration-300 cursor-pointer"
-                    data-form="<?php echo $form_id; ?>"
+                    class="<?php echo $unique_id; ?>_prev_btn flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-4 px-6 rounded-xl transition-all duration-300"
                 >
                     Previous
                 </button>
                 <button 
                     type="submit" 
-                    id="<?php echo $form_id; ?>_submit_btn"
-                    class="flex-1 bg-light-green hover:bg-lime-500 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 transform cursor-pointer"
+                    id="<?php echo $unique_id; ?>_submit_btn"
+                    class="flex-1 bg-green-500 hover:bg-green-600 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-105"
                 >
                     Submit
                 </button>
@@ -235,14 +236,14 @@ function hy_multi_form($atts) {
         </div>
 
         <!-- Off-canvas Panel for Question Options -->
-        <div id="<?php echo $form_id; ?>_off_canvas" class="absolute inset-0 z-50 hidden rounded-3xl overflow-hidden">
+        <div id="<?php echo $unique_id; ?>_off_canvas" class="absolute inset-0 z-50 hidden rounded-3xl overflow-hidden">
             <!-- Panel -->
-            <div class="hy-off-canvas-panel absolute right-0 top-0 h-full w-full bg-white shadow-xl transform translate-x-full transition-transform duration-300 ease-in-out rounded-3xl">
+            <div class="<?php echo $unique_id; ?>_off_canvas_panel absolute right-0 top-0 h-full w-full bg-white shadow-xl transform translate-x-full transition-transform duration-300 ease-in-out rounded-3xl">
                 <div class="flex flex-col h-full">
                     <!-- Header -->
                     <div class="flex justify-between items-center p-6 border-b border-gray-200">
-                        <h3 class="hy-off-canvas-title text-lg font-semibold text-gray-900"></h3>
-                        <button type="button" onclick="closeOffCanvas('<?php echo $form_id; ?>')" class="text-gray-400 hover:text-gray-600">
+                        <h3 class="<?php echo $unique_id; ?>_off_canvas_title text-lg font-semibold text-gray-900"></h3>
+                        <button type="button" onclick="closeOffCanvas('<?php echo $unique_id; ?>')" class="text-gray-400 hover:text-gray-600">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                             </svg>
@@ -251,34 +252,25 @@ function hy_multi_form($atts) {
                     
                     <!-- Content -->
                     <div class="flex-1 overflow-y-auto p-6">
-                        <div id="<?php echo $form_id; ?>_off_canvas_content">
+                        <div id="<?php echo $unique_id; ?>_off_canvas_content">
                             <!-- Dynamic content will be inserted here -->
                         </div>
                     </div>
                     
-                    <!-- Footer -->
-                    <div class="p-6 border-t border-gray-200">
-                        <button 
-                            type="button" 
-                            onclick="closeOffCanvas('<?php echo $form_id; ?>')"
-                            class="w-full bg-light-green hover:bg-lime-500 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 cursor-pointer"
-                        >
-                            Save
-                        </button>
-                    </div>
+
                 </div>
             </div>
         </div>
 
         <!-- Hidden form inputs for storing values -->
-        <input type="hidden" name="sell_speed" id="<?php echo $form_id; ?>_sell_speed_input" required>
-        <input type="hidden" name="ownership_duration" id="<?php echo $form_id; ?>_ownership_duration_input" required>
-        <input type="hidden" name="repairs_needed" id="<?php echo $form_id; ?>_repairs_needed_input" required>
-        <input type="hidden" name="selling_reason" id="<?php echo $form_id; ?>_selling_reason_input" required>
-        <textarea name="additional_notes" id="<?php echo $form_id; ?>_additional_notes_input" class="hidden"></textarea>
+        <input type="hidden" name="sell_speed" id="<?php echo $unique_id; ?>_sell_speed_input" required>
+        <input type="hidden" name="ownership_duration" id="<?php echo $unique_id; ?>_ownership_duration_input" required>
+        <input type="hidden" name="repairs_needed" id="<?php echo $unique_id; ?>_repairs_needed_input" required>
+        <input type="hidden" name="selling_reason" id="<?php echo $unique_id; ?>_selling_reason_input">
+        <textarea name="additional_notes" id="<?php echo $unique_id; ?>_additional_notes_input" class="hidden"></textarea>
 
         <!-- Success Message -->
-        <div class="hy-form-step-content hidden" id="<?php echo $form_id; ?>_success_message" data-form="<?php echo $form_id; ?>">
+        <div class="<?php echo $unique_id; ?>_form_step_content hidden" id="<?php echo $unique_id; ?>_success_message">
             <div class="text-center py-8">
                 <div class="w-16 h-16 mx-auto bg-green-100 rounded-full flex items-center justify-center mb-6">
                     <svg class="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -290,7 +282,7 @@ function hy_multi_form($atts) {
                 <div class="text-center">
                     <p class="text-gray-500 text-sm mb-2">Form will reset in:</p>
                     <div class="inline-flex items-center justify-center w-12 h-12 bg-gray-100 rounded-full">
-                        <span id="<?php echo $form_id; ?>_countdown_timer" class="text-lg font-bold text-gray-700">5</span>
+                        <span id="<?php echo $unique_id; ?>_countdown_timer" class="text-lg font-bold text-gray-700">5</span>
                     </div>
                 </div>
             </div>
@@ -302,8 +294,8 @@ function hy_multi_form($atts) {
 <script>
 // Create form instance class
 class HyMultiForm {
-    constructor(formId, shortcodeId) {
-        this.formId = formId;
+    constructor(uniqueId, shortcodeId) {
+        this.uniqueId = uniqueId;
         this.shortcodeId = shortcodeId;
         this.currentStep = 1;
         this.totalSteps = 4;
@@ -319,35 +311,36 @@ class HyMultiForm {
             "Property Info"
         ];
         
+        console.log('Creating form instance:', this.uniqueId);
         this.init();
     }
     
     init() {
-        console.log('Initializing form:', this.formId);
+        console.log('Initializing form:', this.uniqueId);
         
         // Check if form element exists
-        const formElement = document.getElementById(this.formId);
+        const formElement = document.getElementById(this.uniqueId);
         if (!formElement) {
-            console.error('Form element not found:', this.formId);
+            console.error('Form element not found:', this.uniqueId);
             // Retry after a short delay
             setTimeout(() => this.init(), 100);
             return;
         }
         
-        console.log('Form element found, proceeding with initialization:', this.formId);
+        console.log('Form element found, proceeding with initialization:', this.uniqueId);
         this.loadGoogleMapsAPI();
         this.updateStepDisplay();
         this.attachEventListeners();
         
-        console.log('Form initialization complete:', this.formId);
+        console.log('Form initialization complete:', this.uniqueId);
     }
     
     loadGoogleMapsAPI() {
-        console.log('Loading Google Maps API for form:', this.formId);
+        console.log('Loading Google Maps API for form:', this.uniqueId);
         
         if (!hy_ajax_object.google_api_key || hy_ajax_object.google_api_key === 'YOUR_GOOGLE_MAPS_API_KEY') {
-            console.warn('Google Maps API key not configured for form: ' + this.formId);
-            const loadingDiv = document.getElementById(this.formId + '_map_loading');
+            console.warn('Google Maps API key not configured for form: ' + this.uniqueId);
+            const loadingDiv = document.getElementById(this.uniqueId + '_map_loading');
             if (loadingDiv) {
                 loadingDiv.innerHTML = '<div class="text-center text-yellow-600"><div class="text-4xl mb-2">⚠️</div><div class="text-sm">API key not configured</div></div>';
             }
@@ -356,7 +349,7 @@ class HyMultiForm {
         
         // Check if Google Maps is already loaded
         if (typeof google !== 'undefined' && google.maps && google.maps.Geocoder) {
-            console.log('Google Maps already loaded, initializing for form:', this.formId);
+            console.log('Google Maps already loaded, initializing for form:', this.uniqueId);
             this.initGoogleMaps();
             return;
         }
@@ -379,7 +372,7 @@ class HyMultiForm {
         // Wait for Google Maps to load
         const checkGoogleMaps = () => {
             if (typeof google !== 'undefined' && google.maps && google.maps.Geocoder) {
-                console.log('Google Maps API loaded, initializing for form:', this.formId);
+                console.log('Google Maps API loaded, initializing for form:', this.uniqueId);
                 this.initGoogleMaps();
             } else {
                 setTimeout(checkGoogleMaps, 200);
@@ -391,31 +384,28 @@ class HyMultiForm {
     initGoogleMaps() {
         try {
             this.geocoder = new google.maps.Geocoder();
-            console.log('Google Maps Geocoder initialized for form: ' + this.formId);
+            console.log('Google Maps Geocoder initialized for form: ' + this.uniqueId);
         } catch (error) {
-            console.error('Error initializing Google Maps for form:', this.formId, error);
+            console.error('Error initializing Google Maps for form:', this.uniqueId, error);
         }
     }
     
     attachEventListeners() {
-        const form = document.getElementById(this.formId);
+        const form = document.getElementById(this.uniqueId);
         
         if (!form) {
-            console.error('Form not found:', this.formId);
+            console.error('Form not found:', this.uniqueId);
             return;
         }
 
         // Handle next buttons
         form.addEventListener('click', (e) => {
-            if (e.target.classList.contains('hy-next-btn')) {
-                const targetForm = e.target.getAttribute('data-form');
-                if (targetForm === this.formId) {
-                    e.preventDefault();
-                    console.log('Next button clicked for form:', this.formId);
-                    if (this.validateCurrentStep()) {
-                        if (this.currentStep < this.totalSteps) {
-                            this.nextStep();
-                        }
+            if (e.target.classList.contains(this.uniqueId + '_next_btn')) {
+                e.preventDefault();
+                console.log('Next button clicked for form:', this.uniqueId);
+                if (this.validateCurrentStep()) {
+                    if (this.currentStep < this.totalSteps) {
+                        this.nextStep();
                     }
                 }
             }
@@ -423,54 +413,54 @@ class HyMultiForm {
 
         // Handle previous buttons  
         form.addEventListener('click', (e) => {
-            if (e.target.classList.contains('hy-prev-btn')) {
-                const targetForm = e.target.getAttribute('data-form');
-                if (targetForm === this.formId) {
-                    e.preventDefault();
-                    console.log('Previous button clicked for form:', this.formId);
-                    if (this.currentStep > 1) {
-                        this.prevStep();
-                    }
+            if (e.target.classList.contains(this.uniqueId + '_prev_btn')) {
+                e.preventDefault();
+                console.log('Previous button clicked for form:', this.uniqueId);
+                if (this.currentStep > 1) {
+                    this.prevStep();
                 }
             }
         });
 
         // Handle expandable question clicks
         form.addEventListener('click', (e) => {
-            const questionCard = e.target.closest('.hy-question-card');
+            const questionCard = e.target.closest('.' + this.uniqueId + '_question_card');
             if (questionCard) {
-                const targetForm = questionCard.getAttribute('data-form');
-                if (targetForm === this.formId) {
-                    const questionType = questionCard.getAttribute('data-question');
-                    console.log('Question card clicked for form:', this.formId, 'question:', questionType);
-                    this.openOffCanvas(questionType);
-                }
+                e.preventDefault();
+                const questionType = questionCard.getAttribute('data-question');
+                console.log('Question card clicked for form:', this.uniqueId, 'question:', questionType);
+                this.openOffCanvas(questionType);
             }
         });
 
-        // Handle radio option selection
+        // Handle radio option selection in off-canvas
         form.addEventListener('click', (e) => {
-            const radioOption = e.target.closest('.hy-off-canvas-radio-option');
-            if (radioOption && form.contains(radioOption)) {
+            const radioOption = e.target.closest('.' + this.uniqueId + '_off_canvas_radio_option');
+            if (radioOption) {
+                e.preventDefault();
                 const radio = radioOption.querySelector('input[type="radio"]');
                 if (radio) {
                     const container = radioOption.querySelector('div');
-                    const questionType = radio.name.replace('_temp', '');
                     
-                    console.log('Radio option selected for form:', this.formId);
+                    console.log('Radio option selected for form:', this.uniqueId);
                     
                     // Clear previous selections in this group
                     const groupName = radio.name;
-                    form.querySelectorAll(`input[name="${groupName}"]`).forEach(input => {
-                        const parentDiv = input.closest('.hy-off-canvas-radio-option').querySelector('div');
-                        if (parentDiv) {
-                            parentDiv.classList.remove('border-green-500', 'bg-green-50');
-                            parentDiv.classList.add('border-gray-200');
-                        }
-                        const span = input.closest('.hy-off-canvas-radio-option').querySelector('span');
-                        if (span) {
-                            span.classList.remove('text-green-600', 'font-semibold');
-                            span.classList.add('text-gray-700');
+                    const allOptionsInGroup = form.querySelectorAll(`input[name="${groupName}"]`);
+                    allOptionsInGroup.forEach(input => {
+                        const parentOption = input.closest('.' + this.uniqueId + '_off_canvas_radio_option');
+                        if (parentOption) {
+                            const parentDiv = parentOption.querySelector('div');
+                            const span = parentOption.querySelector('span');
+                            if (parentDiv) {
+                                parentDiv.classList.remove('border-green-500', 'bg-green-50');
+                                parentDiv.classList.add('border-gray-200');
+                            }
+                            if (span) {
+                                span.classList.remove('text-green-600', 'font-semibold');
+                                span.classList.add('text-gray-700');
+                            }
+                            input.checked = false;
                         }
                     });
                     
@@ -485,24 +475,39 @@ class HyMultiForm {
                         span.classList.remove('text-gray-700');
                         span.classList.add('text-green-600', 'font-semibold');
                     }
+                    
+                    // Auto-save the selection and close after a short delay
+                    setTimeout(() => {
+                        this.saveOffCanvasSelection();
+                        this.closeOffCanvas();
+                    }, 500);
                 }
             }
         });
 
         // Handle save notes button
         form.addEventListener('click', (e) => {
-            if (e.target.classList.contains('hy-save-notes')) {
+            if (e.target.classList.contains(this.uniqueId + '_save_notes')) {
                 e.preventDefault();
                 const textarea = e.target.previousElementSibling;
-                if (textarea && textarea.value.trim()) {
+                if (textarea) {
+                    // Save the notes
+                    this.saveOffCanvasSelection();
+                    
+                    // Show saved feedback
                     e.target.textContent = 'Saved!';
-                    e.target.classList.remove('bg-light-green', 'hover:bg-lime-500');
+                    e.target.classList.remove('bg-green-500', 'hover:bg-green-600');
                     e.target.classList.add('bg-green-600');
+                    
                     setTimeout(() => {
-                        e.target.textContent = 'Save';
-                        e.target.classList.remove('bg-green-600');
-                        e.target.classList.add('bg-light-green', 'hover:bg-lime-500');
-                    }, 1500);
+                        this.closeOffCanvas();
+                        // Reset button text for next time
+                        setTimeout(() => {
+                            e.target.textContent = 'Save Notes';
+                            e.target.classList.remove('bg-green-600');
+                            e.target.classList.add('bg-green-500', 'hover:bg-green-600');
+                        }, 300);
+                    }, 800);
                 }
             }
         });
@@ -510,11 +515,11 @@ class HyMultiForm {
         // Handle form submission
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            console.log('Form submitted:', this.formId);
+            console.log('Form submitted:', this.uniqueId);
             this.handleSubmit(e);
         });
         
-        console.log('Event listeners attached for form:', this.formId);
+        console.log('Event listeners attached for form:', this.uniqueId);
     }
     
     nextStep() {
@@ -523,8 +528,8 @@ class HyMultiForm {
         
         // Special handling for step 2 (property confirmation with map)
         if (this.currentStep === 2) {
-            const address = document.getElementById(this.formId + '_property_address').value;
-            const displayAddress = document.querySelector(`[data-form="${this.formId}"].hy-display-address`);
+            const address = document.getElementById(this.uniqueId + '_property_address').value;
+            const displayAddress = document.querySelector('.' + this.uniqueId + '_display_address');
             if (displayAddress) {
                 displayAddress.textContent = address;
             }
@@ -532,7 +537,7 @@ class HyMultiForm {
         }
         
         // Keep successful validation border colors when moving forward
-        const previousStepElement = document.querySelector(`[data-step="${this.currentStep - 1}"][data-form="${this.formId}"]`);
+        const previousStepElement = document.querySelector('.' + this.uniqueId + '_form_step_content[data-step="' + (this.currentStep - 1) + '"]');
         if (previousStepElement) {
             const validInputs = previousStepElement.querySelectorAll('input[required]:not(.border-red-500), textarea[required]:not(.border-red-500)');
             validInputs.forEach(input => {
@@ -551,56 +556,56 @@ class HyMultiForm {
 
     updateStepDisplay() {
         // Update step content visibility
-        document.querySelectorAll(`[data-form="${this.formId}"].hy-form-step-content`).forEach(step => {
+        document.querySelectorAll('.' + this.uniqueId + '_form_step_content').forEach(step => {
             step.classList.add('hidden');
             step.classList.remove('active');
         });
         
-        const currentStepElement = document.querySelector(`[data-step="${this.currentStep}"][data-form="${this.formId}"]`);
+        const currentStepElement = document.querySelector('.' + this.uniqueId + '_form_step_content[data-step="' + this.currentStep + '"]');
         if (currentStepElement) {
             currentStepElement.classList.remove('hidden');
             currentStepElement.classList.add('active');
         }
 
         // Update progress bar (4 visual steps)
-        document.querySelectorAll(`[data-form="${this.formId}"].hy-form-step`).forEach((step, index) => {
+        document.querySelectorAll('.' + this.uniqueId + '_form_step').forEach((step, index) => {
             if (index === 0) {
                 // First step is always done and green
                 step.classList.remove('bg-gray-200');
-                step.classList.add('bg-light-green', 'done');
+                step.classList.add('bg-green-500', 'done');
             } else if (index < this.currentStep - 1) {
                 // Completed steps (excluding first which is always done)
                 step.classList.remove('bg-gray-200');
-                step.classList.add('bg-light-green', 'done');
+                step.classList.add('bg-green-500', 'done');
             } else if (index === this.currentStep - 1) {
                 // Current step
                 step.classList.remove('bg-gray-200', 'done');
-                step.classList.add('bg-light-green');
+                step.classList.add('bg-green-500');
             } else {
                 // Future steps
-                step.classList.remove('bg-light-green', 'done');
+                step.classList.remove('bg-green-500', 'done');
                 step.classList.add('bg-gray-200');
             }
         });
 
         // Update step counter and title
-        const currentStepSpan = document.querySelector(`[data-form="${this.formId}"].hy-current-step`);
-        const titleElement = document.querySelector(`[data-form="${this.formId}"].hy-form-title`);
+        const currentStepSpan = document.querySelector('.' + this.uniqueId + '_current_step');
+        const titleElement = document.querySelector('.' + this.uniqueId + '_form_title');
         
         if (currentStepSpan) currentStepSpan.textContent = this.currentStep;
         if (titleElement) titleElement.textContent = this.stepTitles[this.currentStep - 1];
     }
 
     validateCurrentStep() {
-        const currentStepElement = document.querySelector(`[data-step="${this.currentStep}"][data-form="${this.formId}"]`);
+        const currentStepElement = document.querySelector('.' + this.uniqueId + '_form_step_content[data-step="' + this.currentStep + '"]');
         
         if (!currentStepElement) {
-            console.error('Current step element not found for form:', this.formId, 'step:', this.currentStep);
+            console.error('Current step element not found for form:', this.uniqueId, 'step:', this.currentStep);
             return false;
         }
         
         let isValid = true;
-        console.log('Validating step', this.currentStep, 'for form:', this.formId);
+        console.log('Validating step', this.currentStep, 'for form:', this.uniqueId);
 
         // Validate required inputs
         const requiredInputs = currentStepElement.querySelectorAll('input[required], textarea[required]');
@@ -613,7 +618,7 @@ class HyMultiForm {
                 input.classList.remove('border-gray-200', 'border-green-500');
                 isValid = false;
                 
-                // Reset red border after 2 seconds (increased time)
+                // Reset red border after 2 seconds
                 setTimeout(() => {
                     input.classList.remove('border-red-500');
                     input.classList.add('border-gray-200');
@@ -629,12 +634,12 @@ class HyMultiForm {
         if (this.currentStep === 4) {
             const requiredQuestions = ['sell_speed', 'ownership_duration', 'repairs_needed'];
             requiredQuestions.forEach(questionType => {
-                const hiddenInput = document.getElementById(this.formId + '_' + questionType + '_input');
+                const hiddenInput = document.getElementById(this.uniqueId + '_' + questionType + '_input');
                 if (!hiddenInput || !hiddenInput.value) {
                     console.log('Missing required question:', questionType);
                     isValid = false;
                     // Highlight the question that needs attention
-                    const questionCard = document.querySelector(`[data-question="${questionType}"][data-form="${this.formId}"]`);
+                    const questionCard = document.querySelector('.' + this.uniqueId + '_question_card[data-question="' + questionType + '"]');
                     if (questionCard) {
                         questionCard.classList.add('border-red-500');
                         questionCard.classList.remove('border-gray-200');
@@ -652,24 +657,24 @@ class HyMultiForm {
         }
 
         if (!isValid) {
-            console.log('Validation failed for form:', this.formId);
+            console.log('Validation failed for form:', this.uniqueId);
             // Add shake animation
             currentStepElement.classList.add('animate-pulse');
             setTimeout(() => {
                 currentStepElement.classList.remove('animate-pulse');
             }, 500);
         } else {
-            console.log('Validation passed for form:', this.formId);
+            console.log('Validation passed for form:', this.uniqueId);
         }
 
         return isValid;
     }
 
     openOffCanvas(questionType) {
-        const offCanvas = document.getElementById(this.formId + '_off_canvas');
-        const panel = offCanvas.querySelector('.hy-off-canvas-panel');
-        const title = offCanvas.querySelector('.hy-off-canvas-title');
-        const content = document.getElementById(this.formId + '_off_canvas_content');
+        const offCanvas = document.getElementById(this.uniqueId + '_off_canvas');
+        const panel = offCanvas.querySelector('.' + this.uniqueId + '_off_canvas_panel');
+        const title = offCanvas.querySelector('.' + this.uniqueId + '_off_canvas_title');
+        const content = document.getElementById(this.uniqueId + '_off_canvas_content');
         
         // Set title and content based on question type
         const questionData = this.getQuestionData(questionType);
@@ -689,33 +694,40 @@ class HyMultiForm {
         offCanvas.setAttribute('data-current-question', questionType);
         
         // Pre-select current value if exists
-        const currentValue = document.getElementById(this.formId + '_' + questionType + '_input').value;
+        const currentValue = document.getElementById(this.uniqueId + '_' + questionType + '_input').value;
         if (currentValue) {
             const radio = content.querySelector(`input[value="${currentValue}"]`);
             if (radio) {
                 radio.checked = true;
-                const container = radio.closest('.hy-off-canvas-radio-option').querySelector('div');
-                container.classList.remove('border-gray-200');
-                container.classList.add('border-green-500', 'bg-green-50');
-                radio.closest('.hy-off-canvas-radio-option').querySelector('span').classList.remove('text-gray-700');
-                radio.closest('.hy-off-canvas-radio-option').querySelector('span').classList.add('text-green-600', 'font-semibold');
+                const radioOption = radio.closest('.' + this.uniqueId + '_off_canvas_radio_option');
+                if (radioOption) {
+                    const container = radioOption.querySelector('div');
+                    const span = radioOption.querySelector('span');
+                    if (container) {
+                        container.classList.remove('border-gray-200');
+                        container.classList.add('border-green-500', 'bg-green-50');
+                    }
+                    if (span) {
+                        span.classList.remove('text-gray-700');
+                        span.classList.add('text-green-600', 'font-semibold');
+                    }
+                }
             }
         }
         
         // For textarea, set current value
-        const textarea = content.querySelector('textarea');
-        if (textarea && currentValue) {
-            textarea.value = currentValue;
+        if (questionType === 'additional_notes') {
+            const textarea = content.querySelector('textarea');
+            const currentNotesValue = document.getElementById(this.uniqueId + '_additional_notes_input').value;
+            if (textarea && currentNotesValue) {
+                textarea.value = currentNotesValue;
+            }
         }
     }
 
     closeOffCanvas() {
-        const offCanvas = document.getElementById(this.formId + '_off_canvas');
-        const panel = offCanvas.querySelector('.hy-off-canvas-panel');
-        const questionType = offCanvas.getAttribute('data-current-question');
-        
-        // Save the selection before closing
-        this.saveOffCanvasSelection(questionType);
+        const offCanvas = document.getElementById(this.uniqueId + '_off_canvas');
+        const panel = offCanvas.querySelector('.' + this.uniqueId + '_off_canvas_panel');
         
         // Trigger slide-out animation
         panel.classList.remove('translate-x-0');
@@ -727,34 +739,43 @@ class HyMultiForm {
         }, 300);
     }
 
-    saveOffCanvasSelection(questionType) {
-        const content = document.getElementById(this.formId + '_off_canvas_content');
-        const hiddenInput = document.getElementById(this.formId + '_' + questionType + '_input');
-        const questionCard = document.querySelector(`[data-question="${questionType}"][data-form="${this.formId}"]`);
+    saveOffCanvasSelection() {
+        const offCanvas = document.getElementById(this.uniqueId + '_off_canvas');
+        const questionType = offCanvas.getAttribute('data-current-question');
+        
+        if (!questionType) {
+            console.error('No current question type found');
+            return;
+        }
+        
+        const content = document.getElementById(this.uniqueId + '_off_canvas_content');
+        const hiddenInput = document.getElementById(this.uniqueId + '_' + questionType + '_input');
+        const questionCard = document.querySelector('.' + this.uniqueId + '_question_card[data-question="' + questionType + '"]');
         
         if (!content || !hiddenInput || !questionCard) {
             console.error('Missing elements for saving off-canvas selection:', {
                 content: !!content,
                 hiddenInput: !!hiddenInput,
-                questionCard: !!questionCard
+                questionCard: !!questionCard,
+                questionType: questionType
             });
             return;
         }
         
-        const questionValue = questionCard.querySelector('.hy-question-value');
+        const questionValue = questionCard.querySelector('.' + this.uniqueId + '_question_value');
         if (!questionValue) {
             console.error('Question value element not found');
             return;
         }
         
-        console.log('Saving off-canvas selection for:', questionType, 'form:', this.formId);
+        console.log('Saving off-canvas selection for:', questionType, 'form:', this.uniqueId);
         
         if (questionType === 'additional_notes') {
             // Handle textarea
             const textarea = content.querySelector('textarea');
             if (textarea) {
                 hiddenInput.value = textarea.value;
-                questionValue.textContent = textarea.value ? 'Added' : '';
+                questionValue.textContent = textarea.value.trim() ? 'Added' : '';
                 console.log('Saved additional notes:', textarea.value);
             }
         } else {
@@ -762,39 +783,46 @@ class HyMultiForm {
             const selectedRadio = content.querySelector('input[type="radio"]:checked');
             if (selectedRadio) {
                 hiddenInput.value = selectedRadio.value;
-                const selectedOption = selectedRadio.closest('.hy-off-canvas-radio-option');
+                const selectedOption = selectedRadio.closest('.' + this.uniqueId + '_off_canvas_radio_option');
                 const selectedText = selectedOption ? selectedOption.querySelector('span').textContent : selectedRadio.value;
                 questionValue.textContent = selectedText;
+                
+                // Mark question card as completed
+                questionCard.classList.remove('border-gray-200');
+                questionCard.classList.add('border-green-500', 'bg-green-50', 'completed');
+                
                 console.log('Saved radio selection:', selectedRadio.value, 'text:', selectedText);
             }
         }
     }
 
     getQuestionData(questionType) {
+        const uniqueClass = this.uniqueId + '_off_canvas_radio_option';
+        
         const questionData = {
             sell_speed: {
                 title: 'How fast do you want to sell?',
                 content: `
                     <div class="space-y-3">
-                        <label class="hy-off-canvas-radio-option block">
+                        <label class="${uniqueClass} block">
                             <input type="radio" name="sell_speed_temp" value="asap" class="hidden">
                             <div class="border border-gray-200 rounded-lg p-4 cursor-pointer hover:border-green-500 hover:bg-green-50 transition-colors">
                                 <span class="text-gray-700 font-medium">ASAP</span>
                             </div>
                         </label>
-                        <label class="hy-off-canvas-radio-option block">
+                        <label class="${uniqueClass} block">
                             <input type="radio" name="sell_speed_temp" value="1-2_months" class="hidden">
                             <div class="border border-gray-200 rounded-lg p-4 cursor-pointer hover:border-green-500 hover:bg-green-50 transition-colors">
                                 <span class="text-gray-700 font-medium">1-2 Months</span>
                             </div>
                         </label>
-                        <label class="hy-off-canvas-radio-option block">
+                        <label class="${uniqueClass} block">
                             <input type="radio" name="sell_speed_temp" value="3-6_months" class="hidden">
                             <div class="border border-gray-200 rounded-lg p-4 cursor-pointer hover:border-green-500 hover:bg-green-50 transition-colors">
                                 <span class="text-gray-700 font-medium">3-6 Months</span>
                             </div>
                         </label>
-                        <label class="hy-off-canvas-radio-option block">
+                        <label class="${uniqueClass} block">
                             <input type="radio" name="sell_speed_temp" value="6_plus_months" class="hidden">
                             <div class="border border-gray-200 rounded-lg p-4 cursor-pointer hover:border-green-500 hover:bg-green-50 transition-colors">
                                 <span class="text-gray-700 font-medium">6+ Months</span>
@@ -807,16 +835,28 @@ class HyMultiForm {
                 title: 'How long have you owned it?',
                 content: `
                     <div class="space-y-3">
-                        <label class="hy-off-canvas-radio-option block">
+                        <label class="${uniqueClass} block">
                             <input type="radio" name="ownership_duration_temp" value="0-5_years" class="hidden">
                             <div class="border border-gray-200 rounded-lg p-4 cursor-pointer hover:border-green-500 hover:bg-green-50 transition-colors">
                                 <span class="text-gray-700 font-medium">0 - 5 Years</span>
                             </div>
                         </label>
-                        <label class="hy-off-canvas-radio-option block">
+                        <label class="${uniqueClass} block">
                             <input type="radio" name="ownership_duration_temp" value="5-15_years" class="hidden">
                             <div class="border border-gray-200 rounded-lg p-4 cursor-pointer hover:border-green-500 hover:bg-green-50 transition-colors">
                                 <span class="text-gray-700 font-medium">5 - 15 Years</span>
+                            </div>
+                        </label>
+                        <label class="${uniqueClass} block">
+                            <input type="radio" name="ownership_duration_temp" value="15-25_years" class="hidden">
+                            <div class="border border-gray-200 rounded-lg p-4 cursor-pointer hover:border-green-500 hover:bg-green-50 transition-colors">
+                                <span class="text-gray-700 font-medium">15 - 25 Years</span>
+                            </div>
+                        </label>
+                        <label class="${uniqueClass} block">
+                            <input type="radio" name="ownership_duration_temp" value="25_plus_years" class="hidden">
+                            <div class="border border-gray-200 rounded-lg p-4 cursor-pointer hover:border-green-500 hover:bg-green-50 transition-colors">
+                                <span class="text-gray-700 font-medium">25+ Years</span>
                             </div>
                         </label>
                     </div>
@@ -826,28 +866,28 @@ class HyMultiForm {
                 title: 'What kind of Repairs/Maintenance does the property need?',
                 content: `
                     <div class="space-y-3">
-                        <label class="hy-off-canvas-radio-option block">
+                        <label class="${uniqueClass} block">
                             <input type="radio" name="repairs_needed_temp" value="full_gut" class="hidden">
                             <div class="border border-gray-200 rounded-lg p-4 cursor-pointer hover:border-green-500 hover:bg-green-50 transition-colors">
-                                <span class="text-gray-700 font-medium">$$ | Full Gut - Everything</span>
+                                <span class="text-gray-700 font-medium">$$$ | Full Gut - Everything</span>
                             </div>
                         </label>
-                        <label class="hy-off-canvas-radio-option block">
+                        <label class="${uniqueClass} block">
                             <input type="radio" name="repairs_needed_temp" value="remodel" class="hidden">
                             <div class="border border-gray-200 rounded-lg p-4 cursor-pointer hover:border-green-500 hover:bg-green-50 transition-colors">
                                 <span class="text-gray-700 font-medium">$$ | Remodel - Kitchen, Bathrooms, Roof</span>
                             </div>
                         </label>
-                        <label class="hy-off-canvas-radio-option block">
+                        <label class="${uniqueClass} block">
                             <input type="radio" name="repairs_needed_temp" value="flooring_paint" class="hidden">
                             <div class="border border-gray-200 rounded-lg p-4 cursor-pointer hover:border-green-500 hover:bg-green-50 transition-colors">
                                 <span class="text-gray-700 font-medium">$ | Flooring & Paint</span>
                             </div>
                         </label>
-                        <label class="hy-off-canvas-radio-option block">
+                        <label class="${uniqueClass} block">
                             <input type="radio" name="repairs_needed_temp" value="tv_ready" class="hidden">
                             <div class="border border-gray-200 rounded-lg p-4 cursor-pointer hover:border-green-500 hover:bg-green-50 transition-colors">
-                                <span class="text-gray-700 font-medium">$ | None - TV Commercial Ready</span>
+                                <span class="text-gray-700 font-medium">None - TV Commercial Ready</span>
                             </div>
                         </label>
                     </div>
@@ -858,9 +898,16 @@ class HyMultiForm {
                 content: `
                     <div>
                         <textarea 
-                            placeholder="Tell us more about your property..."
+                            id="${this.uniqueId}_notes_textarea"
+                            placeholder="Tell us more about your property, timeline, or any specific requirements..."
                             class="w-full h-64 px-4 py-3 border border-gray-200 rounded-lg focus:border-green-500 focus:outline-none transition-colors text-gray-900 placeholder-gray-400 resize-none"
                         ></textarea>
+                        <button 
+                            type="button" 
+                            class="${this.uniqueId}_save_notes w-full mt-4 bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300"
+                        >
+                            Save Notes
+                        </button>
                     </div>
                 `
             }
@@ -870,9 +917,9 @@ class HyMultiForm {
     }
 
     loadMapForAddress(address) {
-        const mapContainer = document.getElementById(this.formId + '_google_map');
-        const loadingDiv = document.getElementById(this.formId + '_map_loading');
-        const errorDiv = document.getElementById(this.formId + '_map_error');
+        const mapContainer = document.getElementById(this.uniqueId + '_google_map');
+        const loadingDiv = document.getElementById(this.uniqueId + '_map_loading');
+        const errorDiv = document.getElementById(this.uniqueId + '_map_error');
         
         // Show loading state
         loadingDiv.classList.remove('hidden');
@@ -958,7 +1005,7 @@ class HyMultiForm {
         formData.append('form_id', this.shortcodeId);
         
         // Get all form values
-        const inputs = document.querySelectorAll(`#${this.formId} input:not([name$="_temp"]), #${this.formId} textarea`);
+        const inputs = document.querySelectorAll(`#${this.uniqueId} input:not([name$="_temp"]), #${this.uniqueId} textarea`);
         inputs.forEach(input => {
             if (input.type === 'radio' && input.checked) {
                 formData.append(input.name, input.value);
@@ -992,22 +1039,22 @@ class HyMultiForm {
     }
 
     showSuccess() {
-        document.querySelectorAll(`[data-form="${this.formId}"].hy-form-step-content`).forEach(step => {
+        document.querySelectorAll('.' + this.uniqueId + '_form_step_content').forEach(step => {
             step.classList.add('hidden');
         });
-        document.getElementById(this.formId + '_success_message').classList.remove('hidden');
+        document.getElementById(this.uniqueId + '_success_message').classList.remove('hidden');
         
         // Update header
-        const titleElement = document.querySelector(`[data-form="${this.formId}"].hy-form-title`);
-        const currentStepSpan = document.querySelector(`[data-form="${this.formId}"].hy-current-step`);
+        const titleElement = document.querySelector('.' + this.uniqueId + '_form_title');
+        const currentStepSpan = document.querySelector('.' + this.uniqueId + '_current_step');
         
         if (titleElement) titleElement.textContent = 'Form Submitted';
         if (currentStepSpan) currentStepSpan.textContent = '✓';
         
         // Complete all progress steps
-        document.querySelectorAll(`[data-form="${this.formId}"].hy-form-step`).forEach((step, index) => {
+        document.querySelectorAll('.' + this.uniqueId + '_form_step').forEach((step, index) => {
             step.classList.remove('bg-gray-200');
-            step.classList.add('bg-light-green');
+            step.classList.add('bg-green-500');
             if (index === 0) {
                 step.classList.add('done'); // First step always done
             } else {
@@ -1021,7 +1068,7 @@ class HyMultiForm {
 
     startCountdownTimer() {
         let countdown = 5;
-        const timerElement = document.getElementById(this.formId + '_countdown_timer');
+        const timerElement = document.getElementById(this.uniqueId + '_countdown_timer');
         
         // Clear any existing timer
         if (this.countdownInterval) {
@@ -1049,45 +1096,45 @@ class HyMultiForm {
         this.currentStep = 1;
         
         // Clear all form inputs
-        document.getElementById(this.formId).reset();
+        document.getElementById(this.uniqueId).reset();
         
         // Clear hidden inputs
-        document.querySelectorAll(`#${this.formId} input[id$="_input"]`).forEach(input => {
+        document.querySelectorAll(`#${this.uniqueId} input[id$="_input"]`).forEach(input => {
             input.value = '';
         });
         
         // Clear question values
-        document.querySelectorAll(`#${this.formId} .hy-question-value`).forEach(el => {
+        document.querySelectorAll(`#${this.uniqueId} .${this.uniqueId}_question_value`).forEach(el => {
             el.textContent = '';
         });
         
         // Reset all input border colors to default
-        document.querySelectorAll(`#${this.formId} input, #${this.formId} textarea`).forEach(input => {
+        document.querySelectorAll(`#${this.uniqueId} input, #${this.uniqueId} textarea`).forEach(input => {
             input.classList.remove('border-red-500', 'border-green-500');
             input.classList.add('border-gray-200');
         });
         
         // Reset question card border colors
-        document.querySelectorAll(`#${this.formId} .hy-question-card`).forEach(card => {
-            card.classList.remove('border-red-500', 'border-green-500');
+        document.querySelectorAll(`#${this.uniqueId} .${this.uniqueId}_question_card`).forEach(card => {
+            card.classList.remove('border-red-500', 'border-green-500', 'bg-green-50', 'completed');
             card.classList.add('border-gray-200');
         });
         
         // Reset progress bar - first step always done, others reset
-        document.querySelectorAll(`[data-form="${this.formId}"].hy-form-step`).forEach((step, index) => {
+        document.querySelectorAll('.' + this.uniqueId + '_form_step').forEach((step, index) => {
             if (index === 0) {
                 // First step is always done and green
                 step.classList.remove('bg-gray-200');
-                step.classList.add('bg-light-green', 'done');
+                step.classList.add('bg-green-500', 'done');
             } else {
                 // Reset other steps
-                step.classList.remove('bg-light-green', 'done');
+                step.classList.remove('bg-green-500', 'done');
                 step.classList.add('bg-gray-200');
             }
         });
         
         // Reset submit button
-        const submitBtn = document.getElementById(this.formId + '_submit_btn');
+        const submitBtn = document.getElementById(this.uniqueId + '_submit_btn');
         if (submitBtn) {
             submitBtn.textContent = 'Submit';
             submitBtn.disabled = false;
@@ -1097,7 +1144,7 @@ class HyMultiForm {
         this.updateStepDisplay();
         
         // Reset countdown timer display
-        const timerElement = document.getElementById(this.formId + '_countdown_timer');
+        const timerElement = document.getElementById(this.uniqueId + '_countdown_timer');
         if (timerElement) timerElement.textContent = '5';
     }
 }
@@ -1113,8 +1160,8 @@ if (!window.hyFormData) {
 }
 
 // Store this form's data for later initialization
-window.hyFormData['<?php echo $form_id; ?>'] = {
-    formId: '<?php echo $form_id; ?>',
+window.hyFormData['<?php echo $unique_id; ?>'] = {
+    uniqueId: '<?php echo $unique_id; ?>',
     shortcodeId: '<?php echo $atts['id']; ?>'
 };
 
@@ -1126,9 +1173,9 @@ if (!window.hyFormsInitialized) {
         // Wait a bit to ensure all shortcodes are processed
         setTimeout(function() {
             Object.values(window.hyFormData).forEach(formData => {
-                if (!window.hyFormInstances[formData.formId]) {
-                    window.hyFormInstances[formData.formId] = new HyMultiForm(formData.formId, formData.shortcodeId);
-                    console.log('Initialized form:', formData.formId);
+                if (!window.hyFormInstances[formData.uniqueId]) {
+                    window.hyFormInstances[formData.uniqueId] = new HyMultiForm(formData.uniqueId, formData.shortcodeId);
+                    console.log('Initialized form:', formData.uniqueId);
                 }
             });
             window.hyFormsInitialized = true;
@@ -1145,14 +1192,18 @@ window.initAllGoogleMaps = function() {
 };
 
 // Global functions for onclick handlers
-window.closeForm = function(formId) {
-    console.log('Form closed: ' + formId);
+window.closeForm = function(uniqueId) {
+    console.log('Form closed: ' + uniqueId);
     // Add your close form logic here
+    const container = document.getElementById(uniqueId + '_container');
+    if (container) {
+        container.style.display = 'none';
+    }
 };
 
-window.closeOffCanvas = function(formId) {
-    if (window.hyFormInstances[formId]) {
-        window.hyFormInstances[formId].closeOffCanvas();
+window.closeOffCanvas = function(uniqueId) {
+    if (window.hyFormInstances[uniqueId]) {
+        window.hyFormInstances[uniqueId].closeOffCanvas();
     }
 };
 </script>
@@ -1273,6 +1324,15 @@ function hy_cash_offer_settings_page() {
                 <li>Restrict the API key to your domain for security</li>
                 <li>Copy the API key and paste it above</li>
             </ol>
+            
+            <h3>How to Use</h3>
+            <p>Use the shortcode <code>[hy_multi_form id="unique_form_id"]</code> to display the form on any page or post.</p>
+            <p>Examples:</p>
+            <ul>
+                <li><code>[hy_multi_form id="homepage"]</code></li>
+                <li><code>[hy_multi_form id="sidebar"]</code></li>
+                <li><code>[hy_multi_form id="contact_page"]</code></li>
+            </ul>
         </div>
     </div>
     <?php
