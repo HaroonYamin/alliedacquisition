@@ -14,7 +14,7 @@
             endif;
         ?>
 
-        <div class="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-x-5 gap-y-10">
+        <div class="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-x-5 gap-y-12">
             <?php if( !empty($blogs) ) :
                 foreach( $blogs as $blog ): 
                     if( $blog ): ?>

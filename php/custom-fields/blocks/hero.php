@@ -7,9 +7,9 @@
     $shortcode = get_field('more')['shortcode'];
 ?>
 
-<section style="background: url(<?=  $bg_image; ?>) center center/ cover no-repeat;" class="h-780">
+<section style="background: url(<?=  $bg_image; ?>) center center/ cover no-repeat;" class="lg:h-780 pb-21 pt-38 lg:py-0">
     <div class="container mx-auto h-full px-5">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 h-full items-center">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-14 h-full items-center">
             <div class="block">
                 <?php 
                     if( $label ) {
