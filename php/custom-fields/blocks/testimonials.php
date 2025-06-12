@@ -10,8 +10,8 @@
             <div class="lg:col-span-4 md:col-span-5 col-span-12">
                 <?php
                     if( $heading ) {
-                        echo '<div class="max-w-sm">';
-                            heading_2( $heading );
+                        echo '<div class="max-w-sm mx-auto lg:mx-0">';
+                            heading_2( $heading, 'text-center lg:text-left' );
                         echo '</div>';
                     }
                 ?>
@@ -20,10 +20,10 @@
                     <button class="testimonials-right size-14 rounded-full bg-white flex items-center justify-center cursor-pointer hover:bg-light-green transition-colors"><?= get_svg( 'icon-right' ); ?></button>
                 </div>
             </div>
-            <div class="lg:col-span-1 hidden lg-block"></div>
+            <div class="lg:col-span-1 hidden lg:block"></div>
             <div class="md:col-span-7 col-span-12">
-                <div class="md:ml-15 sm:px-4 sm:overflow-hidden">
-                    <div class="swiper testimonial-swiper" style="overflow: visible !important;">
+                <div class="md:ml-15 sm:px-4 sm:overflow-hidden ">
+                    <div class="swiper testimonial-swiper" style="overflow: visible !important;">  
                         <div class="swiper-wrapper">
                             
                             <?php if( $testimonials ) :
