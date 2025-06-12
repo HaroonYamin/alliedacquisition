@@ -16,11 +16,6 @@ function hy_multi_form($atts) {
 <div class="bg-white rounded-3xl sm:py-8 sm:px-7 py-5 px-4 max-w-md mx-auto shadow-lg relative" id="<?php echo $unique_id; ?>_container">
     <div class="flex justify-between items-center mb-4">
         <h3 class="text-black text-2xl font-semibold">Get Cash Offer</h3>
-        <button type="button" class="text-gray-400 hover:text-gray-600" onclick="closeForm('<?php echo $unique_id; ?>')">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
-        </button>
     </div>
 
     <!-- Progress Bar -->
