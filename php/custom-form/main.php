@@ -13,7 +13,7 @@ function hy_multi_form($atts) {
     ob_start();
 ?>
 
-<div class="bg-white rounded-3xl py-8 px-7 max-w-md mx-auto shadow-lg relative" id="<?php echo $unique_id; ?>_container">
+<div class="bg-white rounded-3xl sm:py-8 sm:px-7 py-5 px-4 max-w-md mx-auto shadow-lg relative" id="<?php echo $unique_id; ?>_container">
     <div class="flex justify-between items-center mb-4">
         <h3 class="text-black text-2xl font-semibold">Get Cash Offer</h3>
         <button type="button" class="text-gray-400 hover:text-gray-600" onclick="closeForm('<?php echo $unique_id; ?>')">
@@ -46,7 +46,7 @@ function hy_multi_form($atts) {
 
     <!-- Step Header -->
     <div class="flex justify-between items-center mb-7">
-        <h5 class="<?php echo $unique_id; ?>_form_title text-lg font-semibold text-gray-900">What's your property address</h5>
+        <h5 class="<?php echo $unique_id; ?>_form_title text-lg font-semibold text-gray-900">Your Address</h5>
         <p class="text-gray-400 font-medium">Step <span class="<?php echo $unique_id; ?>_current_step">1</span> of 4</p>
     </div>
 
@@ -297,7 +297,7 @@ class HyMultiForm {
         this.countdownInterval = null;
         
         this.stepTitles = [
-            "What's your property address",
+            "Your Address",
             "Did we find your property?", 
             "Owner Info",
             "Property Info"
