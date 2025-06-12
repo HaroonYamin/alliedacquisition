@@ -25,7 +25,7 @@ function hy_multi_form($atts) {
 
     <!-- Progress Bar -->
     <div class="flex gap-1 mb-7">
-        <div class="h-1.5 w-1/4 <?php echo $unique_id; ?>_form_step done bg-green-500 rounded-full transition-all duration-300"></div>
+        <div class="h-1.5 w-1/4 <?php echo $unique_id; ?>_form_step done bg-light-green rounded-full transition-all duration-300"></div>
         <div class="h-1.5 w-1/4 <?php echo $unique_id; ?>_form_step bg-gray-200 rounded-full transition-all duration-300"></div>
         <div class="h-1.5 w-1/4 <?php echo $unique_id; ?>_form_step bg-gray-200 rounded-full transition-all duration-300"></div>
         <div class="h-1.5 w-1/4 <?php echo $unique_id; ?>_form_step bg-gray-200 rounded-full transition-all duration-300"></div>
@@ -34,7 +34,6 @@ function hy_multi_form($atts) {
     <style>
     .<?php echo $unique_id; ?>_form_step.done {
         opacity: 0.8;
-        transform: scale(1.05);
     }
     .<?php echo $unique_id; ?>_form_step {
         transition: all 0.3s ease;
@@ -67,8 +66,7 @@ function hy_multi_form($atts) {
             </div>
             <button 
                 type="button" 
-                class="<?php echo $unique_id; ?>_next_btn w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-105"
-            >
+                class="<?php echo $unique_id; ?>_next_btn w-full bg-light-green hover:bg-lime-500 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 transform cursor-pointer">
                 Next
             </button>
         </div>
@@ -97,14 +95,12 @@ function hy_multi_form($atts) {
             <div class="flex gap-4">
                 <button 
                     type="button" 
-                    class="<?php echo $unique_id; ?>_prev_btn flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-4 px-6 rounded-xl transition-all duration-300"
-                >
+                    class="<?php echo $unique_id; ?>_prev_btn flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-4 px-6 rounded-xl transition-all duration-300 cursor-pointer">
                     No
                 </button>
                 <button 
                     type="button" 
-                    class="<?php echo $unique_id; ?>_next_btn flex-1 bg-green-500 hover:bg-green-600 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300"
-                >
+                    class="<?php echo $unique_id; ?>_next_btn flex-1 bg-light-green hover:bg-lime-500 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 cursor-pointer">
                     Next
                 </button>
             </div>
@@ -147,14 +143,12 @@ function hy_multi_form($atts) {
             <div class="flex gap-4">
                 <button 
                     type="button" 
-                    class="<?php echo $unique_id; ?>_prev_btn flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-4 px-6 rounded-xl transition-all duration-300"
-                >
+                    class="<?php echo $unique_id; ?>_prev_btn flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-4 px-6 rounded-xl transition-all duration-300 cursor-pointer">
                     Previous
                 </button>
                 <button 
                     type="button" 
-                    class="<?php echo $unique_id; ?>_next_btn flex-1 bg-green-500 hover:bg-green-600 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300"
-                >
+                    class="<?php echo $unique_id; ?>_next_btn flex-1 bg-light-green hover:bg-lime-500 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 cursor-pointer">
                     Next
                 </button>
             </div>
@@ -221,15 +215,13 @@ function hy_multi_form($atts) {
             <div class="flex gap-4">
                 <button 
                     type="button" 
-                    class="<?php echo $unique_id; ?>_prev_btn flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-4 px-6 rounded-xl transition-all duration-300"
-                >
+                    class="<?php echo $unique_id; ?>_prev_btn flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-4 px-6 rounded-xl transition-all duration-300 cursor-pointer">
                     Previous
                 </button>
                 <button 
                     type="submit" 
                     id="<?php echo $unique_id; ?>_submit_btn"
-                    class="flex-1 bg-green-500 hover:bg-green-600 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-105"
-                >
+                    class="flex-1 bg-light-green hover:bg-lime-500 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 cursor-pointer transform">
                     Submit
                 </button>
             </div>
@@ -496,7 +488,7 @@ class HyMultiForm {
                     
                     // Show saved feedback
                     e.target.textContent = 'Saved!';
-                    e.target.classList.remove('bg-green-500', 'hover:bg-green-600');
+                    e.target.classList.remove('bg-light-green', 'hover:bg-lime-500');
                     e.target.classList.add('bg-green-600');
                     
                     setTimeout(() => {
@@ -505,7 +497,7 @@ class HyMultiForm {
                         setTimeout(() => {
                             e.target.textContent = 'Save Notes';
                             e.target.classList.remove('bg-green-600');
-                            e.target.classList.add('bg-green-500', 'hover:bg-green-600');
+                            e.target.classList.add('bg-light-green', 'hover:bg-lime-500');
                         }, 300);
                     }, 800);
                 }
@@ -572,18 +564,18 @@ class HyMultiForm {
             if (index === 0) {
                 // First step is always done and green
                 step.classList.remove('bg-gray-200');
-                step.classList.add('bg-green-500', 'done');
+                step.classList.add('bg-light-green', 'done');
             } else if (index < this.currentStep - 1) {
                 // Completed steps (excluding first which is always done)
                 step.classList.remove('bg-gray-200');
-                step.classList.add('bg-green-500', 'done');
+                step.classList.add('bg-light-green', 'done');
             } else if (index === this.currentStep - 1) {
                 // Current step
                 step.classList.remove('bg-gray-200', 'done');
-                step.classList.add('bg-green-500');
+                step.classList.add('bg-light-green');
             } else {
                 // Future steps
-                step.classList.remove('bg-green-500', 'done');
+                step.classList.remove('bg-light-green', 'done');
                 step.classList.add('bg-gray-200');
             }
         });
@@ -904,7 +896,7 @@ class HyMultiForm {
                         ></textarea>
                         <button 
                             type="button" 
-                            class="${this.uniqueId}_save_notes w-full mt-4 bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300"
+                            class="${this.uniqueId}_save_notes w-full mt-4 bg-light-green hover:bg-lime-500 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300"
                         >
                             Save Notes
                         </button>
@@ -1054,7 +1046,7 @@ class HyMultiForm {
         // Complete all progress steps
         document.querySelectorAll('.' + this.uniqueId + '_form_step').forEach((step, index) => {
             step.classList.remove('bg-gray-200');
-            step.classList.add('bg-green-500');
+            step.classList.add('bg-light-green');
             if (index === 0) {
                 step.classList.add('done'); // First step always done
             } else {
@@ -1125,10 +1117,10 @@ class HyMultiForm {
             if (index === 0) {
                 // First step is always done and green
                 step.classList.remove('bg-gray-200');
-                step.classList.add('bg-green-500', 'done');
+                step.classList.add('bg-light-green', 'done');
             } else {
                 // Reset other steps
-                step.classList.remove('bg-green-500', 'done');
+                step.classList.remove('bg-light-green', 'done');
                 step.classList.add('bg-gray-200');
             }
         });
