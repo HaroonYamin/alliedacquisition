@@ -96,7 +96,7 @@ function hy_multi_form($atts) {
             <button 
                 type="button" 
                 id="<?php echo $unique_id; ?>_next_step1"
-                class="<?php echo $unique_id; ?>_next_btn w-full bg-light-green hover:bg-lime-500 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 transform cursor-pointer opacity-50 cursor-not-allowed"
+                class="<?php echo $unique_id; ?>_next_btn w-full bg-light-green hover:bg-lime-500 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 transform cursor-pointer opacity-50"
                 disabled>
                 Next
             </button>
