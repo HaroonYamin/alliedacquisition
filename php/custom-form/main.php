@@ -127,7 +127,7 @@ function hy_multi_form($atts) {
                     </div>
                 </div>
             </div>
-            <div class="flex gap-4">
+            <div class="flex flex-col sm:flex-row gap-4">
                 <button type="button" class="<?php echo $unique_id; ?>_prev_btn flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-4 px-6 rounded-xl transition-all">
                     ← No, Go Back
                 </button>
@@ -146,7 +146,7 @@ function hy_multi_form($atts) {
                 <input type="tel" name="phone_number" placeholder="Phone Number" class="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:outline-none" required>
                 <input type="email" name="email_address" placeholder="Email Address" class="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:outline-none" required>
             </div>
-            <div class="flex gap-4">
+            <div class="flex flex-col sm:flex-row gap-4">
                 <button type="button" class="<?php echo $unique_id; ?>_prev_btn flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-4 px-6 rounded-xl">
                     ← Previous
                 </button>
@@ -171,7 +171,7 @@ function hy_multi_form($atts) {
                      <div class="p-4"><div class="flex justify-between items-center mb-2"><span class="text-gray-700 font-medium">Additional Notes</span><svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></div><div class="<?php echo $unique_id; ?>_question_value text-green-600 text-sm font-medium"></div></div>
                 </div>
             </div>
-            <div class="flex gap-4">
+            <div class="flex flex-col sm:flex-row gap-4">
                 <button type="button" class="<?php echo $unique_id; ?>_prev_btn flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-4 px-6 rounded-xl">
                     ← Previous
                 </button>
