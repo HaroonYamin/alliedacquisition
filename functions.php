@@ -50,11 +50,6 @@ require_once THEME_DIR . '/php/theme-settings/enqueue.php';
 require_once THEME_DIR . '/php/custom-fields/config.php';
 
 /*
- * Custom Form
- */
-require_once THEME_DIR . '/php/custom-form/main.php';
-
-/*
  * Custom Post Types
  */
 // require_once THEME_DIR . '/php/custom-post-types/config.php';
