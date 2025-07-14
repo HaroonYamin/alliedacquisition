@@ -96,5 +96,12 @@
         "description": "This is the sellers section of a webpage.",
         "template": "sellers",
         "keywords": "sellers, section, webpage"
+    },
+    {
+        "name": "editor",
+        "title": "Editor Section",
+        "description": "This is the editor section of a webpage.",
+        "template": "editor",
+        "keywords": "editor, section, webpage"
     }
 ]
