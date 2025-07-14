@@ -103,5 +103,12 @@
         "description": "This is the editor section of a webpage.",
         "template": "editor",
         "keywords": "editor, section, webpage"
+    },
+    {
+        "name": "testimonials-all",
+        "title": "Testimonials All Section",
+        "description": "This is the testimonials-all section of a webpage.",
+        "template": "testimonials-all",
+        "keywords": "testimonials, all, section, webpage"
     }
 ]

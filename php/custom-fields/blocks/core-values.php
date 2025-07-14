@@ -27,7 +27,7 @@
                             $title = $card['title'];
                             $paragraph = $card['paragraph']; ?>
 
-                            <div class="px-4 py-8 shadow-card rounded-xl h-min <?= $i === 1 ? 'mt-auto' : ''; ?>">
+                            <div class="px-4 py-8 bg-white shadow-card rounded-xl h-min <?= $i === 1 ? 'mt-auto' : ''; ?>">
                                 <?php
                                     if( $title ) {
                                         echo '<h4 class="font-medium text-2xl mb-4 text-green">' . $title . '</h4>';

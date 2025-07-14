@@ -29,7 +29,9 @@
                             <?php if( $testimonials ) :
                                 foreach( $testimonials as $single ) :
                                     if( $single ) :
-                                        $content = $single['content']; ?>
+                                        $content = $single['content'];
+                                        $block = $content['block'];
+                                        if( !$block ) { continue; } ?>
     
                                         <div class="swiper-slide my-7 shadow-card-2 rounded-3xl">
                                             <div class="py-8 px-7 flex flex-col h-full">
@@ -50,8 +52,7 @@
                                     <?php endif;
                                 endforeach;
                             endif; ?>
-    
-                    
+
                         </div>
                     </div>
                 </div>
