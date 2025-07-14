@@ -3,7 +3,7 @@
     $repeater = get_field('repeater', 'option');
 ?>
 
-<section class="md:my-section-lg my-12">
+<section class="md:my-24 my-12">
     <div class="container mx-auto px-6">
         <?php if( $heading ) {
             heading_2( $heading, 'text-center mx-auto' );
@@ -12,11 +12,6 @@
         echo '<div class="max-w-3xl mx-auto">';
             foreach( $repeater as $index => $item ): 
                 if( $item && isset($item['question']) && isset($item['answer']) ): 
-                    $front_page = $item['front_page'];
-
-                    if( !$front_page ) {
-                        continue;
-                    }
                     $question = $item['question'];
                     $answer = $item['answer'];
                     $unique_id = 'faq-' . $index; ?>

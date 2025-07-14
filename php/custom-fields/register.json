@@ -49,6 +49,13 @@
         "keywords": "faq, section, webpage"
     },
     {
+        "name": "faq-all",
+        "title": "FAQ All Section",
+        "description": "This is the faq-all section of a webpage.",
+        "template": "faq-all",
+        "keywords": "faq, all, section, webpage"
+    },
+    {
         "name": "form",
         "title": "Form Section",
         "description": "This is the form section of a webpage.",
