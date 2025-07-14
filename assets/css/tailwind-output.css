@@ -695,11 +695,17 @@
   .py-12 {
     padding-block: calc(var(--spacing) * 12);
   }
+  .pt-24 {
+    padding-top: calc(var(--spacing) * 24);
+  }
   .pt-38 {
     padding-top: calc(var(--spacing) * 38);
   }
   .pt-44 {
     padding-top: calc(var(--spacing) * 44);
+  }
+  .pt-\[78px\] {
+    padding-top: 78px;
   }
   .pb-16 {
     padding-bottom: calc(var(--spacing) * 16);
@@ -1089,6 +1095,11 @@
   .lg\:h-\[505px\] {
     @media (width >= 64rem) {
       height: 505px;
+    }
+  }
+  .lg\:h-\[585px\] {
+    @media (width >= 64rem) {
+      height: 585px;
     }
   }
   .lg\:w-2\/6 {
