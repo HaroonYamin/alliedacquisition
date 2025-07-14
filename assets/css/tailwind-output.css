@@ -45,6 +45,8 @@
     --font-weight-medium: 500;
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
+    --leading-tight: 1.25;
+    --leading-normal: 1.5;
     --radius-sm: 0.25rem;
     --radius-lg: 0.5rem;
     --radius-xl: 0.75rem;
@@ -290,6 +292,9 @@
   .mt-2 {
     margin-top: calc(var(--spacing) * 2);
   }
+  .mt-3 {
+    margin-top: calc(var(--spacing) * 3);
+  }
   .mt-4 {
     margin-top: calc(var(--spacing) * 4);
   }
@@ -382,6 +387,9 @@
   .h-75 {
     height: calc(var(--spacing) * 75);
   }
+  .h-auto {
+    height: auto;
+  }
   .h-cross {
     height: var(--height-cross);
   }
@@ -447,6 +455,12 @@
   }
   .max-w-48 {
     max-width: calc(var(--spacing) * 48);
+  }
+  .max-w-\[50px\] {
+    max-width: 50px;
+  }
+  .max-w-\[70px\] {
+    max-width: 70px;
   }
   .max-w-lg {
     max-width: var(--container-lg);
@@ -545,6 +559,9 @@
   }
   .gap-x-5 {
     column-gap: calc(var(--spacing) * 5);
+  }
+  .gap-x-6 {
+    column-gap: calc(var(--spacing) * 6);
   }
   .gap-x-8 {
     column-gap: calc(var(--spacing) * 8);
@@ -718,6 +735,14 @@
     font-size: var(--text-lg);
     line-height: var(--tw-leading, var(--text-lg--line-height));
   }
+  .text-lg\/2 {
+    font-size: var(--text-lg);
+    line-height: var(--leading-2);
+  }
+  .text-lg\/tight {
+    font-size: var(--text-lg);
+    line-height: var(--leading-tight);
+  }
   .text-sm {
     font-size: var(--text-sm);
     line-height: var(--tw-leading, var(--text-sm--line-height));
@@ -869,6 +894,11 @@
       width: fit-content;
     }
   }
+  .sm\:max-w-\[70px\] {
+    @media (width >= 40rem) {
+      max-width: 70px;
+    }
+  }
   .sm\:grid-cols-1 {
     @media (width >= 40rem) {
       grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -879,6 +909,11 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
+  .sm\:gap-x-6 {
+    @media (width >= 40rem) {
+      column-gap: calc(var(--spacing) * 6);
+    }
+  }
   .sm\:overflow-hidden {
     @media (width >= 40rem) {
       overflow: hidden;
@@ -887,6 +922,12 @@
   .sm\:px-4 {
     @media (width >= 40rem) {
       padding-inline: calc(var(--spacing) * 4);
+    }
+  }
+  .sm\:text-lg {
+    @media (width >= 40rem) {
+      font-size: var(--text-lg);
+      line-height: var(--tw-leading, var(--text-lg--line-height));
     }
   }
   .md\:col-span-5 {
@@ -1111,6 +1152,12 @@
     @media (width >= 64rem) {
       font-size: var(--text-lg);
       line-height: var(--tw-leading, var(--text-lg--line-height));
+    }
+  }
+  .lg\:text-lg\/normal {
+    @media (width >= 64rem) {
+      font-size: var(--text-lg);
+      line-height: var(--leading-normal);
     }
   }
   .lg\:text-xl {
