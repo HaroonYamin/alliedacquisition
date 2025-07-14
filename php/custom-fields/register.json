@@ -82,5 +82,12 @@
         "description": "This is the core values section of a webpage.",
         "template": "core-values",
         "keywords": "core, values, section, webpage"
+    },
+    {
+        "name": "sellers",
+        "title": "Sellers Section",
+        "description": "This is the sellers section of a webpage.",
+        "template": "sellers",
+        "keywords": "sellers, section, webpage"
     }
 ]

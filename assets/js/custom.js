@@ -5,6 +5,11 @@ jQuery(document).ready(function ($) {
         $(".mobile-menu").toggleClass("mobile-open");
         $("#toggle-menu").toggleClass("active");
     });
+
+    $(".hy-accordion-item").click(function () {
+        $(".hy-accordion-item").not(this).removeClass("active");
+        $(this).addClass("active");
+    });
 });
 
 const swiper = new Swiper(".testimonial-swiper", {

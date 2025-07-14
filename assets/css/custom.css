@@ -129,3 +129,26 @@ body {
 .hy-form-step.done {
     background-color: var(--color-light-green);
 }
+
+/* ACCORDION */
+.hy-accordion-item {
+    cursor: pointer;
+}
+.hy-accordion-item.active {
+    cursor: unset;
+}
+.hy-accordion-content {
+    max-height: 0 !important;
+    transition: all 1s ease;
+    overflow: hidden;
+}
+.hy-accordion-item.active .hy-accordion-content {
+    max-height: 200px !important;
+}
+.hy-accordion-bar {
+    background-color: var(--color-neutral-300);
+    transition: all 1s ease;
+}
+.hy-accordion-item.active .hy-accordion-bar {
+    background-color: var(--color-light-green);
+}

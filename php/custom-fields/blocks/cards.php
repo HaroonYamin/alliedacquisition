@@ -22,7 +22,7 @@
 
                             <?php heading_4( $card['title'] ); ?>
 
-                            <p class="max-w-sm text-xl text-gray-600"><?= $card['paragraph']; ?></p>
+                            <p class="max-w-sm lg:text-xl text-lg text-gray-600"><?= $card['paragraph']; ?></p>
                         </div>
                     <?php endif;
                 endforeach; ?>
