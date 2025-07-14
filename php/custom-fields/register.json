@@ -54,5 +54,33 @@
         "description": "This is the form section of a webpage.",
         "template": "form",
         "keywords": "form, section, webpage"
+    },
+    {
+        "name": "banner",
+        "title": "Banner Section",
+        "description": "This is the banner section of a webpage.",
+        "template": "banner",
+        "keywords": "banner, section, webpage"
+    },
+    {
+        "name": "about",
+        "title": "About Section",
+        "description": "This is the about section of a webpage.",
+        "template": "about",
+        "keywords": "about, section, webpage"
+    },
+    {
+        "name": "about-reverse",
+        "title": "About Reverse Section",
+        "description": "This is the about reverse section of a webpage.",
+        "template": "about-reverse",
+        "keywords": "about, reverse, section, webpage"
+    },
+    {
+        "name": "core-values",
+        "title": "Core Values Section",
+        "description": "This is the core values section of a webpage.",
+        "template": "core-values",
+        "keywords": "core, values, section, webpage"
     }
 ]
