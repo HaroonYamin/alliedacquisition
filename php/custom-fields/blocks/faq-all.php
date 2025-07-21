@@ -25,7 +25,9 @@
                             </div>
                         </button>
                         <div id="<?php echo $unique_id; ?>" class="accordion-content px-6">
-                            <p class="text-gray-600 mb-4"><?php echo wp_kses_post($answer); ?></p>
+                            <div class="text-gray-600 mb-4" id="faq-editor">
+                                <?php echo wp_kses_post($answer); ?>
+                            </div>
                         </div>
                     </div>
 
