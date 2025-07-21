@@ -152,3 +152,18 @@ body {
 .hy-accordion-item.active .hy-accordion-bar {
     background-color: var(--color-light-green);
 }
+
+#faq-editor ol,
+#faq-editor ul {
+    padding-left: 20px;
+    margin: 10px 0;
+}
+#faq-editor ol {
+    list-style: decimal;
+}
+#faq-editor li {
+    margin-bottom: 6px;
+}
+#faq-editor p {
+    margin: 10px 0;
+}
