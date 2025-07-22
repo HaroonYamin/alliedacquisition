@@ -10,6 +10,10 @@ jQuery(document).ready(function ($) {
         $(".hy-accordion-item").not(this).removeClass("active");
         $(this).addClass("active");
     });
+
+    window.leadMagnet = function () {
+        $("#hy-lead-magnet-section").fadeOut();
+    };
 });
 
 const swiper = new Swiper(".testimonial-swiper", {

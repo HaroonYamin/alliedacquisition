@@ -38,23 +38,43 @@ function blocks_from_json() {
 add_action('acf/init', 'blocks_from_json');
 
 if( function_exists('acf_add_options_page') ) {
-    acf_add_options_page([
+
+    // Parent Option Page
+    acf_add_options_page(array(
+        'page_title'    => 'Theme Settings',
+        'menu_title'    => 'Theme Settings',
+        'menu_slug'     => 'hy_theme_settings',
+        'capability'    => 'manage_options',
+        'icon_url'      => 'dashicons-admin-generic',
+        'position'      => 20,
+        'redirect'      => true,
+    ));
+
+    // Child: Testimonials
+    acf_add_options_sub_page(array(
         'page_title'    => 'Testimonials',
         'menu_title'    => 'Testimonials',
         'menu_slug'     => 'testimonials-options',
+        'parent_slug'   => 'hy_theme_settings',
         'capability'    => 'manage_options',
-        'position'      => 20,
-        'icon_url'      => 'dashicons-testimonial',
-        'redirect'      => false,
-    ]);
+    ));
 
-    acf_add_options_page([
+    // Child: Frequently Asked Questions
+    acf_add_options_sub_page(array(
         'page_title'    => 'Frequently Asked Questions',
         'menu_title'    => 'Frequently Asked Questions',
         'menu_slug'     => 'faq-options',
+        'parent_slug'   => 'hy_theme_settings',
         'capability'    => 'manage_options',
-        'position'      => 20,
-        'icon_url'      => 'dashicons-lightbulb',
-        'redirect'      => false,
-    ]);
+    ));
+
+     // Child: Lead Magnet
+    acf_add_options_sub_page(array(
+        'page_title'    => 'Lead Magnet',
+        'menu_title'    => 'Lead Magnet',
+        'menu_slug'     => 'lead-magnet-options',
+        'parent_slug'   => 'hy_theme_settings',
+        'capability'    => 'manage_options',
+    ));
 }
+

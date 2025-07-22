@@ -167,3 +167,74 @@ body {
 #faq-editor p {
     margin: 10px 0;
 }
+#hy-lead-magnet-wrapper br {
+    display: none;
+}
+#hy-lead-magnet-wrapper input[type="email"] {
+    border: 1px solid #c4c4c4;
+    padding: 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #535353;
+    margin-top: 10px;
+    width: 100%;
+}
+#hy-lead-magnet-wrapper > p:has(input[type="submit"]) {
+    margin-top: 10px;
+    position: relative;
+}
+#hy-lead-magnet-wrapper .wpcf7-spinner {
+    position: absolute;
+    top: 16px;
+    right: 0;
+    margin: 0 8px;
+    background-color: #fff;
+}
+#hy-lead-magnet-wrapper .wpcf7-spinner::before {
+    background-color: #222;
+}
+#hy-lead-magnet-wrapper input[type="submit"] {
+    background-color: var(--color-light-green);
+    padding: 16px;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    text-align: center;
+}
+#hy-lead-magnet-wrapper input[type="submit"]:hover,
+#hy-lead-magnet-wrapper input[type="submit"]:active {
+    background-color: var(--color-green);
+}
+form:has(#hy-lead-magnet-wrapper) .wpcf7-response-output {
+    margin: 10px 0 0 0;
+    font-size: 14px;
+    padding: 6px 10px 8px 10px;
+}
+#hy-lead-magnet-wrapper .wpcf7-not-valid-tip {
+    font-size: 14px;
+}
+/* Flashing */
+.flash-animation:hover img {
+    opacity: 1;
+    -webkit-animation: flash 1.5s;
+    animation: flash 1.5s;
+}
+@-webkit-keyframes flash {
+    0% {
+        opacity: 0.4;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes flash {
+    0% {
+        opacity: 0.4;
+    }
+    100% {
+        opacity: 1;
+    }
+}

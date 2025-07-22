@@ -4,9 +4,19 @@ function heading_2($title, $class = '') {
     echo '<h2 class="font-avenir text-green md:text-5xl text-3xl font-medium mb-9 md:max-w-xl max-w-sm leading-2 capitalize ' . $class . '">' . $title . '</h2>';
 }
 
+// Get Heading h3
+function heading_3($title, $class = '') {
+    echo '<h3 class="font-avenir text-green md:text-2xl text-2xl font-medium mb-7 md:max-w-xl max-w-sm leading-2 capitalize ' . $class . '">' . $title . '</h3>';
+}
+
 // Get Heading h4
 function heading_4($title, $class = '') {
-    echo '<h2 class="font-inter text-green text-xl font-medium mb-4 ' . $class . '">' . $title . '</h2>';
+    echo '<h4 class="font-inter text-green text-xl font-medium mb-4 ' . $class . '">' . $title . '</h4>';
+}
+
+// Get Heading h5
+function heading_5($title, $class = '') {
+    echo '<h5 class="font-inter text-black text-xl font-medium mb-4 ' . $class . '">' . $title . '</h5>';
 }
 
 // Get Button
