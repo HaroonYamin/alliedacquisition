@@ -232,4 +232,5 @@ form:has(#hy-lead-magnet-wrapper) .wpcf7-response-output {
 }
 .opacity-animation:hover .card-title {
     color: var(--color-green);
+    text-decoration: underline;
 }

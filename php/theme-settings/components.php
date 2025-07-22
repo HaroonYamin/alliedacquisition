@@ -71,7 +71,7 @@ function get_svg($icon_name, $class = '') {
 // Get Image
 function get_image($image, $size = 'medium', $wrap = '') {
     // Default classes
-    $wrapper_class = 'relative overflow-hidden ' . $wrap;
+    $wrapper_class = 'img-wrap relative overflow-hidden ' . $wrap;
     $skeleton_class = 'absolute inset-0 bg-gray-200 animate-pulse';
     $img_class = 'w-full h-full object-cover transition-opacity duration-300 opacity-0';
 

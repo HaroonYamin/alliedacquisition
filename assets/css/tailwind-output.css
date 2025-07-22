@@ -910,6 +910,9 @@
     --tw-duration: 300ms;
     transition-duration: 300ms;
   }
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
   .hover\:border-lime-500 {
     &:hover {
       @media (hover: hover) {
