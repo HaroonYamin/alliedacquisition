@@ -19,10 +19,12 @@
                 foreach( $blogs as $blog ): 
                     if( $blog ): ?>
                         <article>
-                            <a href="<?= get_the_permalink( $blog); ?>">
-                                <?= get_image( get_the_post_thumbnail_url( $blog ), 'medium', 'rounded-sm h-75 w-full object-cover' ); ?>
+                            <a href="<?= get_the_permalink( $blog); ?>" class="opacity-animation">
+                                <div class="bg-green overflow-hidden rounded-sm grid">
+                                    <?= get_image( get_the_post_thumbnail_url( $blog ), 'medium', 'h-75 w-full object-cover' ); ?>
+                                </div>
 
-                                <h3 class="text-2xl font-semibold mt-4"><?= get_the_title( $blog ); ?></h3>
+                                <h3 class="text-2xl font-semibold mt-4 card-title"><?= get_the_title( $blog ); ?></h3>
                                 <p class="text-gray-600 mt-2"><?= get_the_excerpt( $blog ); ?></p>
                             </a>
                         </article>
