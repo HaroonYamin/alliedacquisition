@@ -48,3 +48,23 @@ function svg_upload( $mime_types ) {
     return $mime_types;
 }
 add_filter( 'upload_mimes', 'svg_upload' );
+
+
+/*
+ * Add custom column to Media Library for PDFs
+ */
+add_filter('attachment_fields_to_edit', 'show_pdf_server_path_in_modal', 10, 2);
+function show_pdf_server_path_in_modal($form_fields, $post) {
+    // Only run for PDFs
+    if (get_post_mime_type($post) === 'application/pdf') {
+        $absolute_path = get_attached_file($post->ID);
+
+        $form_fields['cf7_file_path'] = array(
+            'label' => 'CF7 Mail Attachment Path',
+            'input' => 'html',
+            'html'  => '<code style="font-size:11px;display:block;word-break:break-all;">' . esc_html($absolute_path) . '</code><small>Copy this for Contact Form 7 attachments.</small>',
+        );
+    }
+
+    return $form_fields;
+}
