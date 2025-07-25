@@ -3,6 +3,7 @@
     $heading = $content['heading'];
     $image = $content['image'];
     $bullets = $content['bullets'];
+    $paragraph = $content['paragraph'];
 
     $buttons = get_field('buttons');
     $link = $buttons['link'];
@@ -25,6 +26,12 @@
                         <?php endif;
                     endforeach;
                 endif; ?>
+
+                <?php
+                    if( $paragraph ) {
+                        echo '<p class="text-lg text-neutral-600 mt-8">' . $paragraph . '</p>';
+                    }
+                ?>
 
                 <?php if( $link || $link_2 ) : ?>
                     <div class="flex flex-row flex-wrap gap-3 mt-10">
