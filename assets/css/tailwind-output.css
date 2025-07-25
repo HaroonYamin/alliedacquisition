@@ -263,6 +263,9 @@
   .left-1\/2 {
     left: calc(1/2 * 100%);
   }
+  .left-\[calc\(100\%-40px\)\] {
+    left: calc(100% - 40px);
+  }
   .z-1 {
     z-index: 1;
   }
@@ -350,6 +353,9 @@
   .mt-auto {
     margin-top: auto;
   }
+  .mr-0 {
+    margin-right: calc(var(--spacing) * 0);
+  }
   .-mb-banner {
     margin-bottom: calc(var(--margin-banner) * -1);
   }
@@ -373,6 +379,9 @@
   }
   .mb-9 {
     margin-bottom: calc(var(--spacing) * 9);
+  }
+  .ml-auto {
+    margin-left: auto;
   }
   .block {
     display: block;
