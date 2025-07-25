@@ -234,3 +234,6 @@ form:has(#hy-lead-magnet-wrapper) .wpcf7-response-output {
     color: var(--color-green);
     text-decoration: underline;
 }
+.my-svg-white path {
+    stroke: #fff;
+}
