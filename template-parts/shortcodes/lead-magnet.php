@@ -30,7 +30,7 @@
 
         <div class="bg-white sm:p-8 p-4 rounded-xl">
             <button class="float-right cursor-pointer opacity-50 hover:opacity-100 hidden sm:block" onclick="leadMagnet();"><?= get_svg('icon-cross', 'w-8 h-8'); ?></button>
-            <div class="flex gap-y-7 flex-wrap items-center sm:space-x-7">
+            <div class="flex gap-y-7 flex-wrap items-center sm:space-x-7 w-full">
                 <div class="sm:w-[calc(50%-14px)] w-full">
                     <?php
                         if( $image ) {
