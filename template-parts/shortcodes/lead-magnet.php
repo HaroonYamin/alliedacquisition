@@ -26,7 +26,7 @@
     <div id="hy-lead-magnet-bg" class="fixed top-0 left-0 w-screen h-screen pointer-events-none" onclick="leadMagnet();"></div>
     
     <div class="sm:max-w-4xl max-w-[380px] w-full px-5 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30">
-        <button class="float-right cursor-pointer opacity-50 hover:opacity-100 sm:hidden relative z-10 translate-y-0.5 -translate-x-0.5" onclick="leadMagnet();"><?= get_svg('icon-cross', 'w-8 h-8'); ?></button>
+        <button class="opacity-75 hover:opacity-100 sm:hidden absolute top-0 right-0 z-10 translate-y-0.5 -translate-x-0.5" onclick="leadMagnet();"><?= get_svg('icon-cross', 'w-8 h-8'); ?></button>
 
         <div class="bg-white sm:p-8 p-4 rounded-xl">
             <button class="float-right cursor-pointer opacity-50 hover:opacity-100 hidden sm:block" onclick="leadMagnet();"><?= get_svg('icon-cross', 'w-8 h-8'); ?></button>
