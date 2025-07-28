@@ -4,7 +4,8 @@
         return;
     }
 
-    $spacing = get_field('hy_lead_top_spacing', 'option') ?: 0;
+    $spacing_desktop = get_field('hy_lead_top_spacing', 'option')['desktop'] ?: 0;
+    $spacing_mobile = get_field('hy_lead_top_spacing', 'option')['mobile'] ?: 0;
     $group = get_field('hy_lead_image_group', 'option');
     $image = $group['image'];
     $content = $group['content'];
@@ -21,11 +22,15 @@
     }
 </style>
 
-<section class="absolute inset-0 z-20" id="hy-lead-magnet-section" data-spacing="<?= $spacing; ?>">
+<section class="absolute inset-0 z-20" id="hy-lead-magnet-section" data-spacing="<?= $spacing_desktop; ?>" data-mobile="<?= $spacing_mobile; ?>">
     <script>
         const leadSection = document.getElementById("hy-lead-magnet-section");
+        const mobileSpacing = leadSection.getAttribute("data-mobile");
         const sectionSpacing = leadSection.getAttribute("data-spacing");
-        if( sectionSpacing ) {
+
+        if (window.innerWidth < 768) {
+            leadSection.style.top = `${mobileSpacing}px`;
+        } else {
             leadSection.style.top = `${sectionSpacing}px`;
         }
     </script>
