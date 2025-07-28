@@ -6,6 +6,7 @@ body {
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 4;
     overflow: hidden;
+    text-overflow: ellipsis;
 }
 .custom-logo {
     height: 49px;
