@@ -11,5 +11,5 @@
 	<body <?php body_class(); ?>>
 		<?php wp_body_open(); ?>
 		<?php get_template_part( 'template-parts/header/main' ); ?>
-		<?php get_template_part( 'template-parts/shortcodes/lead-magnet' ); ?>
-		<?php get_template_part( 'template-parts/shortcodes/toggle' ); ?>
+		<?php get_template_part( 'template-parts/lead-magnet/lead-magnet' ); ?>
+		<?php get_template_part( 'template-parts/lead-magnet/toggle' ); ?>
