@@ -24,6 +24,17 @@ jQuery(document).ready(function ($) {
         $("#hy-lead-magnet-section").css("position", "fixed");
         $("#hy-lead-magnet-toggle").removeClass("active");
     };
+
+    // Testimonial Popup
+    const lastKey = $(".testimonial-last-key").data("last-key");
+    for (let i = 0; i <= lastKey; i++) {
+        $(`#tesimonial-${i}`).click(function () {
+            $(`#tesimonial-popup-${i}`).fadeIn();
+        });
+        $(`#testimonial-popup-close-${i}`).click(function () {
+            $(`#tesimonial-popup-${i}`).fadeOut();
+        });
+    }
 });
 
 document.addEventListener("scroll", function () {
@@ -47,8 +58,8 @@ document.addEventListener("scroll", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-    // Swiper
-    const swiper = new Swiper(".testimonial-swiper", {
+    // Testimonial Swiper
+    const swiperTestimonials = new Swiper(".testimonial-swiper", {
         speed: 400,
         spaceBetween: 24,
         loop: true,
