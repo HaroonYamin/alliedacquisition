@@ -216,6 +216,18 @@ form:has(#hy-lead-magnet-wrapper) .wpcf7-response-output {
 #hy-lead-magnet-wrapper .wpcf7-not-valid-tip {
     font-size: 14px;
 }
+#hy-lead-magnet-toggle {
+    opacity: 0;
+    appearance: none;
+    transform: translateX(40px);
+    transition: all 0.5s ease;
+}
+#hy-lead-magnet-toggle.active {
+    opacity: 1;
+    appearance: visible;
+    transform: translateX(0);
+}
+
 /* Flashing */
 .opacity-animation img {
     opacity: 1;
@@ -236,4 +248,8 @@ form:has(#hy-lead-magnet-wrapper) .wpcf7-response-output {
 }
 .my-svg-white path {
     stroke: #fff;
+}
+.writing-sideway {
+    writing-mode: sideways-lr;
+    text-orientation: mixed;
 }

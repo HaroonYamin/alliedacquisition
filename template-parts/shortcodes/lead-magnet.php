@@ -1,10 +1,10 @@
 <?php
     $enable = get_field('hy_lead_enable_this_feature', 'option');
-
-    if( !$enable ) {
+    if( !$enable && isset( $enable ) ) {
         return;
     }
 
+    $spacing = get_field('hy_lead_top_spacing', 'option') ?: 0;
     $group = get_field('hy_lead_image_group', 'option');
     $image = $group['image'];
     $content = $group['content'];
@@ -21,15 +21,26 @@
     }
 </style>
 
-<div class="relative">
-<section class="absolute inset-0 z-20" id="hy-lead-magnet-section">
+<section class="absolute inset-0 z-20" id="hy-lead-magnet-section" data-spacing="<?= $spacing; ?>">
+    <script>
+        const leadSection = document.getElementById("hy-lead-magnet-section");
+        const sectionSpacing = leadSection.getAttribute("data-spacing");
+        if( sectionSpacing ) {
+            leadSection.style.top = `${sectionSpacing}px`;
+        }
+    </script>
+
     <div id="hy-lead-magnet-bg" class="fixed top-0 left-0 w-screen h-screen pointer-events-none" onclick="leadMagnet();"></div>
     
-    <div class="sm:max-w-4xl max-w-[380px] w-full px-5 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30">
-        <button class="opacity-75 hover:opacity-100 sm:hidden relative left-[calc(100%-40px)]" onclick="leadMagnet();"><?= get_svg('icon-cross', 'w-8 h-8 my-svg-white'); ?></button>
+    <div class="sm:max-w-4xl max-w-[380px] w-full px-5 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30" id="hy-lead-magnet-content">
+        <button class="opacity-75 hover:opacity-100 sm:hidden relative left-[calc(100%-40px)]" onclick="leadMagnet();">
+            <?= get_svg('icon-cross', 'w-8 h-8 my-svg-white'); ?>
+        </button>
 
-        <div class="bg-white sm:p-8 p-4 rounded-xl">
-            <button class="float-right cursor-pointer opacity-50 hover:opacity-100 hidden sm:block" onclick="leadMagnet();"><?= get_svg('icon-cross', 'w-8 h-8'); ?></button>
+        <div class="bg-white sm:p-8 p-4 rounded-xl relative">
+            <button class="absolute top-2 right-2 cursor-pointer opacity-50 hover:opacity-100 hidden sm:block" onclick="leadMagnet();">
+                <?= get_svg('icon-cross', 'w-8 h-8'); ?>
+            </button>
             <div class="flex gap-y-7 flex-wrap items-center sm:space-x-7 w-full">
                 <div class="sm:w-[calc(50%-14px)] w-full">
                     <?php
@@ -65,4 +76,3 @@
         </div>
     </div>
 </section>
-</div>

@@ -52,4 +52,4 @@ require_once THEME_DIR . '/php/custom-fields/config.php';
 /*
  * Shortcodes
  */
-require_once THEME_DIR . '/php/theme-settings/shortcodes.php';
+// require_once THEME_DIR . '/php/theme-settings/shortcodes.php';
