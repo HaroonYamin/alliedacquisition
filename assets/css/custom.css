@@ -1,7 +1,12 @@
 body {
     font-family: var(--font-inter);
 }
-
+.truncate-4 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+}
 .custom-logo {
     height: 49px;
     width: auto;

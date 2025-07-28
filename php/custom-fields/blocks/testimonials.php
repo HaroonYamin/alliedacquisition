@@ -38,7 +38,10 @@
                                                 <?= get_image( $single['image'], 'medium', 'w-24 h-24 rounded-full mx-auto' ); ?>
 
                                                 <div class="flex-grow mt-13">
-                                                    <p class="text-center text-gray-600"><?= $content['feedback']; ?></p>
+                                                    <p class="text-center text-gray-600 truncate-4">
+                                                        <?= $content['feedback']; ?>
+                                                    </p>
+
                                                     <a href="#" class="text-light-green hover:text-green transition-colors text-sm font-semibold mt-2 block size-fit mx-auto">Read More</a>
                                                 </div>
 
