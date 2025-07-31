@@ -4,6 +4,16 @@
         return;
     }
 
+    $page = get_field('enable_in_the_pages', 'option');
+    if (!is_array($page)) {
+        return;
+    }
+
+    $current_id = get_queried_object_id();
+    if (!in_array($current_id, $page)) {
+        return;
+    }
+
     $spacing_desktop = get_field('hy_lead_top_spacing', 'option')['desktop'] ?: 0;
     $spacing_mobile = get_field('hy_lead_top_spacing', 'option')['mobile'] ?: 0;
     $group = get_field('hy_lead_image_group', 'option');
