@@ -273,6 +273,6 @@ form:has(#hy-lead-magnet-wrapper) .wpcf7-response-output {
 .about-editor strong {
     font-weight: 600;
 }
-.testimonial-editor p:not(:last-child) {
+/* .testimonial-editor p:not(:last-of-type) {
     margin-bottom: 16px;
-}
+} */
