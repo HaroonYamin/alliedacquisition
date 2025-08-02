@@ -56,9 +56,9 @@
                                 <?= get_image( $single['image'], 'full', 'w-32 h-32 rounded-full mx-auto' ); ?>
                             </div>
 
-                            <p class="text-center sm:text-xl text-gray-600">
+                            <div class="text-center sm:text-xl text-gray-600 testimonial-editor">
                                 <?= $content['feedback']; ?>
-                            </p>
+                            </div>
 
                             <div class="flex sm:flex-row flex-col items-center gap-y-3 justify-between sm:mt-24 mt-12">
                                 <div class="">
