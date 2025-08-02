@@ -45,9 +45,9 @@
                                                     <?= get_image( $single['image'], 'medium', 'w-24 h-24 rounded-full mx-auto' ); ?>
     
                                                     <div class="flex-grow mt-13">
-                                                        <p class="text-center text-gray-600 truncate-4">
+                                                        <div class="text-center text-gray-600 truncate-4 testimonial-editor">
                                                             <?= $content['feedback']; ?>
-                                                        </p>
+                                                        </div>
     
                                                         <button class="text-light-green hover:text-green cursor-pointer transition-colors text-sm font-semibold mt-2 block size-fit mx-auto" id="<?= 'tesimonial-' . $key; ?>">Read More</button>
                                                     </div>
@@ -91,9 +91,9 @@
                                 <?= get_image( $single['image'], 'full', 'w-32 h-32 rounded-full mx-auto' ); ?>
                             </div>
 
-                            <p class="text-center sm:text-xl text-gray-600">
+                            <div class="text-center sm:text-xl text-gray-600 testimonial-editor">
                                 <?= $content['feedback']; ?>
-                            </p>
+                            </div>
 
                             <div class="flex sm:flex-row flex-col items-center gap-y-3 justify-between sm:mt-24 mt-12">
                                 <div class="">
