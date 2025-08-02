@@ -265,7 +265,7 @@ form:has(#hy-lead-magnet-wrapper) .wpcf7-response-output {
     list-style: disc;
 }
 .about-editor ul li:not(:last-child) {
-    margin-bottom: 6px;
+    margin-bottom: 16px;
 }
 .about-editor p {
     margin: 10px 0;

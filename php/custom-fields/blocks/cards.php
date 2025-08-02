@@ -9,7 +9,7 @@
     $shadow = $card_shadow ? 'shadow-card border-gray-400' : 'border-gray-200 ';
 ?>
 
-<section class="md:mt-section md:mb-section-md my-12">
+<section class="md:mt-section md:mb-section-md my-12" id="<?= $card_shadow ? 'card-section-2' : 'card-section-1'; ?>">
     <div class="container mx-auto px-5">
         <?php heading_2( $heading, 'text-center mx-auto' ); ?>
 
