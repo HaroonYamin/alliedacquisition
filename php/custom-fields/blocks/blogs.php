@@ -20,7 +20,7 @@
                     if( $blog ): ?>
                         <article>
                             <a href="<?= get_the_permalink( $blog); ?>" class="opacity-animation">
-                                <div class="bg-green overflow-hidden rounded-sm grid">
+                                <div class="bg-green overflow-hidden rounded-3xl grid">
                                     <?= get_image( get_the_post_thumbnail_url( $blog ), 'medium', 'rounded-sm h-75 w-full object-cover' ); ?>
                                 </div>
 

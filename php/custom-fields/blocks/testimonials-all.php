@@ -21,11 +21,11 @@
                                 <?= get_image( $single['image'], 'medium', 'w-24 h-24 rounded-full mx-auto' ); ?>
 
                                 <div class="flex-grow mt-13">
-                                    <p class="text-center text-gray-600 truncate-4">
+                                    <div class="text-center text-gray-600 truncate-4">
                                         <?= $content['feedback']; ?>
-                                    </p>
+                                    </div>
 
-                                    <button class="text-light-green hover:text-green cursor-pointer transition-colors text-sm font-semibold mt-2 block size-fit mx-auto" id="<?= 'tesimonial-' . $key; ?>">Read More</button>
+                                    <button class="text-light-green hover:text-green cursor-pointer transition-colors text-sm font-semibold mt-2 block size-fit mx-auto testimonial-editor" id="<?= 'tesimonial-' . $key; ?>">Read More</button>
                                 </div>
 
                                 <div class="h-22 mt-1 flex flex-col justify-end">
@@ -63,7 +63,7 @@
                             <div class="flex sm:flex-row flex-col items-center gap-y-3 justify-between sm:mt-24 mt-12">
                                 <div class="">
                                     <h4 class="text-gray-600 font-semibold block size-fit sm:text-left text-center sm:mx-0 mx-auto"><?= $content['name']; ?></h4>
-                                    <p class="text-gray-600 mt-2 text-sm sm:text-left text-center sm:mx-0 mx-auto"><?= $content['description']; ?></p>
+                                    <div class="text-gray-600 mt-2 text-sm sm:text-left text-center sm:mx-0 mx-auto testimonial-editor"><?= $content['description']; ?></div>
                                 </div>
                                 <div>
                                     <?php
