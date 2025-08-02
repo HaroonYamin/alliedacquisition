@@ -25,7 +25,7 @@
                     }
 
                     if( $editor ) {
-                        echo '<div class="lg:text-xl text-lg text-neutral-800">' . $editor . '</div>';
+                        echo '<div class="lg:text-xl text-lg text-neutral-800 about-editor">' . $editor . '</div>';
                     }
                 ?>
 

@@ -1,6 +1,7 @@
 <?php
     $heading = get_field('heading');
     $paragraph = get_field('paragraph');
+    $link = get_field('button');
     $bg_image = get_field('bg_image');
 ?>
 
@@ -14,6 +15,11 @@
                     }
                     if( $paragraph ) {
                         echo '<p class="text-white md:text-xl text-lg max-w-sm">' . $paragraph . '</p>';
+                    }
+                    if( $link ) {
+                        echo '<div class="mt-5">';
+                            echo button_1($link['url'], $link['target'], $link['title']);
+                        echo '</div>';
                     }
                 ?> 
             </div>

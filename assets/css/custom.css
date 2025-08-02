@@ -259,3 +259,17 @@ form:has(#hy-lead-magnet-wrapper) .wpcf7-response-output {
     writing-mode: sideways-lr;
     text-orientation: mixed;
 }
+.about-editor ul {
+    padding-left: 20px;
+    margin: 10px 0;
+    list-style: disc;
+}
+.about-editor ul li:not(:last-child) {
+    margin-bottom: 6px;
+}
+.about-editor p {
+    margin: 10px 0;
+}
+.about-editor strong {
+    font-weight: 600;
+}
