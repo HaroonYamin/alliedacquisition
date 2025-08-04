@@ -110,5 +110,12 @@
         "description": "This is the testimonials-all section of a webpage.",
         "template": "testimonials-all",
         "keywords": "testimonials, all, section, webpage"
+    },
+    {
+        "name": "blogs-all",
+        "title": "Blogs All Section",
+        "description": "This is the blogs all section of a webpage.",
+        "template": "blogs-all",
+        "keywords": "blogs, all, section, webpage"
     }
 ]
