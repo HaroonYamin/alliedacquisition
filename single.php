@@ -1,79 +1,37 @@
-<?php
-/*
- * Single page
- * Author: Haroon Yamin
- * Author URL: https://www.linkedin.com/in/haroon-webdev/
-**/
-get_header();
+<?php 
+    get_header();
+
+    $id = get_queried_object_id();
 ?>
 
-<style>
-    .single-post-container {
-        width: 80%;
-        margin: 0 auto;
-        padding: 20px;
-    }
-    .single-post-title {
-        font-size: 36px;
-        font-weight: bold;
-        margin-bottom: 20px;
-        text-align: center;
-        color: #333;
-    }
-    .single-post-meta {
-        font-size: 14px;
-        text-align: center;
-        margin-bottom: 30px;
-        color: #888;
-    }
-    .single-post-thumbnail {
-        width: 100%;
-        height: auto;
-        margin-bottom: 30px;
-    }
-    .single-post-content {
-        font-size: 18px;
-        line-height: 1.6;
-        color: #555;
-    }
-    .single-post-content p {
-        margin-bottom: 20px;
-    }
-    .single-post-container img {
-        max-width: 100%;
-        height: auto;
-        display: block;
-        margin: 20px 0;
-    }
-    .single-post-footer {
-        margin-top: 40px;
-        text-align: center;
-    }
-</style>
-
 <main id="<?php echo get_post_field( 'post_name', get_post() ); ?>">
-    <div class="single-post-container">
-        <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-            <h1 class="single-post-title"><?php the_title(); ?></h1>
-            
-            <div class="single-post-meta">
-                Published on <?php echo get_the_date(); ?> | By <?php the_author(); ?>
-            </div>
+    <div class="bg-neutral-700 h-[106px] w-full"></div>
 
-            <?php if ( has_post_thumbnail() ) : ?>
-                <img class="single-post-thumbnail" src="<?php the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>">
-            <?php endif; ?>
-            
-            <div class="single-post-content">
-                <?php the_content(); ?>
+    <section class="md:my-24 mt-12 mb-24">
+        <div class="container mx-auto px-5">
+            <div class="grid grid-cols-12 gap-x-8 gap-y-12 items-center">
+                <div class="col-span-1 xl:block hidden lg:order-1"></div>
+                <div class="xl:col-span-5 lg:col-span-6 col-span-12 order-2">
+                    <?php
+                        if( get_post_field( 'post_title', $id ) ) {
+                            echo heading_2( get_post_field( 'post_title', $id ) );
+                        }
+                        if( get_post_field( 'post_excerpt', $id ) ) {
+                            echo '<div class="mt-6 text-xl max-w-[550px]">' . get_post_field( 'post_excerpt', $id ) . '</div>';
+                        }
+                    ?>
+                </div>
+                <div class="lg:col-span-6 col-span-12 lg:order-3 order-1">
+                    <?php 
+                        if( get_post_thumbnail_id( $id ) ) :
+                            echo get_image( get_post_thumbnail_id( $id ), 'full', 'w-full rounded-xl' );
+                        endif;
+                    ?>
+                </div>
             </div>
+        </div>
+    </section>
 
-            <div class="single-post-footer">
-                <?php comments_template(); ?>
-            </div>
-
-        <?php endwhile; endif; ?>
-    </div>
 </main>
 
 <?php get_footer(); ?>

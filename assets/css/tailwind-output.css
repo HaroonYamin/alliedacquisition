@@ -317,6 +317,9 @@
   .col-span-5 {
     grid-column: span 5 / span 5;
   }
+  .col-span-6 {
+    grid-column: span 6 / span 6;
+  }
   .col-span-12 {
     grid-column: span 12 / span 12;
   }
@@ -499,6 +502,12 @@
   .h-75 {
     height: calc(var(--spacing) * 75);
   }
+  .h-\[78px\] {
+    height: 78px;
+  }
+  .h-\[106px\] {
+    height: 106px;
+  }
   .h-\[200px\] {
     height: 200px;
   }
@@ -594,6 +603,9 @@
   }
   .max-w-\[400px\] {
     max-width: 400px;
+  }
+  .max-w-\[550px\] {
+    max-width: 550px;
   }
   .max-w-\[1200px\] {
     max-width: 1200px;
@@ -740,6 +752,9 @@
   }
   .gap-y-14 {
     row-gap: calc(var(--spacing) * 14);
+  }
+  .gap-y-24 {
+    row-gap: calc(var(--spacing) * 24);
   }
   .overflow-hidden {
     overflow: hidden;
@@ -1293,6 +1308,11 @@
       margin-left: calc(var(--spacing) * 15);
     }
   }
+  .md\:block {
+    @media (width >= 48rem) {
+      display: block;
+    }
+  }
   .md\:flex {
     @media (width >= 48rem) {
       display: flex;
@@ -1372,6 +1392,11 @@
       order: 2;
     }
   }
+  .lg\:order-3 {
+    @media (width >= 64rem) {
+      order: 3;
+    }
+  }
   .lg\:col-span-1 {
     @media (width >= 64rem) {
       grid-column: span 1 / span 1;
@@ -1380,6 +1405,11 @@
   .lg\:col-span-4 {
     @media (width >= 64rem) {
       grid-column: span 4 / span 4;
+    }
+  }
+  .lg\:col-span-6 {
+    @media (width >= 64rem) {
+      grid-column: span 6 / span 6;
     }
   }
   .lg\:float-right {
@@ -1484,6 +1514,16 @@
   .xl\:col-span-2 {
     @media (width >= 80rem) {
       grid-column: span 2 / span 2;
+    }
+  }
+  .xl\:col-span-5 {
+    @media (width >= 80rem) {
+      grid-column: span 5 / span 5;
+    }
+  }
+  .xl\:block {
+    @media (width >= 80rem) {
+      display: block;
     }
   }
   .xl\:w-1\/6 {
