@@ -23,7 +23,7 @@
                                 </div>
 
                                 <h3 class="text-2xl font-semibold mt-4 card-title grow"><?= get_the_title( $blog ); ?></h3>
-                                <p class="text-gray-600 mt-2"><?= get_the_excerpt( $blog ); ?></p>
+                                <p class="text-gray-600 mt-2 truncate-3"><?= get_the_excerpt( $blog ); ?></p>
                             </a>
                         </article>
                     <?php endif;
