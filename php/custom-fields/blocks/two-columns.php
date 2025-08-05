@@ -13,7 +13,7 @@
 <section class="md:py-section py-12 bg-gray-50">
     <div class="container mx-auto px-5">
         <div class="grid lg:grid-cols-2 grid-cols-1 gap-x-5 gap-y-12 items-center">
-            <div class="max-w-xl order-2 lg:order-1">
+            <div class="order-2 lg:order-1">
                 <?php heading_2( $heading ); ?>
 
                 <?php if( $bullets ) :
