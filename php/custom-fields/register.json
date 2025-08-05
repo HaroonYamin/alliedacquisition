@@ -117,5 +117,19 @@
         "description": "This is the blogs all section of a webpage.",
         "template": "blogs-all",
         "keywords": "blogs, all, section, webpage"
+    },
+    {
+        "name": "contact",
+        "title": "Contact Section",
+        "description": "This is the contact section of a webpage.",
+        "template": "contact",
+        "keywords": "contact, form, section, webpage"
+    },
+    {
+        "name": "map",
+        "title": "Map Section",
+        "description": "This is the map section of a webpage.",
+        "template": "map",
+        "keywords": "map, section, webpage"
     }
 ]
