@@ -538,6 +538,9 @@
   .h-\[200px\] {
     height: 200px;
   }
+  .h-\[320px\] {
+    height: 320px;
+  }
   .h-\[488px\] {
     height: 488px;
   }
@@ -1403,6 +1406,11 @@
   .md\:h-780 {
     @media (width >= 48rem) {
       height: var(--height-780);
+    }
+  }
+  .md\:h-\[488px\] {
+    @media (width >= 48rem) {
+      height: 488px;
     }
   }
   .md\:max-w-xl {
