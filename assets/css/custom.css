@@ -295,6 +295,7 @@ form:has(#hy-lead-magnet-wrapper) .wpcf7-response-output {
 }
 #hy-single-content {
     font-family: var(--font-inter);
+    color: #222;
 }
 #hy-single-content h2 {
     font-family: var(--font-avenir);
