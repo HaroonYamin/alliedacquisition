@@ -350,8 +350,9 @@ form:has(#hy-lead-magnet-wrapper) .wpcf7-response-output {
     padding: 8px 12px;
     text-align: left;
 }
+#hy-single-content table td,
 #hy-single-content table p {
-    font-size: 1rem;
+    font-size: 0.875rem;
 }
 
 @media screen and (min-width: 40rem) {
@@ -364,5 +365,9 @@ form:has(#hy-lead-magnet-wrapper) .wpcf7-response-output {
     #hy-single-content li,
     #hy-single-content p {
         font-size: 1.25rem;
+    }
+    #hy-single-content table td,
+    #hy-single-content table p {
+        font-size: 1rem;
     }
 }
