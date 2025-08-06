@@ -350,6 +350,9 @@ form:has(#hy-lead-magnet-wrapper) .wpcf7-response-output {
     padding: 8px 12px;
     text-align: left;
 }
+#hy-single-content table p {
+    font-size: 1rem;
+}
 
 @media screen and (min-width: 40rem) {
     #hy-single-content h2 {
