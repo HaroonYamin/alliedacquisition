@@ -337,6 +337,19 @@ form:has(#hy-lead-magnet-wrapper) .wpcf7-response-output {
 #hy-single-content a:active {
     color: var(--color-light-green);
 }
+#hy-single-content table {
+    border: 1px solid #ddd;
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+#hy-single-content table th,
+#hy-single-content table td {
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    text-align: left;
+}
 
 @media screen and (min-width: 40rem) {
     #hy-single-content h2 {
