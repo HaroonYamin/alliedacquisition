@@ -1,4 +1,5 @@
-<header class="absolute top-7 w-full">
+<?php $top = is_single() ? 'top-2' : 'top-7'; ?>
+<header class="absolute <?= $top; ?> w-full">
     <div class="container mx-auto px-5">
         <div class="flex flex-row items-center justify-between">
             <div>

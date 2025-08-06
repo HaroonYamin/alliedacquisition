@@ -9,7 +9,7 @@
 ?>
 
 <main id="<?php echo get_post_field( 'post_name', get_post() ); ?>">
-    <div class="bg-neutral-700 h-[106px] w-full"></div>
+    <div class="bg-neutral-700 h-[74px] w-full"></div>
 
     <section class="md:my-24 my-12">
         <div class="container mx-auto px-5">
