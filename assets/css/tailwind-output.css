@@ -538,6 +538,9 @@
   .h-\[200px\] {
     height: 200px;
   }
+  .h-\[488px\] {
+    height: 488px;
+  }
   .h-auto {
     height: auto;
   }
@@ -1519,6 +1522,11 @@
   .lg\:h-780 {
     @media (width >= 64rem) {
       height: var(--height-780);
+    }
+  }
+  .lg\:h-\[488px\] {
+    @media (width >= 64rem) {
+      height: 488px;
     }
   }
   .lg\:h-\[505px\] {

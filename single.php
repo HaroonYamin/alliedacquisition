@@ -40,7 +40,7 @@
                 <div class="lg:col-span-6 col-span-12 lg:order-3 order-1">
                     <?php 
                         if( get_post_thumbnail_id( $id ) ) :
-                            echo get_image( get_post_thumbnail_id( $id ), 'full', 'w-full rounded-xl' );
+                            echo get_image( get_post_thumbnail_id( $id ), 'full', 'w-full lg:h-[488px] rounded-xl' );
                         endif;
                     ?>
                 </div>
