@@ -299,19 +299,20 @@ form:has(#hy-lead-magnet-wrapper) .wpcf7-response-output {
 #hy-single-content h2 {
     font-family: var(--font-avenir);
     color: var(--color-green);
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     font-weight: 600;
     margin: 1.25rem 0 0.75rem 0;
 }
 #hy-single-content h3 {
     font-family: var(--font-avenir);
     color: var(--color-green);
-    font-size: 1.375rem;
+    font-size: 1.25rem;
     font-weight: 600;
     margin: 1rem 0 0.75rem 0;
 }
+#hy-single-content li,
 #hy-single-content p {
-    font-size: 1.125rem;
+    font-size: 1rem;
     margin: 0.75rem 0;
 }
 #hy-single-content ol {
@@ -321,9 +322,6 @@ form:has(#hy-lead-magnet-wrapper) .wpcf7-response-output {
 #hy-single-content ul {
     padding-left: 20px;
     list-style: disc;
-}
-#hy-single-content li {
-    margin: 0.75rem 0;
 }
 #hy-single-content strong,
 #hy-single-content b {
@@ -337,4 +335,17 @@ form:has(#hy-lead-magnet-wrapper) .wpcf7-response-output {
 #hy-single-content a:hover,
 #hy-single-content a:active {
     color: var(--color-light-green);
+}
+
+@media screen and (min-width: 40rem) {
+    #hy-single-content h2 {
+        font-size: 1.75rem;
+    }
+    #hy-single-content h3 {
+        font-size: 1.375rem;
+    }
+    #hy-single-content li,
+    #hy-single-content p {
+        font-size: 1.25rem;
+    }
 }

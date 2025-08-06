@@ -11,7 +11,7 @@
 <main id="<?php echo get_post_field( 'post_name', get_post() ); ?>">
     <div class="bg-neutral-700 h-[106px] w-full"></div>
 
-    <section class="md:my-24 mt-12 mb-24">
+    <section class="md:my-24 my-12">
         <div class="container mx-auto px-5">
             <div class="grid grid-cols-12 gap-x-8 gap-y-12 items-center">
                 <div class="col-span-1 xl:block hidden lg:order-1"></div>
