@@ -2,7 +2,7 @@
     $testimonials = get_field( 'testimonials', 'option' );
 ?>
 
-<section class="md:py-section py-12">
+<section class="md:py-24 py-12">
     <?php
     if( $testimonials ) {
         $last_key = array_key_last( $testimonials );

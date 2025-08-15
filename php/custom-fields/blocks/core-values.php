@@ -4,7 +4,7 @@
     $cards = get_field('cards');
 ?>
 
-<section class="md:py-section py-12 bg-gray-100">
+<section class="md:py-24 py-12 bg-gray-100">
     <div class="container mx-auto px-5">
         <div class="flex justify-between items-center flex-wrap">
             <div class="xl:w-1/6 lg:w-2/6 w-full xl:translate-x-24">

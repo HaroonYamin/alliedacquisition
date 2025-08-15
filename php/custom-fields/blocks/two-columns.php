@@ -10,7 +10,7 @@
     $link_2 = $buttons['link_2'];
 ?>
 
-<section class="md:py-section py-12 bg-gray-50">
+<section class="md:py-24 py-12 bg-gray-50">
     <div class="container mx-auto px-5">
         <div class="grid lg:grid-cols-2 grid-cols-1 gap-x-5 gap-y-12 items-center">
             <div class="order-2 lg:order-1">

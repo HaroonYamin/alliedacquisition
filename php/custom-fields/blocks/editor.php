@@ -6,7 +6,7 @@
     }
 ?>
 
-<section class="md:mt-section md:mb-section-md my-12">
+<section class="md:mt-24 md:mb-38 my-12">
     <div class="max-w-3xl mx-auto px-5" id="editor">
         <?= $editor; ?>
     </div>

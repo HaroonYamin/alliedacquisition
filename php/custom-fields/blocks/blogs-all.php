@@ -10,7 +10,7 @@
     $blogs = get_posts($args);
 ?>
 
-<section class="md:my-section my-12">
+<section class="md:my-24 my-12">
     <div class="container mx-auto px-5">
         <div class="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-x-5 gap-y-12">
             <?php if( !empty($blogs) ) :

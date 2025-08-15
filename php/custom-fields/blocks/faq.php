@@ -3,7 +3,7 @@
     $repeater = get_field('repeater', 'option');
 ?>
 
-<section class="md:my-section-lg my-12">
+<section class="md:my-48 my-12">
     <div class="container mx-auto px-6">
         <?php if( $heading ) {
             heading_2( $heading, 'text-center mx-auto' );
