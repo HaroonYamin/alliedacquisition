@@ -371,3 +371,17 @@ form:has(#hy-lead-magnet-wrapper) .wpcf7-response-output {
         font-size: 1rem;
     }
 }
+
+.tesimonial-popup {
+    pointer-events: none;
+    opacity: 0;
+    appearance: hidden;
+    width: 0;
+    transition: all 0.5s ease;
+}
+.tesimonial-popup.active {
+    pointer-events: visible;
+    opacity: 1;
+    appearance: visible;
+    width: 100%;
+}

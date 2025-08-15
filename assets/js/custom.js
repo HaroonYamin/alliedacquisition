@@ -29,10 +29,10 @@ jQuery(document).ready(function ($) {
     const lastKey = $(".testimonial-last-key").data("last-key");
     for (let i = 0; i <= lastKey; i++) {
         $(`#tesimonial-${i}`).click(function () {
-            $(`#tesimonial-popup-${i}`).fadeIn();
+            $(`.tesimonial-popup-${i}`).addClass("active");
         });
-        $(`#testimonial-popup-close-${i}`).click(function () {
-            $(`#tesimonial-popup-${i}`).fadeOut();
+        $(`.testimonial-popup-close-${i}`).click(function () {
+            $(`.tesimonial-popup-${i}`).removeClass("active");
         });
     }
 });
