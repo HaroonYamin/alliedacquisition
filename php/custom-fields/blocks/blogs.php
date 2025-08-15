@@ -6,7 +6,7 @@
     $link_2 = $buttons['link_2'];
 ?>
 
-<section class="md:my-section my-12">
+<section class="md:my-24 mt-12 mb-24">
     <div class="container mx-auto px-5">
         <?php 
             if( $heading ) :
@@ -34,14 +34,14 @@
         </div>
 
         <?php if( $link || $link_2 ) : ?>
-            <div class="flex flex-row justify-center gap-3 mt-12">
+            <div class="flex sm:flex-row flex-col justify-center flex-wrap gap-3 mt-12">
                 <?php
                     if( $link ) {
-                        button_1($link['url'], $link['target'], $link['title']);
+                        echo button_1($link['url'], $link['target'], $link['title']);
                     }
 
                     if( $link_2 ) {
-                        button_2($link_2['url'], $link_2['target'], $link_2['title']);
+                        echo button_2($link_2['url'], $link_2['target'], $link_2['title']);
                     }
                 ?>
             </div>

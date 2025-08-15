@@ -13,7 +13,7 @@
     $shortcode = get_field('shortcode');
 ?>
 
-<section style="background: url(<?=  $bg_image; ?>) center center/ cover no-repeat;" class="md:h-780 py-12">
+<section style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url(<?=  $bg_image; ?>) center center/ cover no-repeat;" class="md:h-780 py-12">
     <div class="container mx-auto h-full px-5">
         <div class="grid md:grid-cols-2 grid-cols-1 gap-x-8 gap-y-12 h-full items-center">
             <div class="block">
