@@ -66,10 +66,7 @@
     --color-light-green: #afd645;
     --color-green: #0b473d;
     --color-cream: #f3f5ee;
-    --margin-section: 6rem;
     --margin-section-md: 9.5rem;
-    --margin-section-lg: 12rem;
-    --padding-section: 6rem;
     --margin-banner: 73px;
     --leading-2: 1.2em;
   }
@@ -1252,16 +1249,6 @@
       margin-block: calc(var(--spacing) * 24);
     }
   }
-  .md\:my-48 {
-    @media (width >= 48rem) {
-      margin-block: calc(var(--spacing) * 48);
-    }
-  }
-  .md\:my-section-lg {
-    @media (width >= 48rem) {
-      margin-block: var(--margin-section-lg);
-    }
-  }
   .md\:mt-4 {
     @media (width >= 48rem) {
       margin-top: calc(var(--spacing) * 4);
@@ -1277,24 +1264,19 @@
       margin-top: calc(var(--spacing) * 32);
     }
   }
-  .md\:mt-section {
-    @media (width >= 48rem) {
-      margin-top: var(--margin-section);
-    }
-  }
   .md\:mt-section-md {
     @media (width >= 48rem) {
       margin-top: var(--margin-section-md);
     }
   }
+  .md\:mb-24 {
+    @media (width >= 48rem) {
+      margin-bottom: calc(var(--spacing) * 24);
+    }
+  }
   .md\:mb-38 {
     @media (width >= 48rem) {
       margin-bottom: calc(var(--spacing) * 38);
-    }
-  }
-  .md\:mb-section-md {
-    @media (width >= 48rem) {
-      margin-bottom: var(--margin-section-md);
     }
   }
   .md\:ml-15 {
@@ -1340,11 +1322,6 @@
   .md\:py-24 {
     @media (width >= 48rem) {
       padding-block: calc(var(--spacing) * 24);
-    }
-  }
-  .md\:py-section {
-    @media (width >= 48rem) {
-      padding-block: var(--padding-section);
     }
   }
   .md\:text-2xl {

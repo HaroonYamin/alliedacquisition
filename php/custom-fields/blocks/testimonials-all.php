@@ -16,7 +16,7 @@
                     if( $single ) :
                         $content = $single['content']; ?>
 
-                        <div class="shadow-card-2 rounded-3xl">
+                        <div class="shadow-[0px 0px 20px 0px #00000017] rounded-3xl">
                             <div class="py-8 px-7 flex flex-col h-full">
                                 <?= get_image( $single['image'], 'medium', 'w-24 h-24 rounded-full mx-auto' ); ?>
 
