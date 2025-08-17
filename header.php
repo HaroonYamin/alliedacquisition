@@ -13,4 +13,4 @@
 		<?php get_template_part( 'template-parts/header/main' ); ?>
 		<?php get_template_part( 'template-parts/lead-magnet/lead-magnet' ); ?>
 		<?php get_template_part( 'template-parts/lead-magnet/toggle' ); ?>
-		<?php echo get_template_part( 'template-parts/header/bottom-bar' ); ?>
+		<?php get_template_part( 'template-parts/header/bottom-bar' ); ?>
