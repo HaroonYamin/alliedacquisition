@@ -107,7 +107,7 @@ $shortcode      = $content['shortcode'] ?? '';
         width: 100%;
         max-width: 380px; /* Mobile max-width */
         padding: 1rem; /* p-4 */
-        transform: scale(0.95);
+        transform: scale(0.5);
         opacity: 0;
         transition: transform 0.3s ease, opacity 0.3s ease;
     }
@@ -117,10 +117,13 @@ $shortcode      = $content['shortcode'] ?? '';
         opacity: 1;
     }
 
-    @media (min-width: 640px) { /* Tailwind 'sm' breakpoint */
+    @media (min-width: 768px) { /* Tailwind 'sm' breakpoint */
         .lead-magnet__dialog {
             max-width: 56rem; /* sm:max-w-4xl */
             padding: 2rem; /* sm:p-8 */
+        }
+        .lead-magnet.is-active .lead-magnet__dialog {
+            transform: scale(0.8);
         }
     }
 
