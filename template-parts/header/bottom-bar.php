@@ -1,6 +1,6 @@
 <?php 
 $banner_visibility = get_theme_mod( 'header_banner_visibility', true );
-$banner_content    = get_theme_mod( 'header_banner_content', '' );
+$banner_content    = get_theme_mod( 'header_banner_content', 'Get My Cash Offer' );
 $banner_url        = get_theme_mod( 'header_banner_url', '#' );
 
 if ( $banner_visibility && ! empty( $banner_content ) ) : ?>
