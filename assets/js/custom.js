@@ -13,16 +13,6 @@ jQuery(document).ready(function ($) {
         $(this).addClass("active");
     });
 
-    // window.leadMagnet = function () {
-    //     $("#hy-lead-magnet-section").fadeOut();
-    //     $("#hy-lead-magnet-toggle").addClass("active");
-    // };
-
-    // // Lead Magnet Toggle
-    // window.displayLeadMagnet = function () {
-    //     $("#hy-lead-magnet-section").addClass("active");
-    // };
-
     // Testimonial Popup
     const lastKey = $(".testimonial-last-key").data("last-key");
     for (let i = 0; i <= lastKey; i++) {

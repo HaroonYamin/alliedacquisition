@@ -38,16 +38,16 @@ $shortcode      = $content['shortcode'] ?? '';
     role="dialog"
     aria-hidden="true"
 >
-    <div class="lead-magnet__overlay"></div>
+    <!-- <div class="lead-magnet__overlay"></div> -->
     <div class="lead-magnet__dialog">
         <button class="lead-magnet__close" aria-label="Close popup">
-            <?= get_svg('icon-cross', 'w-8 h-8'); // Assumes get_svg() is a theme function ?>
+            <?= get_svg('icon-cross', 'w-8 h-8'); ?>
         </button>
 
         <div class="lead-magnet__grid">
             <?php if ($image) : ?>
                 <div class="lead-magnet__image-wrapper">
-                    <?= get_image($image, '', 'rounded-2xl w-full sm:h-auto h-[200px] object-cover'); // Assumes get_image() is a theme function ?>
+                    <?= get_image($image, '', 'rounded-2xl w-full sm:h-auto h-[200px] object-cover'); ?>
                 </div>
             <?php endif; ?>
 

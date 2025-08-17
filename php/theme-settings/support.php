@@ -68,3 +68,39 @@ function show_pdf_server_path_in_modal($form_fields, $post) {
 
     return $form_fields;
 }
+
+/**
+ * Adds a "Reset Popup Display" button to the Lead Magnet options page.
+ * This button clears the localStorage item that suppresses the popup for 24 hours.
+ */
+add_action('admin_footer', 'add_lead_magnet_reset_button');
+function add_lead_magnet_reset_button() {
+    // Only show this button on our specific options page
+    if (isset($_GET['page']) && $_GET['page'] === 'lead-magnet-options') {
+        $storage_key = 'leadMagnetClosedTimestamp'; // This must match the key in your JS
+        ?>
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function() {
+                // Create the button element
+                const resetButton = document.createElement('button');
+                resetButton.innerHTML = 'Reset Popup Display';
+                resetButton.classList.add('button', 'button-secondary');
+                resetButton.style.marginTop = '20px';
+
+                // Add the click event listener
+                resetButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    localStorage.removeItem('<?php echo $storage_key; ?>');
+                    alert('✅ Popup suppression has been reset!\n\nYou can now visit the front-end to trigger the popup again.');
+                });
+
+                // Add the button to the bottom of the main form
+                const acfForm = document.querySelector('#poststuff');
+                if (acfForm) {
+                    acfForm.appendChild(resetButton);
+                }
+            });
+        </script>
+        <?php
+    }
+}
