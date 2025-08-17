@@ -78,10 +78,11 @@ function header_customization( $wp_customize ) {
         'type'     => 'checkbox',
     ) );
 
-    // Header Banner Content Title and Button
+    // Header Banner Content
     $wp_customize->add_setting( 'header_banner_content', array(
         'default'           => 'Get My Cash Offer',
-        'sanitize_callback' => 'sanitize_textarea_field',
+        'sanitize_callback' => 'sanitize_text_field', // or wp_kses_post if you want HTML
+        'transport'         => 'refresh',
     ) );
 
     $wp_customize->add_control( 'header_banner_content', array(
@@ -89,26 +90,33 @@ function header_customization( $wp_customize ) {
         'section' => 'header_button_section',
         'type'    => 'textarea',
     ) );
+
+    // Header Banner URL
     $wp_customize->add_setting( 'header_banner_url', array(
-        'default'   => '#',
+        'default'           => '#',
         'sanitize_callback' => 'esc_url_raw',
+        'transport'         => 'refresh',
     ) );
 
     $wp_customize->add_control( 'header_banner_url', array(
-        'label'    => __( 'Button URL', 'zbcouture' ),
-        'section'  => 'header_button_section',
-        'type'     => 'url',
+        'label'   => __( 'Button URL', 'zbcouture' ),
+        'section' => 'header_button_section',
+        'type'    => 'url',
     ) );
-    // Optional: Show/Hide Toggle
+
+    // Show/Hide Toggle
     $wp_customize->add_setting( 'header_banner_visibility', array(
-        'default' => true,
-        'sanitize_callback' => 'wp_validate_boolean',
+        'default'           => true,
+        'sanitize_callback' => function( $checked ) {
+            return ( ( isset( $checked ) && true == $checked ) ? true : false );
+        },
+        'transport'         => 'refresh',
     ) );
 
     $wp_customize->add_control( 'header_banner_visibility', array(
-        'label'    => __( 'Show Header Button', 'zbcouture' ),
-        'section'  => 'header_button_section',
-        'type'     => 'checkbox',
+        'label'   => __( 'Show Header Button', 'zbcouture' ),
+        'section' => 'header_button_section',
+        'type'    => 'checkbox',
     ) );
 }
 add_action( 'customize_register', 'header_customization' );
