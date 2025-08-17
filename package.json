@@ -1,8 +1,8 @@
 {
   "dependencies": {
-    "@tailwindcss/cli": "^4.1.7",
+    "@tailwindcss/cli": "^4.1.12",
     "swiper": "^11.2.7",
-    "tailwindcss": "^4.1.7"
+    "tailwindcss": "^4.1.12"
   },
   "name": "alliedacquisition",
   "description": "<<<<<<< HEAD\r # alliedacquisition\r This is the site for land developers in USA.\r =======\r # WordPress Custom Theme Template",

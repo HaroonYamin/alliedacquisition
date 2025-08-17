@@ -385,3 +385,18 @@ form:has(#hy-lead-magnet-wrapper) .wpcf7-response-output {
     appearance: visible;
     width: 100%;
 }
+
+#fixed-banner {
+    opacity: 0;
+    transform: translateY(100%);
+    pointer-events: none;
+    visibility: hidden;
+    transition: all 0.5s ease;
+}
+
+#fixed-banner.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    visibility: visible;
+}

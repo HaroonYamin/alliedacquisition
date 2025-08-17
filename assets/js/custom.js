@@ -35,6 +35,18 @@ jQuery(document).ready(function ($) {
             $(`.tesimonial-popup-${i}`).removeClass("active");
         });
     }
+
+    // Fixed Banner display when screen scroll to 30%
+    const $fixedBanner = $("#fixed-banner");
+    const showBannerAt = $(window).height() * 0.3;
+
+    $(window).on("scroll", function () {
+        if ($(window).scrollTop() > showBannerAt) {
+            $fixedBanner.addClass("active");
+        } else {
+            $fixedBanner.removeClass("active");
+        }
+    });
 });
 
 document.addEventListener("scroll", function () {

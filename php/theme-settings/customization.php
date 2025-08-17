@@ -2,7 +2,7 @@
 function header_customization( $wp_customize ) {
 
     $wp_customize->add_section( 'header_button_section', array(
-        'title'    => __( 'Header Button', 'zbcouture' ),
+        'title'    => __( 'Site Header', 'zbcouture' ),
         'priority' => 30,
     ) );
 
@@ -42,7 +42,7 @@ function header_customization( $wp_customize ) {
         'type'     => 'checkbox',
     ) );
 
-     // Button Text
+    // Button Text 2
     $wp_customize->add_setting( 'header_button_text_2', array(
         'default'   => 'Contact Us',
         'sanitize_callback' => 'sanitize_text_field',
@@ -54,7 +54,7 @@ function header_customization( $wp_customize ) {
         'type'     => 'text',
     ) );
 
-    // Button URL
+    // Button URL 2
     $wp_customize->add_setting( 'header_button_url_2', array(
         'default'   => '#',
         'sanitize_callback' => 'esc_url_raw',
@@ -77,13 +77,46 @@ function header_customization( $wp_customize ) {
         'section'  => 'header_button_section',
         'type'     => 'checkbox',
     ) );
+
+    // Header Banner Content Title and Button
+    $wp_customize->add_setting( 'header_banner_content', array(
+        'default'           => 'Get My Cash Offer',
+        'sanitize_callback' => 'sanitize_textarea_field',
+    ) );
+
+    $wp_customize->add_control( 'header_banner_content', array(
+        'label'   => __( 'Banner Content', 'zbcouture' ),
+        'section' => 'header_button_section',
+        'type'    => 'textarea',
+    ) );
+    $wp_customize->add_setting( 'header_banner_url', array(
+        'default'   => '#',
+        'sanitize_callback' => 'esc_url_raw',
+    ) );
+
+    $wp_customize->add_control( 'header_banner_url', array(
+        'label'    => __( 'Button URL', 'zbcouture' ),
+        'section'  => 'header_button_section',
+        'type'     => 'url',
+    ) );
+    // Optional: Show/Hide Toggle
+    $wp_customize->add_setting( 'header_banner_visibility', array(
+        'default' => true,
+        'sanitize_callback' => 'wp_validate_boolean',
+    ) );
+
+    $wp_customize->add_control( 'header_banner_visibility', array(
+        'label'    => __( 'Show Header Button', 'zbcouture' ),
+        'section'  => 'header_button_section',
+        'type'     => 'checkbox',
+    ) );
 }
 add_action( 'customize_register', 'header_customization' );
 
 function footer_customization( $wp_customize ) {
     // Add Footer Section
     $wp_customize->add_section( 'footer_options', array(
-        'title' => 'Footer Options',
+        'title' => 'Site Footer',
         'priority' => 120,
     ) );
 
