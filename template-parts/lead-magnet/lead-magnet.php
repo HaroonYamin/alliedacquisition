@@ -38,7 +38,7 @@ $shortcode      = $content['shortcode'] ?? '';
     role="dialog"
     aria-hidden="true"
 >
-    <!-- <div class="lead-magnet__overlay"></div> -->
+    <div class="lead-magnet__overlay"></div>
     <div class="lead-magnet__dialog">
         <button class="lead-magnet__close" aria-label="Close popup">
             <?= get_svg('icon-cross', 'w-8 h-8'); ?>
@@ -161,7 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const popup = document.getElementById("lead-magnet-popup");
     if (!popup) return; // Exit if the popup element doesn't exist
 
-    const overlay = popup.querySelector(".lead-magnet__overlay");
+    // const overlay = popup.querySelector(".lead-magnet__overlay");
     const closeButtons = popup.querySelectorAll(".lead-magnet__close");
     
     // Settings from data attributes
@@ -216,7 +216,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // --- Event Listeners for Closing ---
-    overlay.addEventListener("click", hidePopup);
+    // overlay.addEventListener("click", hidePopup);
     closeButtons.forEach(button => button.addEventListener("click", hidePopup));
 });
 </script>
