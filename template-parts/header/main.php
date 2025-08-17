@@ -35,5 +35,3 @@
         </div>
     </div>
 </header>
-
-<?php echo get_template_part( 'template-parts/header/bottom-bar' ); ?>
