@@ -413,3 +413,29 @@ form:has(#hy-lead-magnet-wrapper) .wpcf7-response-output {
     color: var(--color-light-green);
     font-size: 1.5rem;
 }
+@media screen and (max-width: 768px) {
+    .hy-lead-styles li {
+        font-size: 0.875rem;
+    }
+    .hy-lead-styles li::marker {
+        font-size: 1rem;
+    }
+    #hy-lead-magnet-wrapper input[type="email"] {
+        padding: 10px 12px;
+        font-size: 14px;
+        margin-top: 6px;
+    }
+    #hy-lead-magnet-wrapper input[type="submit"] {
+        padding: 10px 14px;
+        font-size: 14px;
+    }
+    #hy-lead-magnet-wrapper .wpcf7-spinner {
+        top: 10px;
+        width: 16px;
+        height: 16px;
+    }
+    #hy-lead-magnet-wrapper .wpcf7-not-valid-tip,
+    form:has(#hy-lead-magnet-wrapper) .wpcf7-response-output {
+        font-size: 12px;
+    }
+}

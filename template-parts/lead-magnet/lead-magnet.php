@@ -54,8 +54,8 @@ $shortcode      = $content['shortcode'] ?? '';
             <div class="lead-magnet__content">
                 <div class="mb-5 sm:mb-7">
                     <?php
-                    if ($heading) echo '<h2 class="font-avenir text-green md:text-2xl text-2xl font-medium mb-4 md:max-w-xl max-w-sm leading-2 capitalize">' . esc_html($heading) . '</h2>';
-                    if ($sub_heading) echo '<h5 class="font-inter text-black text-xl font-medium mb-1">' . esc_html($sub_heading) . '</h5>';
+                    if ($heading) echo '<h2 class="font-avenir text-green md:text-2xl text-xl font-medium mb-4 md:max-w-xl max-w-sm leading-2 capitalize">' . esc_html($heading) . '</h2>';
+                    if ($sub_heading) echo '<h5 class="font-inter text-black md:text-xl text-md font-medium mb-1">' . esc_html($sub_heading) . '</h5>';
                     if ($paragraph) echo '<div class="font-inter hy-lead-styles">' . wp_kses_post($paragraph) . '</div>';
                     ?>
                 </div>
@@ -85,6 +85,7 @@ $shortcode      = $content['shortcode'] ?? '';
         visibility: hidden;
         opacity: 0;
         transition: opacity 0.3s ease, visibility 0.3s ease;
+        padding: 0 10px;
     }
 
     .lead-magnet.is-active {
@@ -128,11 +129,15 @@ $shortcode      = $content['shortcode'] ?? '';
         top: 0.5rem; /* top-2 */
         right: 0.5rem; /* right-2 */
         cursor: pointer;
-        opacity: 0.5;
         transition: opacity 0.2s ease;
+        z-index: 10;
+        background: white;
+        border-radius: 10px;
     }
-    
-    .lead-magnet__close:hover {
+    .lead-magnet__close svg {
+        opacity: 0.5;
+    }
+    .lead-magnet__close:hover svg {
         opacity: 1;
     }
 
