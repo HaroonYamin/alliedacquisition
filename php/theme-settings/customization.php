@@ -41,6 +41,42 @@ function header_customization( $wp_customize ) {
         'section'  => 'header_button_section',
         'type'     => 'checkbox',
     ) );
+
+     // Button Text
+    $wp_customize->add_setting( 'header_button_text_2', array(
+        'default'   => 'Contact Us',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+
+    $wp_customize->add_control( 'header_button_text_2', array(
+        'label'    => __( 'Button Text', 'zbcouture' ),
+        'section'  => 'header_button_section',
+        'type'     => 'text',
+    ) );
+
+    // Button URL
+    $wp_customize->add_setting( 'header_button_url_2', array(
+        'default'   => '#',
+        'sanitize_callback' => 'esc_url_raw',
+    ) );
+
+    $wp_customize->add_control( 'header_button_url_2', array(
+        'label'    => __( 'Button URL', 'zbcouture' ),
+        'section'  => 'header_button_section',
+        'type'     => 'url',
+    ) );
+
+    // Optional: Show/Hide Toggle
+    $wp_customize->add_setting( 'header_button_visibility_2', array(
+        'default' => true,
+        'sanitize_callback' => 'wp_validate_boolean',
+    ) );
+
+    $wp_customize->add_control( 'header_button_visibility_2', array(
+        'label'    => __( 'Show Header Button', 'zbcouture' ),
+        'section'  => 'header_button_section',
+        'type'     => 'checkbox',
+    ) );
 }
 add_action( 'customize_register', 'header_customization' );
 

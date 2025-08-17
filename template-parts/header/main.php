@@ -12,8 +12,18 @@
     
                     <?php if ( get_theme_mod( 'header_button_visibility', true ) ) : ?>
                         <div class="">
-                            <a href="<?php echo esc_url( get_theme_mod( 'header_button_url', '#' ) ); ?>" class="color-light-green border border-light-green py-3 px-5 text-white rounded-full hover:bg-light-green transition-colors inline-block">
+                            <a href="<?php echo esc_url( get_theme_mod( 'header_button_url', '#' ) ); ?>" 
+                                class="color-light-green border border-light-green py-3 px-5 text-white rounded-full hover:bg-light-green transition-colors inline-block">
                                 <?php echo esc_html( get_theme_mod( 'header_button_text', 'Contact Us' ) ); ?>
+                            </a>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if ( get_theme_mod( 'header_button_visibility_2', true ) ) : ?>
+                        <div class="">
+                            <a href="<?php echo esc_url( get_theme_mod( 'header_button_url_2', '#' ) ); ?>" 
+                                class="bg-light-green border border-light-green py-3 px-8 text-white rounded-full hover:bg-lime-500 hover:border-lime-500 transition-colors sm:inline-block block text-center w-full sm:w-fit ">
+                                <?php echo esc_html( get_theme_mod( 'header_button_text_2', 'Contact Us' ) ); ?>
                             </a>
                         </div>
                     <?php endif; ?>
