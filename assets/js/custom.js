@@ -35,20 +35,28 @@ jQuery(document).ready(function ($) {
             $fixedBanner.removeClass("active");
         }
     });
+});
 
-    // Add to your theme's script file
-    function scrollToForm() {
-        if (window.location.hash === "#scroll-to-form") {
-            $("html, body").animate(
-                {
-                    scrollTop: $("#scroll-to-form").offset().top - 50,
-                },
-                800
-            );
+// Handles all smooth scrolling links automatically
+document.addEventListener("click", function (e) {
+    if (e.target.matches('a[href^="#"]')) {
+        e.preventDefault();
+        const target = document.querySelector(e.target.getAttribute("href"));
+        if (target) {
+            target.scrollIntoView({ behavior: "smooth" });
+            // Update URL without page jump
+            history.pushState(null, null, e.target.getAttribute("href"));
         }
     }
-    scrollToForm();
-    $(window).on("hashchange", scrollToForm);
+});
+
+// Handle direct hash access
+window.addEventListener("load", function () {
+    if (window.location.hash === "#scroll-to-form") {
+        setTimeout(function () {
+            document.getElementById("scroll-to-form")?.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+    }
 });
 
 document.addEventListener("DOMContentLoaded", function () {
