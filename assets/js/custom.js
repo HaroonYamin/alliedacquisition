@@ -35,6 +35,20 @@ jQuery(document).ready(function ($) {
             $fixedBanner.removeClass("active");
         }
     });
+
+    // Add to your theme's script file
+    function scrollToForm() {
+        if (window.location.hash === "#scroll-to-form") {
+            $("html, body").animate(
+                {
+                    scrollTop: $("#scroll-to-form").offset().top - 50,
+                },
+                800
+            );
+        }
+    }
+    scrollToForm();
+    $(window).on("hashchange", scrollToForm);
 });
 
 document.addEventListener("DOMContentLoaded", function () {

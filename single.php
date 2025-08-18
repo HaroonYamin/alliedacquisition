@@ -13,7 +13,7 @@
 
     <section class="md:my-24 my-12">
         <div class="container mx-auto px-5">
-            <div class="grid grid-cols-12 gap-x-8 gap-y-12 items-center">
+            <div class="grid grid-cols-12 lg:gap-x-8 gap-y-12 items-center">
                 <div class="col-span-1 xl:block hidden lg:order-1"></div>
                 <div class="xl:col-span-5 lg:col-span-6 col-span-12 order-2">
                     <?php

@@ -7,7 +7,7 @@
     $shortcode = get_field('more')['shortcode'];
 ?>
 
-<section style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url(<?=  $bg_image; ?>) center center/ cover no-repeat;" class="lg:h-780 pb-21 pt-18 lg:py-0">
+<section style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url(<?=  $bg_image; ?>) center center/ cover no-repeat;" class="lg:h-780 pb-21 pt-18 lg:py-0" id="scroll-to-form">
     <div class="container mx-auto h-full px-5 pt-[78px]">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-14 h-full items-center">
             <div class="block">
