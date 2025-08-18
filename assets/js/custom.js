@@ -41,11 +41,16 @@ jQuery(document).ready(function ($) {
 document.addEventListener("click", function (e) {
     if (e.target.matches('a[href^="#"]')) {
         e.preventDefault();
-        const target = document.querySelector(e.target.getAttribute("href"));
+        const targetHash = e.target.getAttribute("href");
+        const target = document.querySelector(targetHash);
+
         if (target) {
             target.scrollIntoView({ behavior: "smooth" });
-            // Update URL without page jump
-            history.pushState(null, null, e.target.getAttribute("href"));
+
+            // Only update URL if hash is different from current hash
+            if (window.location.hash !== targetHash) {
+                history.pushState(null, null, targetHash);
+            }
         }
     }
 });
