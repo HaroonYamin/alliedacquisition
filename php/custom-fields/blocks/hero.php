@@ -2,6 +2,7 @@
     $label = get_field('content')['label'];
     $heading = get_field('content')['heading'];
     $paragraph = get_field('content')['paragraph'];
+    $badges = get_field('badges');
     $bg_image = get_field('more')['bg_image'];
     $button = get_field('more')['button'];
     $shortcode = get_field('more')['shortcode'];
@@ -20,6 +21,19 @@
                     }
                     if( $paragraph ) {
                         echo '<p class="text-white md:text-xl text-lg max-w-sm">' . $paragraph . '</p>';
+                    }
+                    if( $badges ) {
+                        echo '<div class="mt-5 flex flex-row flex-wrap gap-y-4 gap-x-5">';
+                        foreach(  $badges as $badge ) {
+                            $text = $badge['text'];
+                            if( $text ) {
+                                echo '<div class="flex gap-x-3 items-center">';
+                                    echo '<svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4 12.6111L8.92308 17.5L20 6.5" stroke="#afd645" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>';
+                                    echo '<p class="text-white/80 md:text-xl text-lg">' . $text . '</p>';
+                                echo '</div>';
+                            }
+                        }
+                        echo '</div>';
                     }
                     if( $button ) {
                         echo button_1($button['url'], $button['target'], $button['title'], 'mt-7');
