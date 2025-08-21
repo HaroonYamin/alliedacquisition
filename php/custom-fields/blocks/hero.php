@@ -23,7 +23,7 @@
                         echo '<p class="text-white md:text-xl text-lg max-w-sm">' . $paragraph . '</p>';
                     }
                     if( $badges ) {
-                        echo '<div class="mt-5 flex flex-row flex-wrap gap-y-4 gap-x-5">';
+                        echo '<div class="mt-5 flex flex-row flex-wrap gap-y-3 gap-x-5">';
                         foreach(  $badges as $badge ) {
                             $text = $badge['text'];
                             if( $text ) {
