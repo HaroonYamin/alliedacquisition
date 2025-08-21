@@ -29,40 +29,42 @@
             <div class="lg:col-span-1 hidden lg:block"></div>
             <div class="md:col-span-7 col-span-12">
                 <div class="md:ml-15 sm:px-4 sm:overflow-hidden ">
-                    <div class="swiper testimonial-swiper">  
-                        <div class="swiper-wrapper">
-                            
-                            <?php if( $testimonials ) :
-                                foreach( $testimonials as $key => $single ) :
-                                    if( $single ) :
-                                        $content = $single['content'];
-                                        $block = $content['block'];
-                                        if( !$block ) { continue; } ?>
-    
-                                        <div class="swiper-slide">
-                                            <div class="my-7 shadow-card-2 rounded-3xl">
-                                                <div class="py-8 px-7 flex flex-col h-full">
-                                                    <?= get_image( $single['image'], 'medium', 'w-24 h-24 rounded-full mx-auto' ); ?>
-    
-                                                    <div class="flex-grow mt-13">
-                                                        <div class="text-center text-gray-600 truncate-4 testimonial-editor">
-                                                            <?= $content['feedback']; ?>
+                    <div class="px-3 overflow-hidden">
+                        <div class="swiper testimonial-swiper">  
+                            <div class="swiper-wrapper">
+                                
+                                <?php if( $testimonials ) :
+                                    foreach( $testimonials as $key => $single ) :
+                                        if( $single ) :
+                                            $content = $single['content'];
+                                            $block = $content['block'];
+                                            if( !$block ) { continue; } ?>
+        
+                                            <div class="swiper-slide">
+                                                <div class="my-7 shadow-card-2 rounded-3xl">
+                                                    <div class="py-8 px-7 flex flex-col h-full">
+                                                        <?= get_image( $single['image'], 'medium', 'w-24 h-24 rounded-full mx-auto' ); ?>
+        
+                                                        <div class="flex-grow mt-13">
+                                                            <div class="text-center text-gray-600 truncate-4 testimonial-editor">
+                                                                <?= $content['feedback']; ?>
+                                                            </div>
+        
+                                                            <button class="text-light-green hover:text-green cursor-pointer transition-colors text-sm font-semibold mt-2 block size-fit mx-auto" id="<?= 'tesimonial-' . $key; ?>">Read More</button>
                                                         </div>
-    
-                                                        <button class="text-light-green hover:text-green cursor-pointer transition-colors text-sm font-semibold mt-2 block size-fit mx-auto" id="<?= 'tesimonial-' . $key; ?>">Read More</button>
-                                                    </div>
-    
-                                                    <div class="h-22 mt-1 flex flex-col justify-end">
-                                                        <h4 class="text-gray-600 font-semibold block size-fit mx-auto"><?= $content['name']; ?></h4>
-                                                        <p class="text-gray-600 text-center mt-2 text-sm"><?= $content['description']; ?></p>
+        
+                                                        <div class="h-22 mt-1 flex flex-col justify-end">
+                                                            <h4 class="text-gray-600 font-semibold block size-fit mx-auto"><?= $content['name']; ?></h4>
+                                                            <p class="text-gray-600 text-center mt-2 text-sm"><?= $content['description']; ?></p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    <?php endif;
-                                endforeach;
-                            endif; ?>
-
+                                        <?php endif;
+                                    endforeach;
+                                endif; ?>
+    
+                            </div>
                         </div>
                     </div>
                 </div>

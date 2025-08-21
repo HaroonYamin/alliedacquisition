@@ -94,6 +94,8 @@ body {
 
 .testimonial-swiper .swiper-slide {
     height: auto !important;
+    padding: 0 10px !important;
+    overflow: visible !important;
 }
 
 .accordion-content {

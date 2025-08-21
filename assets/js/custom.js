@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Testimonial Swiper
     const swiperTestimonials = new Swiper(".testimonial-swiper", {
         speed: 400,
-        spaceBetween: 24,
+        spaceBetween: 10,
         loop: true,
         slidesPerView: 1.05,
         navigation: {
