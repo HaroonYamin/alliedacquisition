@@ -29,7 +29,7 @@
             <div class="lg:col-span-1 hidden lg:block"></div>
             <div class="md:col-span-7 col-span-12">
                 <div class="md:ml-15 sm:px-4 sm:overflow-hidden ">
-                    <div class="swiper testimonial-swiper" style="overflow: visible !important;">  
+                    <div class="swiper testimonial-swiper">  
                         <div class="swiper-wrapper">
                             
                             <?php if( $testimonials ) :
