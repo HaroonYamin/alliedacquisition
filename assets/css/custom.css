@@ -94,8 +94,6 @@ body {
 
 .testimonial-swiper .swiper-slide {
     height: auto !important;
-    padding: 0 10px !important;
-    overflow: visible !important;
 }
 
 .accordion-content {
@@ -372,6 +370,9 @@ form:has(#hy-lead-magnet-wrapper) .wpcf7-response-output {
     #hy-single-content table p {
         font-size: 1rem;
     }
+}
+.testimonial-swiper .swiper-slide {
+    padding: 0 10px !important;
 }
 
 .tesimonial-popup {
