@@ -4,7 +4,7 @@
     $testimonials = get_field( 'testimonials', 'option' );
 ?>
 
-<section class="md:py-24 py-12 bg-gray-50 overflow-hidden">
+<section class="md:py-24 py-12 bg-gray-50">
     <?php
     if( $testimonials ) {
         $last_key = array_key_last( $testimonials );
@@ -92,7 +92,7 @@
                                     <?= get_image( $single['image'], 'full', 'w-32 h-32 rounded-full mx-auto' ); ?>
                                 </div>
     
-                                <div class="text-center sm:text-xl text-gray-600 testimonial-editor">
+                                <div class="text-center sm:text-xl text-gray-600 testimonial-editor max-h-[450px] overflow-y-auto pr-2.5">
                                     <?= $content['feedback']; ?>
                                 </div>
     
