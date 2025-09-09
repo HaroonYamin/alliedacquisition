@@ -131,5 +131,12 @@
         "description": "This is the map section of a webpage.",
         "template": "map",
         "keywords": "map, section, webpage"
+    },
+    {
+        "name": "video",
+        "title": "Video Section",
+        "description": "This is the video section of a webpage.",
+        "template": "video",
+        "keywords": "video, section, webpage"
     }
 ]
