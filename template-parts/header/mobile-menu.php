@@ -1,8 +1,17 @@
-<button class="relative block p-2.5 mobile-menu">
-    <span class="block rounded-lg bg-white w-7 h-1 menu first"></span>
-    <span class="block rounded-lg bg-white w-7 h-1 menu middle"></span>
-    <span class="block rounded-lg bg-white w-7 h-1 menu last"></span>
-</button>
+<?php $black_header = get_field( 'black_header', get_the_ID() ) ?? false;
+if( $black_header ) : ?>
+    <button class="relative block py-4 px-2.5 mobile-menu bg-black/5 rounded-sm">
+        <span class="block rounded-lg bg-light-green w-7 h-1 menu first"></span>
+        <span class="block rounded-lg bg-light-green w-7 h-1 menu middle"></span>
+        <span class="block rounded-lg bg-light-green w-7 h-1 menu last"></span>
+    </button>
+<?php else: ?>
+    <button class="relative block p-2.5 mobile-menu">
+        <span class="block rounded-lg bg-white w-7 h-1 menu first"></span>
+        <span class="block rounded-lg bg-white w-7 h-1 menu middle"></span>
+        <span class="block rounded-lg bg-white w-7 h-1 menu last"></span>
+    </button>
+<?php endif; ?>
 
 <section class="fixed top-0 left-0" id="toggle-menu">
     <div class="bg-green w-screen h-screen">
@@ -14,6 +23,9 @@
                             <?= the_custom_logo(); ?>
                         </div>
 
+                        <?php
+
+                        ?>
                         <button class="relative block p-2.5 mobile-menu">
                             <span class="block rounded-lg bg-white w-7 h-1 menu first"></span>
                             <span class="block rounded-lg bg-white w-7 h-1 menu middle"></span>
