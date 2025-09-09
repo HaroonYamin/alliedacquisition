@@ -6,19 +6,27 @@
     $url       = $video['url'] ?? '';
     $editor_2  = get_field('editor_2');
 
-    $video_container = 'w-full max-w-4xl mx-auto md:h-[500px] h-[50vw]';
-    $editor_container = 'w-full max-w-3xl mx-auto';
+    $video_container = 'w-full mx-auto md:h-[700px] h-[50vw]';
+    $editor_container = 'max-w-4xl w-full mx-auto';
 ?>
 
 <section class="md:my-24 my-12">
     <div class="container mx-auto px-5">
+        <div class="max-w-[400px] mx-auto mb-7">
+            <div class="w-[70px] h-[70px] bg-light-green rounded-full flex items-center justify-center mx-auto">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-icon lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+            </div>
+        </div>
+
         <?php 
             if ( $heading ) {
                 heading_2( $heading, 'text-center mx-auto' );
             }
+        
+            echo '<div class="w-0.5 bg-light-green mx-auto h-32 my-18"></div>';
 
             if ( $editor ) {
-                echo '<div id="hy-single-content" class="mt-12 ' . $editor_container . '">';
+                echo '<div id="hy-single-content" class="' . $editor_container . '">';
                     echo $editor;
                 echo '</div>';
             }

@@ -6,6 +6,18 @@ function header_customization( $wp_customize ) {
         'priority' => 30,
     ) );
 
+    // Black Header Logo
+    $wp_customize->add_setting( 'header_black_logo', array(
+        'default'           => '',
+        'sanitize_callback' => 'esc_url_raw',
+    ) );
+
+    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'header_black_logo', array(
+        'label'    => __( 'Black Header Logo', 'zbcouture' ),
+        'section'  => 'header_button_section',
+        'settings' => 'header_black_logo',
+    ) ) );
+
     // Button Text
     $wp_customize->add_setting( 'header_button_text', array(
         'default'   => 'Contact Us',
